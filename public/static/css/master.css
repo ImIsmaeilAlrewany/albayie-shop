@@ -1,0 +1,58 @@
+:root {
+  --primary: #709b1d;
+  --secondary: #83b228;
+  --hover-dropdown-item: #f9faf8;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* start header control nav style*/
+.control-nav {
+  background-color: var(--primary);
+  font-size: 14px;
+}
+
+.nav-style-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-nav .nav li a {
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.control-nav .nav li a.active {
+  background-color: #fff;
+}
+
+.control-nav .nav li a.active,
+.control-nav .dropdown .dropdown-toggle {
+  color: var(--primary);
+  border-radius: 0 0 5px 5px;
+}
+
+.control-nav .dropdown .dropdown-toggle::after {
+  display: none;
+}
+
+.control-nav .dropdown .dropdown-toggle:hover {
+  color: var(--primary);
+}
+
+.control-nav .dropdown .dropdown-menu {
+  min-width: 130px;
+}
+
+.dropdown-item:hover {
+  background-color: var(--hover-dropdown-item);
+}
+
+/* end header  control nav style*/
