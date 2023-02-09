@@ -12,3 +12,12 @@ body {
 }
 
 /* end header control nav style*/
+
+/* start logo navbar style */
+
+.navbar .navbar-options .badges .cart {
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+/* end logo navbar style */

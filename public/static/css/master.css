@@ -2,6 +2,7 @@
   --primary: #709b1d;
   --secondary: #83b228;
   --hover-dropdown-item: #f9faf8;
+  --font-size-light: 14px;
 }
 
 body {
@@ -16,7 +17,7 @@ a {
 /* start header control nav style*/
 .control-nav {
   background-color: var(--primary);
-  font-size: 14px;
+  font-size: var(--font-size-light);
 }
 
 .nav-style-between {
@@ -56,3 +57,46 @@ a {
 }
 
 /* end header  control nav style*/
+
+/* start logo navbar style */
+.navbar .navbar-brand .logo-img {
+  width: 60px;
+}
+
+.navbar .navbar-options .registration .login,
+.navbar .navbar-options .registration .register {
+  color: var(--primary);
+  text-transform: uppercase;
+  font-size: var(--font-size-light);
+}
+
+.navbar .navbar-options .badges .wish-list,
+.navbar .navbar-options .badges .cart {
+  margin: 0 10px;
+}
+
+.navbar .navbar-options .badges .cart {
+  margin-right: 15px;
+}
+
+.navbar .navbar-options .badges .wish-list button {
+  padding-left: 11px;
+  padding-right: 11px;
+}
+
+.navbar .navbar-options .badges .cart button {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.navbar .navbar-options .badges>div button i {
+  font-size: var(--font-size-light);
+}
+
+.navbar .navbar-options .badges>div button,
+.navbar .navbar-options .badges>div button span {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+/* end logo navbar style */

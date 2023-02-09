@@ -52,9 +52,34 @@
 {{!-- end header (control-bar) --}}
 
 {{!-- start logo bar and registration --}}
-<div class="logo-bar">
-  {{!-- <img src="/images/albayie-logo.svg" alt="albayie-logo"> --}}
-</div>
+<nav class="navbar">
+  <div class="container-xxl">
+    <a class="navbar-brand m-0 py-0" href="/">
+      <img class="logo-img" src="/images/logo.png" alt="albayie-logo">
+    </a>
+    <div class="navbar-options d-flex align-items-center">
+      <p class="registration mb-0 ms-3">
+        <a href="/" class="login">سجل الدخول</a>
+        <span>أو</span>
+        <a href="/" class="register">انشئ حساب</a>
+      </p>
+      <div class="badges d-flex align-items-center">
+        <div class="wish-list">
+          <button type="button" class="btn position-relative">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill border border-2">0</span>
+          </button>
+        </div>
+        <div class="cart">
+          <button type="button" class="btn position-relative">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill border border-2">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 {{!-- end logo bar and registration --}}
 
 {{!-- start navigation / product bar --}}
