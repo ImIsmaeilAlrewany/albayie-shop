@@ -3,6 +3,7 @@ body {
 }
 
 /* start header control nav style*/
+
 .control-nav .dropdown .dropdown-toggle .language {
   margin: 0 19px;
 }
@@ -21,3 +22,15 @@ body {
 }
 
 /* end logo navbar style */
+
+/* start utilities / product bar style */
+
+.utilities form.search input[type="search"] {
+  border-radius: 0 5px 5px 0;
+}
+
+.utilities form.search button[type="submit"] {
+  border-radius: 5px 0 0 5px;
+}
+
+/* end utilities / product bar style */

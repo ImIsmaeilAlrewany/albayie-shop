@@ -1,7 +1,8 @@
 :root {
   --primary: #709b1d;
   --secondary: #83b228;
-  --hover-dropdown-item: #f9faf8;
+  --hover-light-color: #f9faf8;
+  --bg-light-color: #f3f3f3;
   --font-size-light: 14px;
 }
 
@@ -53,7 +54,7 @@ a {
 }
 
 .dropdown-item:hover {
-  background-color: var(--hover-dropdown-item);
+  background-color: var(--hover-light-color);
 }
 
 /* end header  control nav style*/
@@ -100,3 +101,54 @@ a {
 }
 
 /* end logo navbar style */
+
+/* start utilities / product bar style */
+
+.utilities {
+  background-color: var(--bg-light-color);
+  font-size: var(--font-size-light);
+}
+
+.utilities .navbar-nav .nav-item a {
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.utilities .navbar-nav .nav-item a,
+.utilities form.search input[type="search"],
+.utilities form.search button[type="submit"] {
+  padding: 4px 8px;
+}
+
+.utilities .navbar-nav .nav-item a.active {
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.utilities form.search input[type="search"] {
+  min-width: 250px;
+  border-radius: 5px 0 0 5px;
+}
+
+.utilities form.search input[type="search"]::placeholder {
+  color: #999;
+  transition: 0.3s;
+}
+
+.utilities form.search input[type="search"]:focus {
+  box-shadow: none;
+  border-color: var(--primary);
+}
+
+.utilities form.search input[type="search"]:focus::placeholder {
+  opacity: 0;
+}
+
+.utilities form.search button[type="submit"] {
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+}
+
+/* end utilities / product bar style */
