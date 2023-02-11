@@ -15,6 +15,7 @@ a {
   color: inherit;
 }
 
+/*start header file style*/
 /* start header control nav style*/
 .control-nav {
   background-color: var(--primary);
@@ -152,3 +153,154 @@ a {
 }
 
 /* end utilities / product bar style */
+/*end header file style*/
+
+/* start header-sm file style */
+/* start header style */
+
+.header-sm,
+.search-sm {
+  background-color: var(--primary);
+}
+
+.header-sm .navbar-options button,
+.header-sm .navbar-options .badges>div button,
+.header-sm .navbar-options .badges>div button span {
+  background-color: #fff;
+  color: var(--primary);
+}
+
+/* start sidebar style */
+
+.header-sm .toggle-sidebar {
+  background-color: var(--bg-light-color);
+  min-height: 100vh;
+  min-width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.header-sm .toggle-sidebar .sidebar-header {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 8px;
+  border-bottom: 1px solid #fff;
+}
+
+.header-sm .toggle-sidebar .sidebar-header .dropdown button,
+.header-sm .toggle-sidebar .sidebar-header .dropdown .dropdown-menu {
+  font-size: var(--font-size-light);
+  margin-left: auto;
+}
+
+.header-sm .toggle-sidebar .sidebar-header .dropdown button:hover {
+  color: #000;
+}
+
+.header-sm .toggle-sidebar .sidebar-header .dropdown button::after {
+  display: none;
+}
+
+.header-sm .toggle-sidebar .sidebar-header .dropdown .dropdown-menu {
+  right: 0;
+  min-width: 122px;
+  margin-top: 1px;
+}
+
+.header-sm .toggle-sidebar .sidebar-header .dropdown .dropdown-menu.active {
+  display: block;
+}
+
+.header-sm .toggle-sidebar .sidebar-header h1 {
+  margin: 20px 0 5px;
+  text-transform: capitalize;
+}
+
+.header-sm .toggle-sidebar .navbar-nav a {
+  color: var(--primary);
+  text-transform: capitalize;
+}
+
+.header-sm .toggle-sidebar .navbar-nav a.active {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.header-sm .toggle-sidebar .registration {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
+.header-sm .toggle-sidebar .registration .login,
+.header-sm .toggle-sidebar .registration .register {
+  font-size: var(--font-size-light);
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+/* end sidebar style */
+/* end header style */
+
+/* start search box style */
+
+.search-sm .search-box input[type="search"] {
+  border-radius: 5px 0 0 5px;
+}
+
+.search-sm .search-box input[type="search"]::placeholder {
+  transition: 0.3s;
+  color: #999;
+}
+
+.search-sm .search-box input[type="search"]:focus {
+  box-shadow: none;
+  border-color: #fff;
+}
+
+.search-sm .search-box input[type="search"]:focus::placeholder {
+  opacity: 0;
+}
+
+.search-sm .search-box button[type="submit"] {
+  background-color: #fff;
+  color: var(--primary);
+  border-radius: 0 5px 5px 0;
+  border-left: 2px solid var(--primary);
+}
+
+/* end search box style */
+
+/* start utilities / product sections style */
+.utilities-nowrap {
+  background-color: var(--bg-light-color);
+  padding: 6px;
+}
+
+.utilities-nowrap .nav {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+}
+
+.utilities-nowrap .nav::-webkit-scrollbar-track,
+.utilities-nowrap .nav::-webkit-scrollbar {
+  display: none;
+}
+
+.utilities-nowrap .nav li a {
+  font-size: var(--font-size-light);
+  text-transform: uppercase;
+  color: var(--primary);
+  padding: 4px 8px;
+}
+
+.utilities-nowrap .nav li a.active {
+  background-color: var(--primary);
+  border-radius: 5px;
+  color: #fff;
+}
+
+/* end utilities / product sections style */
+/* end header-sm file style */

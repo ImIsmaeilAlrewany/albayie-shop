@@ -1,16 +1,22 @@
-//add active if clicked on drop-down-list
-//add active to list of languages to show up
+//check screen size and hide the wrong header file
+const wideAppearance = document.getElementById('wide-appearance');
+const smallAppearance = document.getElementById('small-appearance');
 
-const dropArrow = document.getElementById('drop-down-list');
-const dropList = document.getElementById('lang-list');
+//check inner width
+if (window.innerWidth >= 900) {
+  wideAppearance.style.display = 'block';
+  smallAppearance.style.display = 'none';
+} else {
+  wideAppearance.style.display = 'none';
+  smallAppearance.style.display = 'block';
+}
 
-dropArrow.addEventListener('click', () => {
-  if (dropArrow.classList.contains('active')) {
-    dropArrow.classList.remove('active');
-    dropList.classList.remove('active');
-  } else {
-    dropArrow.classList.add('active');
-    dropList.classList.add('active');
-  }
+//toggle dropdown menu for language change in small appearance file
+
+const dropdown = document.querySelector('#dropdown-lang button');
+const dropdownMenu = document.getElementById('dropdown-menu');
+
+dropdown.addEventListener('click', () => {
+  dropdownMenu.classList.toggle('active');
 });
 

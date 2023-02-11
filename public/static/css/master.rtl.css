@@ -2,6 +2,7 @@ body {
   font-family: 'Noto Sans Arabic', sans-serif;
 }
 
+/*start header file style*/
 /* start header control nav style*/
 
 .control-nav .dropdown .dropdown-toggle .language {
@@ -25,12 +26,55 @@ body {
 
 /* start utilities / product bar style */
 
-.utilities form.search input[type="search"] {
+/* start search box style in header-sm file*/
+
+.utilities form.search input[type="search"],
+.search-sm .search-box input[type="search"] {
   border-radius: 0 5px 5px 0;
 }
 
-.utilities form.search button[type="submit"] {
+.utilities form.search button[type="submit"],
+.search-sm .search-box button[type="submit"] {
   border-radius: 5px 0 0 5px;
 }
 
+/* end search box style in header-sm file*/
+
 /* end utilities / product bar style */
+/*end header file style*/
+
+/* start header-sm file style */
+
+/* start sidebar style */
+
+.header-sm .toggle-sidebar .sidebar-header .dropdown button {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.header-sm .toggle-sidebar .sidebar-header .dropdown .dropdown-menu {
+  right: auto;
+  left: 0;
+  min-width: 118px;
+}
+
+.header-sm .toggle-sidebar {
+  right: 0;
+  left: auto;
+}
+
+.header-sm .toggle-sidebar .registration {
+  right: 8px;
+}
+
+/* end sidebar style */
+
+/* start search box style in header-sm file*/
+
+.search-sm .search-box button[type="submit"] {
+  border-right: 2px solid var(--primary);
+  border-left: 1px solid #fff;
+}
+
+/* end search box style in header-sm file*/
+/* end header-sm file style */
