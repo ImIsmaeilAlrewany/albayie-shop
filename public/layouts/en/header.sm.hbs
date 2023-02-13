@@ -34,11 +34,11 @@
             <span class="arrow-down"><i class="fa-solid fa-chevron-down"></i></span>
           </button>
           <ul id="dropdown-menu" class="dropdown-menu">
-            <li><a id="ar" class="dropdown-item d-flex align-items-center" href="/">
+            <li><a id="ar" class="dropdown-item d-flex align-items-center" href="/ar">
                 <img src="/images/egypt.svg" alt="arabic" style="width: 20px;">
                 <span class="text-capitalize ms-2">arabic</span>
               </a></li>
-            <li><a id="en" class="dropdown-item d-flex align-items-center" href="/">
+            <li><a id="en" class="dropdown-item d-flex align-items-center" href="/en">
                 <img src="/images/united.svg" alt="english" style="width: 20px;">
                 <span class="text-capitalize ms-2">english</span>
               </a></li>
@@ -48,25 +48,25 @@
       </div>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link p-2 active" href="/">
+          <a class="nav-link p-2 active {{#if (compare path 'en')}} active {{/if}}" href="/en">
             <i class="fa-solid fa-house"></i>
             home
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2" href="/">
+          <a class="nav-link p-2 {{#if  (compare path 'en/account')}} active {{/if}}" href="/en/account">
             <i class="fa-solid fa-user"></i>
             my account
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2" href="/">
+          <a class="nav-link p-2 {{#if (compare path 'en/cart')}} active {{/if}}" href="/en/cart">
             <i class="fa-solid fa-cart-shopping"></i>
             my cart
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2" href="/">
+          <a class="nav-link p-2 {{#if (compare path 'en/checkout')}} active {{/if}}" href="/en/checkout">
             <i class="fa-regular fa-square-check"></i>
             checkout
           </a>

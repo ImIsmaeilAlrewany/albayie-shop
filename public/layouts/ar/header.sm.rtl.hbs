@@ -34,11 +34,11 @@
             <span class="arrow-down"><i class="fa-solid fa-chevron-down"></i></span>
           </button>
           <ul id="dropdown-menu" class="dropdown-menu">
-            <li><a id="ar" class="dropdown-item d-flex align-items-center" href="/">
+            <li><a id="ar" class="dropdown-item d-flex align-items-center" href="/ar">
                 <img src="/images/egypt.svg" alt="arabic" style="width: 20px;">
                 <span class="text-capitalize mx-2">عربي</span>
               </a></li>
-            <li><a id="en" class="dropdown-item d-flex align-items-center" href="/">
+            <li><a id="en" class="dropdown-item d-flex align-items-center" href="/en">
                 <img src="/images/united.svg" alt="english" style="width: 20px;">
                 <span class="text-capitalize mx-2">إنجليزي</span>
               </a></li>
@@ -48,25 +48,25 @@
       </div>
       <ul class="navbar-nav p-0">
         <li class="nav-item">
-          <a class="nav-link p-2 active" href="/">
+          <a class="nav-link p-2 {{#if (compare path 'ar')}} active {{/if}}" href="/ar">
             <i class="fa-solid fa-house"></i>
             الصفحة الرئيسية
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2" href="/">
+          <a class="nav-link p-2 {{#if (compare path 'ar/account')}} active {{/if}}" href="/ar/account">
             <i class="fa-solid fa-user"></i>
             حسابي الشخصي
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2" href="/">
+          <a class="nav-link p-2 {{#if (compare path 'ar/cart')}} active {{/if}}" href="/ar/cart">
             <i class="fa-solid fa-cart-shopping"></i>
             عربة التسوق
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2" href="/">
+          <a class="nav-link p-2 {{#if (compare path 'ar/checkout')}} active {{/if}}" href="/ar/checkout">
             <i class="fa-regular fa-square-check"></i>
             الدفع
           </a>
