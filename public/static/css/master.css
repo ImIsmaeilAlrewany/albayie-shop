@@ -1,8 +1,11 @@
 :root {
   --primary: #709b1d;
   --secondary: #83b228;
-  --hover-light-color: #f9faf8;
-  --bg-light-color: #f3f3f3;
+  --gray: #333;
+  --light-gray: #999;
+  --hover-light: #f9faf8;
+  --bg-light: #f3f3f3;
+  --bg-light-gray: #e0e0e0;
   --font-size-light: 14px;
 }
 
@@ -55,7 +58,7 @@ a {
 }
 
 .dropdown-item:hover {
-  background-color: var(--hover-light-color);
+  background-color: var(--hover-light);
 }
 
 /* end header  control nav style*/
@@ -106,7 +109,7 @@ a {
 /* start utilities / product bar style */
 
 .utilities {
-  background-color: var(--bg-light-color);
+  background-color: var(--bg-light);
   font-size: var(--font-size-light);
 }
 
@@ -133,7 +136,7 @@ a {
 }
 
 .utilities form.search input[type="search"]::placeholder {
-  color: #999;
+  color: var(--light-gray);
   transition: 0.3s;
 }
 
@@ -173,7 +176,7 @@ a {
 /* start sidebar style */
 
 .header-sm .toggle-sidebar {
-  background-color: var(--bg-light-color);
+  background-color: var(--bg-light);
   min-height: 100vh;
   min-width: 250px;
   position: fixed;
@@ -251,7 +254,7 @@ a {
 
 .search-sm .search-box input[type="search"]::placeholder {
   transition: 0.3s;
-  color: #999;
+  color: var(--light-gray);
 }
 
 .search-sm .search-box input[type="search"]:focus {
@@ -274,7 +277,7 @@ a {
 
 /* start utilities / product sections style */
 .utilities-nowrap {
-  background-color: var(--bg-light-color);
+  background-color: var(--bg-light);
   padding: 6px;
 }
 
@@ -304,3 +307,122 @@ a {
 
 /* end utilities / product sections style */
 /* end header-sm file style */
+
+/* start footer file style */
+
+/* start quick-access style */
+.footer .quick-access {
+  background-color: var(--bg-light);
+  overflow-x: hidden;
+}
+
+.footer .quick-access .access-box h5 {
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.footer .quick-access .access-box hr {
+  height: 2px;
+  background-color: #000;
+}
+
+.footer .quick-access .access-links:not(.contact-box ul) li {
+  position: relative;
+  padding-left: 16px;
+}
+
+.footer .quick-access .access-links:not(.contact-box ul) li::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #000;
+}
+
+.footer .quick-access .access-box .access-links a {
+  font-size: var(--font-size-light);
+  text-transform: uppercase;
+}
+
+.footer .quick-access .access-box .access-links a:hover {
+  color: var(--primary);
+}
+
+.footer .quick-access .contact-box .access-links a i {
+  color: var(--gray);
+}
+
+.footer .quick-access .contact-box .access-links a span {
+  display: inline-block;
+  margin-left: 12px;
+}
+
+/* end quick-access style */
+
+/* start pay ways and social media access */
+.footer .accessability {
+  background-color: var(--bg-light-gray);
+  padding: 10px 0;
+}
+
+.footer .accessability .pay-access,
+.footer .accessability .social-access {
+  flex: 1;
+  justify-content: start;
+}
+
+.footer .accessability .pay-access {
+  margin-bottom: 10px;
+}
+
+.footer .accessability .pay-access h6 a,
+.footer .accessability .social-access h6 a {
+  text-transform: uppercase;
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.footer .accessability .pay-access .pay-ways li img,
+.footer .accessability .social-access .social-accounts li img {
+  width: 50px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+@media (min-width: 576px) {
+  .footer .accessability .pay-access {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .footer .accessability .pay-access,
+  .footer .accessability .social-access {
+    justify-content: center;
+  }
+}
+
+/* end pay ways and social media access */
+
+/* start copyright */
+
+.footer .license {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.footer .license .copyright {
+  padding: 10px 0;
+}
+
+/* end copyright */
+
+/* end footer file style */

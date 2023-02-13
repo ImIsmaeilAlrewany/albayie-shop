@@ -78,3 +78,44 @@ body {
 
 /* end search box style in header-sm file*/
 /* end header-sm file style */
+
+/* start footer file style */
+
+/* start quick-access style */
+.footer .quick-access .access-links:not(.contact-box ul) li {
+  padding-right: 16px;
+  padding-left: 0;
+}
+
+.footer .quick-access .access-links:not(.contact-box ul) li::after {
+  right: 0;
+  border-right: 5px solid #000;
+  border-left-color: transparent;
+}
+
+.footer .quick-access .contact-box .access-links li:first-child span {
+  direction: ltr;
+}
+
+.footer .quick-access .contact-box .access-links a span {
+  margin-right: 12px;
+  margin-left: 0;
+}
+
+/* end quick-access style */
+
+/* start pay ways and social media access */
+.footer .accessability .pay-access h6 a,
+.footer .accessability .social-access h6 a {
+  padding: 0 10px;
+}
+
+.footer .accessability .pay-access .pay-ways li img,
+.footer .accessability .social-access .social-accounts li img {
+  margin-right: 10px;
+  margin-left: 0;
+}
+
+/* end pay ways and social media access */
+
+/* end footer file style */
