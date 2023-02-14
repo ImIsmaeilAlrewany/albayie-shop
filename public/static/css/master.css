@@ -1,6 +1,7 @@
 :root {
   --primary: #709b1d;
   --secondary: #83b228;
+  --dark-green: #4b6e08;
   --gray: #333;
   --light-gray: #999;
   --hover-light: #f9faf8;
@@ -308,8 +309,69 @@ a {
 /* end utilities / product sections style */
 /* end header-sm file style */
 
-/* start footer file style */
+/* start carousel file style */
+.carousel .carousel-indicators {
+  margin-bottom: 10px;
+}
 
+.carousel .carousel-indicators button {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.carousel .carousel-inner .carousel-item {
+  height: 350px;
+}
+
+.carousel .carousel-control-prev span,
+.carousel .carousel-control-next span {
+  width: 50px;
+  height: 100px;
+}
+
+@media (min-width: 576px) {
+
+  .carousel .carousel-control-prev,
+  .carousel .carousel-control-next {
+    width: 80px;
+  }
+}
+
+/* end carousel file style */
+
+/* start promise file style */
+
+.our-promise {
+  background-color: var(--primary);
+}
+
+.our-promise .promise-box {
+  background-color: var(--secondary);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.our-promise .promise-box h6 {
+  text-transform: capitalize;
+}
+
+.our-promise .promise-box p {
+  color: #000;
+  font-size: var(--font-size-light);
+  text-transform: capitalize;
+}
+
+/* end promise file style */
+
+/* start brand file style */
+
+
+
+/* end brand file style */
+
+/* start footer file style */
 /* start quick-access style */
 .footer .quick-access {
   background-color: var(--bg-light);
@@ -420,9 +482,8 @@ a {
 }
 
 .footer .license .copyright {
-  padding: 10px 0;
+  padding: 13px 0;
 }
 
 /* end copyright */
-
 /* end footer file style */
