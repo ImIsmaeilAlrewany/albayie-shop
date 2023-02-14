@@ -367,7 +367,24 @@ a {
 
 /* start brand file style */
 
+.our-brand .brand-heading {
+  padding: 5px 10px;
+  color: #fff;
+  background-color: var(--primary);
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  width: fit-content;
+}
 
+.our-brand .brands>div {
+  text-align: center;
+}
+
+.our-brand .brands img {
+  width: 100px;
+  height: 40px;
+}
 
 /* end brand file style */
 
