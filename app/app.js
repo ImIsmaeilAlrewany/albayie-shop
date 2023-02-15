@@ -22,9 +22,13 @@ hbs.registerPartials(path.join(__dirname, '../public/layouts'));
 
 //import all routes
 const homeRoutes = require('./routes/home.route');
+const userRoutes = require('./routes/en/user.route');
+const userRoutesAr = require('./routes/ar/user.route.ar');
 
 //use routes in the right path
 app.use('/', homeRoutes);
+app.use('/en', userRoutes);
+app.use('/ar', userRoutesAr);
 
 app.all('*', (req, res) => res.render('en/error404', { pageTitle: 'Albayie - Page Not Found' }));
 
