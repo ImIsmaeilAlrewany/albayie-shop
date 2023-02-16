@@ -12,7 +12,6 @@ if (window.innerWidth >= 900) {
 }
 
 //toggle dropdown menu for language change in small appearance file
-
 const dropdown = document.querySelector('#dropdown-lang button');
 const dropdownMenu = document.getElementById('dropdown-menu');
 
@@ -20,3 +19,4 @@ dropdown.addEventListener('click', () => {
   dropdownMenu.classList.toggle('active');
 });
 
+//create form validation for register

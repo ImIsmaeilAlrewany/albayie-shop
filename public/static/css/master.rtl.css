@@ -121,6 +121,14 @@ body {
 
 /* start register file style */
 /* start register content style */
+.register-content .register-form .phone-number span {
+  border-radius: 0 6px 6px 0;
+  direction: ltr;
+}
+
+.register-content .register-form .phone-number input {
+  border-radius: 6px 0 0 6px;
+}
 
 .register-content .register-form input[type="checkbox"] {
   float: right;
