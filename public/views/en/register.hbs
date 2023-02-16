@@ -20,10 +20,12 @@
       <div class="mb-3">
         <label for="f-name" class="form-label">First Name</label>
         <input type="text" class="form-control" id="f-name">
+        <div class="fName-message d-none text-danger mt-2">You can use characters no white spaces</div>
       </div>
       <div class="mb-3">
         <label for="l-name" class="form-label">Last Name</label>
         <input type="text" class="form-control" id="l-name">
+        <div class="lName-message d-none text-danger mt-2">You can use characters no white spaces</div>
       </div>
       <div class="mb-3">
         <label for="phone-number" class="form-label">Phone Number</label>
@@ -31,26 +33,31 @@
           <span class="country-code border border-1 p-2">+20</span>
           <input type="text" class="form-control" id="phone-number">
         </div>
+        <div class="phoneNum-message d-none text-danger mt-2">You can use numbers no white spaces</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email Address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <input type="email" class="form-control" id="exampleInputEmail1"
+          placeholder="We'll never share your email with anyone else.">
+        <div class="email-message d-none text-danger mt-2">Invalid email address</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp">
-        <div id="passwordHelp" class="form-text">Must be 8-20 characters long.</div>
+        <input type="password" class="form-control" id="exampleInputPassword1"
+          placeholder="Must be 8-20 characters long.">
+        <div class="passOne-message d-none text-danger mt-2">Invalid password</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword2" class="form-label">Re-enter Password</label>
         <input type="password" class="form-control" id="exampleInputPassword2">
+        <div class="passTwo-message d-none text-danger mt-2">password doesn't match</div>
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">
           I agree to all <a href="/en">Term</a> and <a href="/en">Privacy Policy</a>
         </label>
+        <div class="check-message d-none text-danger mt-2">Don't forget the checkbox</div>
       </div>
       <button type="submit" class="btn w-100">Create Account</button>
     </form>

@@ -536,8 +536,25 @@ a {
   box-shadow: none;
 }
 
+.register-content .register-form input::placeholder {
+  font-size: var(--font-size-light);
+  transition: 0.3s;
+}
+
+.register-content .register-form input.border-color {
+  border-color: var(--primary);
+}
+
 .register-content .register-form input:focus {
-  border-color: var(--border-red);
+  border-color: #dee2d6;
+}
+
+.register-content .register-form input:focus::placeholder {
+  opacity: 0;
+}
+
+.register-content .register-form input.border-color:focus {
+  border-color: var(--primary);
 }
 
 .register-content .register-form .phone-number span {
@@ -572,6 +589,16 @@ a {
   border-color: var(--primary);
   color: #fff;
   border-radius: 5px;
+}
+
+.register-content .register-form .fName-message,
+.register-content .register-form .lName-message,
+.register-content .register-form .phoneNum-message,
+.register-content .register-form .email-message,
+.register-content .register-form .passOne-message,
+.register-content .register-form .passTwo-message,
+.register-content .register-form .check-message {
+  font-size: var(--font-size-light);
 }
 
 @media (min-width: 576px) {

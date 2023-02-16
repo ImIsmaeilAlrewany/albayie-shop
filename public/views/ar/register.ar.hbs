@@ -19,10 +19,12 @@
       <div class="mb-3">
         <label for="f-name" class="form-label">اسمك الشخصي</label>
         <input type="text" class="form-control" id="f-name">
+        <div class="fName-message d-none text-danger mt-2">يمكنك استخدام الحروف بدون مسافات</div>
       </div>
       <div class="mb-3">
         <label for="l-name" class="form-label">لقب عائلتك</label>
         <input type="text" class="form-control" id="l-name">
+        <div class="lName-message d-none text-danger mt-2">يمكنك استخدام الحروف بدون مسافات</div>
       </div>
       <div class="mb-3">
         <label for="phone-number" class="form-label">رقم هاتفك</label>
@@ -30,26 +32,29 @@
           <span class="country-code border border-1 p-2">+20</span>
           <input type="text" class="form-control" id="phone-number">
         </div>
+        <div class="phoneNum-message d-none text-danger mt-2">يمكنك استخدام الأرقام بدون مسافات</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">الإيميل الإلكتروني</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">لن نشارك ايميلك مع أي أحد.</div>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="لن نشارك ايميلك مع أي أحد.">
+        <div class="email-message d-none text-danger mt-2">الإيميل الإلكتروني غير صالح</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">الرقم السري</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp">
-        <div id="passwordHelp" class="form-text">يجب أن يكون من 8-20 حرف.</div>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="يجب أن يكون من 8-20 حرف.">
+        <div class="passOne-message d-none text-danger mt-2">الرقم السري غير صالح</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword2" class="form-label">أعد الرقم السري</label>
         <input type="password" class="form-control" id="exampleInputPassword2">
+        <div class="passTwo-message d-none text-danger mt-2">الرقم السري غير متطابق</div>
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">
           أوافق على كل <a href="/en">الشروط</a> و <a href="/en">سياسة الخصوصية</a>
         </label>
+        <div class="check-message d-none text-danger mt-2">لا تنسى أن تختار أوافق</div>
       </div>
       <button type="submit" class="btn w-100">انشئ الحساب</button>
     </form>
