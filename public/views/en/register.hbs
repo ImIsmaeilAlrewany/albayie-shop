@@ -1,21 +1,63 @@
 {{>pageHead}}
 {{!-- start register (first-name, last-name, e-mail, phone number, password) --}}
-<main class="register">
 
-  {{!-- start register form --}}
-  <section class="register-form">
-    <div class="container-md">
+{{!-- start register header --}}
+<header class="register-header">
+  <div class="container-md text-center py-4">
+    <a href="/en" class="homeLink">
+      <img src="/images/logo.png" alt="albayie-logo">
+    </a>
+  </div>
+</header>
+{{!-- end register header --}}
 
-    </div>
+{{!-- start register form --}}
+<div class="container-md">
+  <section class="register-content p-3 border border-1 mb-4">
+    <h4 class="form-type mb-1">create account</h4>
+    <p class="form-details m-0">Complete form below to get a user account</p>
+    <form action="" method="post" class="register-form mt-3">
+      <div class="mb-3">
+        <label for="f-name" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="f-name">
+      </div>
+      <div class="mb-3">
+        <label for="l-name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="l-name">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp">
+        <div id="passwordHelp" class="form-text">Must be 8-20 characters long.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword2" class="form-label">Re-enter Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword2">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">
+          I agree to all <a href="/en">Term</a> and <a href="/en">Privacy Policy</a>
+        </label>
+      </div>
+      <button type="submit" class="btn w-100">Create Account</button>
+    </form>
   </section>
-  {{!-- end register form --}}
+</div>
+{{!-- end register form --}}
 
-  {{!-- start register footer --}}
-  <footer class="register-footer">
-    <div class="container-md"></div>
-  </footer>
-  {{!-- end register footer --}}
+{{!-- start register footer --}}
+<footer class="register-footer text-center py-4">
+  <div class="container-xxl">
+    <p class="copyright m-0">&copy;Copyright by: Albayie&trade;</p>
+  </div>
+</footer>
+{{!-- end register footer --}}
 
-</main>
 {{!-- end register (first-name, last-name, e-mail, phone number, password) --}}
 {{>pageFoot}}

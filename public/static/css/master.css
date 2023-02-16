@@ -183,6 +183,7 @@ a {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
 }
 
 .header-sm .toggle-sidebar .sidebar-header {
@@ -506,7 +507,82 @@ a {
 /* end footer file style */
 
 /* start register file style */
+/* start register header style */
 
+.register-header .homeLink img {
+  width: 60px;
+}
 
+/* end register header style */
+/* start register content style */
 
+.register-content {
+  border-radius: 5px;
+}
+
+.register-content h4 {
+  text-transform: capitalize;
+  text-align: center;
+  color: var(--primary);
+}
+
+.register-content p {
+  font-size: var(--font-size-light);
+  text-align: center;
+}
+
+.register-content .register-form input {
+  box-shadow: none;
+}
+
+.register-content .register-form input:focus {
+  border-color: var(--primary);
+}
+
+.register-content .register-form input[type="checkbox"] {
+  margin-top: 0.35em;
+}
+
+.register-content .register-form input[type="checkbox"]:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.register-content .register-form input[type="checkbox"]+label {
+  font-size: var(--font-size-light);
+}
+
+.register-content .register-form input[type="checkbox"]+label a {
+  color: var(--primary);
+}
+
+.register-content .register-form button,
+.register-content .register-form button:hover,
+.register-content .register-form button:focus {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  border-radius: 5px;
+}
+
+@media (min-width: 576px) {
+  .register-content {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* end register content style */
+/* start register footer style */
+
+.register-footer {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.register-footer p {
+  font-size: var(--font-size-light);
+}
+
+/* end register footer style */
 /* end register file style */

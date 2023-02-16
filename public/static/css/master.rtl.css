@@ -117,5 +117,15 @@ body {
 }
 
 /* end pay ways and social media access */
-
 /* end footer file style */
+
+/* start register file style */
+/* start register content style */
+
+.register-content .register-form input[type="checkbox"] {
+  float: right;
+  margin-left: 0.5em;
+}
+
+/* end register content style */
+/* end register file style */
