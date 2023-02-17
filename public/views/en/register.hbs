@@ -16,35 +16,35 @@
   <section class="register-content p-3 border border-1 mb-4">
     <h4 class="form-type mb-1">create account</h4>
     <p class="form-details m-0">Complete form below to get a user account</p>
-    <form action="" method="post" class="register-form mt-3">
+    <form method="post" class="register-form mt-3">
       <div class="mb-3">
         <label for="f-name" class="form-label">First Name</label>
-        <input type="text" class="form-control" id="f-name">
+        <input type="text" class="form-control" id="f-name" name="fName" value="{{data.fName}}">
         <div class="fName-message d-none text-danger mt-2">You can use characters no white spaces</div>
       </div>
       <div class="mb-3">
         <label for="l-name" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="l-name">
+        <input type="text" class="form-control" id="l-name" name="lName" value="{{data.lName}}">
         <div class="lName-message d-none text-danger mt-2">You can use characters no white spaces</div>
       </div>
       <div class="mb-3">
         <label for="phone-number" class="form-label">Phone Number</label>
         <div class="phone-number d-flex">
           <span class="country-code border border-1 p-2">+20</span>
-          <input type="text" class="form-control" id="phone-number">
+          <input type="text" class="form-control" id="phone-number" name="phoneNum" value="{{data.phoneNum}}">
         </div>
         <div class="phoneNum-message d-none text-danger mt-2">You can use numbers no white spaces</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email Address</label>
         <input type="email" class="form-control" id="exampleInputEmail1"
-          placeholder="We'll never share your email with anyone else.">
+          placeholder="We'll never share your email with anyone else." name="email" value="{{data.email}}">
         <div class="email-message d-none text-danger mt-2">Invalid email address</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1"
-          placeholder="Must be 8-20 characters long.">
+          placeholder="Must be 8-20 characters long." name="password" value="{{data.password}}">
         <div class="passOne-message d-none text-danger mt-2">Invalid password</div>
       </div>
       <div class="mb-3">
@@ -53,7 +53,7 @@
         <div class="passTwo-message d-none text-danger mt-2">password doesn't match</div>
       </div>
       <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" name="agree">
         <label class="form-check-label" for="exampleCheck1">
           I agree to all <a href="/en">Term</a> and <a href="/en">Privacy Policy</a>
         </label>

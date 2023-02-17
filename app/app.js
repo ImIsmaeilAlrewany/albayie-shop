@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const hbs = require('hbs');
 const app = express();
@@ -11,6 +12,7 @@ hbs.registerHelper('compare', function (valOne, valTwo) {
   else return false;
 });
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

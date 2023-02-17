@@ -71,7 +71,8 @@ a {
 }
 
 .navbar .navbar-options .registration .login,
-.navbar .navbar-options .registration .register {
+.navbar .navbar-options .registration .register,
+.navbar .navbar-options .registration .logout {
   color: var(--primary);
   text-transform: uppercase;
   font-size: var(--font-size-light);
@@ -240,7 +241,8 @@ a {
 }
 
 .header-sm .toggle-sidebar .registration .login,
-.header-sm .toggle-sidebar .registration .register {
+.header-sm .toggle-sidebar .registration .register,
+.header-sm .toggle-sidebar .registration .logout {
   font-size: var(--font-size-light);
   color: var(--primary);
   text-transform: uppercase;

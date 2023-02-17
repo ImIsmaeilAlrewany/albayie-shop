@@ -124,3 +124,15 @@ if (registerForm) registerForm.addEventListener('submit', (e) => {
   removeNone(registerCheckbox.checked, e, '.register-content .register-form .check-message');
 });
 
+
+//toggle between login / create account and logout
+const logIn = document.querySelectorAll('.is-logged-out');
+const logOut = document.querySelectorAll('.is-logged-in');
+
+if (document.cookie.split('=').includes('loggedIn')) {
+  logIn.forEach(ele => ele.classList.add('d-none'));
+  logOut.forEach(ele => ele.classList.remove('d-none'));
+} else {
+  logIn.forEach(ele => ele.classList.remove('d-none'));
+  logOut.forEach(ele => ele.classList.add('d-none'));
+}
