@@ -69,6 +69,9 @@ userSchema.methods.toJson = function () {
 
 //encrypt the password before saving it
 userSchema.pre('save', async function () {
+  if (this.isModified('phoneNum'))
+    if (this.phoneNum[0] !== '0')
+      this.phoneNum = '0' + this.phoneNum;
   if (this.isModified('password'))
     this.password = await bcryptjs.hash(this.password, 12);
 });

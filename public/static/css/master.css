@@ -518,24 +518,32 @@ a {
 }
 
 /* end register and login header style */
-/* start register content style */
+/* start register and login content style */
 
-.register-content {
+.adj-login-form {
+  height: calc(100vh - 177px);
+}
+
+.register-content,
+.login-content {
   border-radius: 5px;
 }
 
-.register-content h4 {
+.register-content h4,
+.login-content h4 {
   text-transform: capitalize;
   text-align: center;
   color: var(--primary);
 }
 
-.register-content p {
+.register-content p,
+.login-content p {
   font-size: var(--font-size-light);
   text-align: center;
 }
 
-.register-content .register-form input {
+.register-content .register-form input,
+.login-content .login-form input {
   box-shadow: none;
 }
 
@@ -544,11 +552,13 @@ a {
   transition: 0.3s;
 }
 
-.register-content .register-form input.border-color {
+.register-content .register-form input.border-color,
+.login-content .login-form input.border-color {
   border-color: var(--primary);
 }
 
-.register-content .register-form input:focus {
+.register-content .register-form input:focus,
+.login-content .login-form input:focus {
   border-color: #dee2d6;
 }
 
@@ -556,7 +566,8 @@ a {
   opacity: 0;
 }
 
-.register-content .register-form input.border-color:focus {
+.register-content .register-form input.border-color:focus,
+.login-content .login-form input.border-color:focus {
   border-color: var(--primary);
 }
 
@@ -587,7 +598,10 @@ a {
 
 .register-content .register-form button,
 .register-content .register-form button:hover,
-.register-content .register-form button:focus {
+.register-content .register-form button:focus,
+.login-content .login-form button,
+.login-content .login-form button:hover,
+.login-content .login-form button:focus {
   background-color: var(--primary);
   border-color: var(--primary);
   color: #fff;
@@ -600,18 +614,22 @@ a {
 .register-content .register-form .email-message,
 .register-content .register-form .passOne-message,
 .register-content .register-form .passTwo-message,
-.register-content .register-form .check-message {
+.register-content .register-form .check-message,
+.login-content .login-form .authPortal-message,
+.login-content .login-form .password-message {
   font-size: var(--font-size-light);
 }
 
 @media (min-width: 576px) {
-  .register-content {
+
+  .register-content,
+  .login-content {
     max-width: 400px;
     margin: 0 auto;
   }
 }
 
-/* end register content style */
+/* end register and login content style */
 /* start register and login footer style */
 
 .register-footer,

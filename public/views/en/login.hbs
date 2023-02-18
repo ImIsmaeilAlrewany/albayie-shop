@@ -11,7 +11,32 @@
 </header>
 {{!-- end login header --}}
 
+<div class="adj-login-form">
 
+  {{!-- start login form --}}
+  <div class="container-md">
+    <section class="login-content p-3 border border-1 mb-4">
+      <h4 class="form-type mb-1">Login</h4>
+      <p class="form-details m-0">Enter your details down below</p>
+      <form method="post" class="login-form mt-3">
+        <div class="mb-3">
+          <label for="login-authPortal" class="form-label">Email Address or Phone Number</label>
+          <input type="text" class="form-control" id="login-authPortal" placeholder="" name="authPortal"
+            value="{{data.authPortal}}">
+          <div class="authPortal-message d-none text-danger mt-2">Invalid email or phone number</div>
+        </div>
+        <div class="mb-3">
+          <label for="login-password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="login-password" placeholder="" name="password" value="">
+          <div class="password-message d-none text-danger mt-2">Invalid password</div>
+        </div>
+        <button type="submit" class="btn w-100">Login</button>
+      </form>
+    </section>
+  </div>
+  {{!-- end login form --}}
+
+</div>
 
 {{!-- start login footer --}}
 <footer class="login-footer text-center py-4">
