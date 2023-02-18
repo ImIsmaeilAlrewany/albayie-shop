@@ -1,5 +1,5 @@
 {{!-- start login (e-mail or phone number and password) --}}
-{{>pageHead}}
+{{>pageHead.rtl}}
 
 {{!-- start login header --}}
 <header class="login-header">
@@ -16,31 +16,31 @@
   {{!-- start login form --}}
   <div class="container-md">
     <section class="login-content p-3 border border-1 mb-4">
-      <h4 class="form-type mb-1">Login</h4>
-      <p class="form-details m-0">Enter your details down below</p>
+      <h4 class="form-type mb-1">تسجيل الدخول</h4>
+      <p class="form-details m-0">قم بإدخال المعلومات الصحيحة</p>
       <form method="post" class="login-form mt-3">
         <div class="mb-3">
-          <label for="login-authPortal" class="form-label">Email Address or Phone Number</label>
+          <label for="login-authPortal" class="form-label">الإيميل الإلكتروني أو رقم الهاتف</label>
           <input type="text" class="form-control" id="login-authPortal" placeholder="" name="authPortal"
             value="{{data.authPortal}}">
 
           {{!-- show error invalid email or password --}}
           {{#if (compare error 'invalid email or phone number')}}
-          <div class="authPortal-message text-danger mt-2">Invalid email or phone number</div>
+          <div class="authPortal-message text-danger mt-2">الإيميل الإلكتروني أو رقم الهاتف غير صالح</div>
           {{/if}}
 
         </div>
         <div class="mb-3">
-          <label for="login-password" class="form-label">Password</label>
+          <label for="login-password" class="form-label">الرقم السري</label>
           <input type="password" class="form-control" id="login-password" placeholder="" name="password" value="">
 
           {{!-- show error invalid password --}}
           {{#if (compare error 'invalid password')}}
-          <div class="password-message text-danger mt-2">Invalid password</div>
+          <div class="password-message text-danger mt-2">الرقم السري غير صالح</div>
           {{/if}}
 
         </div>
-        <button type="submit" class="btn w-100">Login</button>
+        <button type="submit" class="btn w-100">سجل الدخول</button>
       </form>
     </section>
   </div>
@@ -51,7 +51,7 @@
 {{!-- start login footer --}}
 <footer class="login-footer text-center py-4">
   <div class="container-xxl">
-    <p class="copyright m-0">&copy;Copyright by: Albayie&trade;</p>
+    <p class="copyright m-0">&copy;حقوق الملكية محفوظة ل: Albayie&trade;</p>
   </div>
 </footer>
 {{!-- end login footer --}}

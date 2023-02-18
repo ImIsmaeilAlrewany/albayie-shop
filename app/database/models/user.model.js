@@ -56,7 +56,14 @@ const userSchema = mongoose.Schema({
       if (value === 'off') throw new Error('agree all term and privacy policy');
     }
   },
-  tokens: [{ token: { type: String, required: true } }]
+  tokens: [
+    {
+      token: {
+        type: String,
+        required: true
+      }
+    }
+  ]
 }, { timestamps: true });
 
 //delete __v, password and tokens in response
@@ -80,7 +87,7 @@ userSchema.pre('save', async function () {
 userSchema.methods.generateToken = async function () {
   const userData = this;
   const token = jwt.sign({ _id: userData._id }, process.env.KEY);
-  userData.tokens = { ...userData[token], token };
+  userData.tokens = userData.tokens.concat({ token });
   await userData.save();
   return token;
 };
