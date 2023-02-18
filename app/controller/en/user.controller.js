@@ -46,6 +46,17 @@ class User {
       res.render('en/login', { pageTitle: 'Albayie - login', path: 'en/login', data: req.body, error: err.message });
     }
   };
+
+  static logout = async (req, res) => {
+    try {
+      req.user.tokens = req.user.tokens.filter(f => f.token !== req.token);
+      await req.user.save();
+      res.clearCookie('Authorization');
+      res.redirect('/en');
+    } catch (err) {
+      res.send({ error: err.message });
+    }
+  };
 }
 
 module.exports = User;

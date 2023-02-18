@@ -47,6 +47,17 @@ class User {
       res.render('ar/login.ar.hbs', { pageTitle: 'Albayie - login', path: 'ar/login', data: req.body, error: err.message });
     }
   };
+
+  static logout = async (req, res) => {
+    try {
+      req.user.tokens = req.user.tokens.filter(f => f.token !== req.token);
+      await req.user.save();
+      res.clearCookie('Authorization');
+      res.redirect('/ar');
+    } catch (err) {
+      res.send({ error: err.message });
+    }
+  };
 }
 
 module.exports = User;
