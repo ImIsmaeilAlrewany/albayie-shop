@@ -1,14 +1,17 @@
 class Home {
   static showHome = (req, res) => {
-    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar' });
+    const isLogin = req.cookies.Authorization ? true : false;
+    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', isLogin: isLogin });
   };
 
   static homeInArabic = (req, res) => {
-    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar' });
+    const isLogin = req.cookies.Authorization ? true : false;
+    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', isLogin: isLogin });
   };
 
   static homeInEnglish = (req, res) => {
-    res.render('en/home', { pageTitle: 'Albayie - Online Shopping', path: 'en' });
+    const isLogin = req.cookies.Authorization ? true : false;
+    res.render('en/home', { pageTitle: 'Albayie - Online Shopping', path: 'en', isLogin: isLogin });
   };
 }
 

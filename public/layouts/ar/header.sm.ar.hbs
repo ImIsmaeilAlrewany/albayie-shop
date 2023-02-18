@@ -72,13 +72,17 @@
           </a>
         </li>
       </ul>
-      <p class="registration is-logged-out">
+      <p class="registration">
+
+        {{!-- toggle between login / create account and logout --}}
+        {{#if isLogin}}
+        <a href="/en/logout" class="logout">سجل الخروج</a>
+        {{else}}
         <a href="/ar/login" class="login">سجل الدخول</a>
         <span>أو</span>
         <a href="/ar/register" class="register">انشئ حساب</a>
-      </p>
-      <p id="" class="registration is-logged-in d-none">
-        <a href="/en/logout" class="logout">سجل الخروج</a>
+        {{/if}}
+
       </p>
     </div>
   </div>

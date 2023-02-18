@@ -72,13 +72,17 @@
           </a>
         </li>
       </ul>
-      <p id="" class="registration is-logged-out">
+      <p id="" class="registration">
+
+        {{!-- toggle between login / create account and logout --}}
+        {{#if isLogin}}
+        <a href="/en/logout" class="logout">log out</a>
+        {{else}}
         <a href="/en/login" class="login">log in</a>
         <span>or</span>
         <a href="/en/register" class="register">create account</a>
-      </p>
-      <p id="" class="registration is-logged-in d-none">
-        <a href="/en/logout" class="logout">log out</a>
+        {{/if}}
+
       </p>
     </div>
   </div>

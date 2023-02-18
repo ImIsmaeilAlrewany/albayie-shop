@@ -509,14 +509,15 @@ a {
 /* end copyright */
 /* end footer file style */
 
-/* start register file style */
-/* start register header style */
+/* start register and login files style */
+/* start register and login header style */
 
-.register-header .homeLink img {
+.register-header .homeLink img,
+.login-header .homeLink img {
   width: 60px;
 }
 
-/* end register header style */
+/* end register and login header style */
 /* start register content style */
 
 .register-content {
@@ -611,16 +612,18 @@ a {
 }
 
 /* end register content style */
-/* start register footer style */
+/* start register and login footer style */
 
-.register-footer {
+.register-footer,
+.login-footer {
   background-color: var(--primary);
   color: #fff;
 }
 
-.register-footer p {
+.register-footer p,
+.login-footer p {
   font-size: var(--font-size-light);
 }
 
-/* end register footer style */
-/* end register file style */
+/* end register and login footer style */
+/* end register and login files style */
