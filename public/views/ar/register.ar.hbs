@@ -10,59 +10,75 @@
 </header>
 {{!-- end register header --}}
 
-{{!-- start register form --}}
-<div class="container-md">
-  <section class="register-content p-3 border border-1 mb-4">
-    <h4 class="form-type mb-1">إنشاء حساب</h4>
-    <p class="form-details m-0">أكمل الإستمارة هذه لإنشاء حسابك</p>
-    <form method="post" class="register-form mt-3">
-      <div class="mb-3">
-        <label for="f-name" class="form-label">اسمك الشخصي</label>
-        <input type="text" class="form-control" id="f-name" name="fName" value="{{data.fName}}">
-        <div class="fName-message d-none text-danger mt-2">يمكنك استخدام الحروف بدون مسافات</div>
-      </div>
-      <div class="mb-3">
-        <label for="l-name" class="form-label">لقب عائلتك</label>
-        <input type="text" class="form-control" id="l-name" name="lName" value="{{data.lName}}">
-        <div class="lName-message d-none text-danger mt-2">يمكنك استخدام الحروف بدون مسافات</div>
-      </div>
-      <div class="mb-3">
-        <label for="phone-number" class="form-label">رقم هاتفك</label>
-        <div class="phone-number d-flex">
-          <span class="country-code border border-1 p-2">+20</span>
-          <input type="text" class="form-control" id="phone-number" name="phoneNum" value="{{data.phoneNum}}">
+<div class="adj-register-form mb-5">
+
+  {{!-- start register form --}}
+  <div class="container-md">
+    <section class="register-content p-3 border border-1">
+      <h4 class="form-type mb-1">إنشاء حساب</h4>
+      <p class="form-details m-0">أكمل الإستمارة هذه لإنشاء حسابك</p>
+      <form method="post" class="register-form mt-3">
+        <div class="mb-3">
+          <label for="f-name" class="form-label">اسمك الشخصي</label>
+          <input type="text" class="form-control" id="f-name" name="fName" value="{{data.fName}}">
+          <div class="fName-message d-none text-danger mt-2">يمكنك استخدام الحروف بدون مسافات</div>
         </div>
-        <div class="phoneNum-message d-none text-danger mt-2">يمكنك استخدام الأرقام بدون مسافات</div>
+        <div class="mb-3">
+          <label for="l-name" class="form-label">لقب عائلتك</label>
+          <input type="text" class="form-control" id="l-name" name="lName" value="{{data.lName}}">
+          <div class="lName-message d-none text-danger mt-2">يمكنك استخدام الحروف بدون مسافات</div>
+        </div>
+        <div class="mb-3">
+          <label for="phone-number" class="form-label">رقم هاتفك</label>
+          <div class="phone-number d-flex">
+            <span class="country-code border border-1 p-2">+20</span>
+            <input type="text" class="form-control" id="phone-number" name="phoneNum" value="{{data.phoneNum}}">
+          </div>
+          <div class="phoneNum-message d-none text-danger mt-2">يمكنك استخدام الأرقام بدون مسافات</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">الإيميل الإلكتروني</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="لن نشارك ايميلك مع أي أحد."
+            name="email" value="{{data.email}}">
+          <div class="email-message d-none text-danger mt-2">الإيميل الإلكتروني غير صالح</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">الرقم السري</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="يجب أن يكون من 8-20 حرف."
+            name="password" value="{{data.password}}">
+          <div class="passOne-message d-none text-danger mt-2">الرقم السري غير صالح</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword2" class="form-label">أعد الرقم السري</label>
+          <input type="password" class="form-control" id="exampleInputPassword2">
+          <div class="passTwo-message d-none text-danger mt-2">الرقم السري غير متطابق</div>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" name="agree">
+          <label class="form-check-label" for="exampleCheck1">
+            أوافق على كل <a href="/en">الشروط</a> و <a href="/en">سياسة الخصوصية</a>
+          </label>
+          <div class="check-message d-none text-danger mt-2">لا تنسى أن تختار أوافق</div>
+        </div>
+        <button type="submit" class="btn w-100">انشئ الحساب</button>
+      </form>
+    </section>
+  </div>
+  {{!-- end register form --}}
+
+  {{!-- start go to login form button --}}
+  <div class="container-md">
+    <section class="redirect-button">
+      <div class="borderer position-relative py-4">
+        <hr class="">
+        <p class="position-absolute">لديك حساب بالفعل!</p>
       </div>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">الإيميل الإلكتروني</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="لن نشارك ايميلك مع أي أحد."
-          name="email" value="{{data.email}}">
-        <div class="email-message d-none text-danger mt-2">الإيميل الإلكتروني غير صالح</div>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">الرقم السري</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="يجب أن يكون من 8-20 حرف."
-          name="password" value="{{data.password}}">
-        <div class="passOne-message d-none text-danger mt-2">الرقم السري غير صالح</div>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword2" class="form-label">أعد الرقم السري</label>
-        <input type="password" class="form-control" id="exampleInputPassword2">
-        <div class="passTwo-message d-none text-danger mt-2">الرقم السري غير متطابق</div>
-      </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" name="agree">
-        <label class="form-check-label" for="exampleCheck1">
-          أوافق على كل <a href="/en">الشروط</a> و <a href="/en">سياسة الخصوصية</a>
-        </label>
-        <div class="check-message d-none text-danger mt-2">لا تنسى أن تختار أوافق</div>
-      </div>
-      <button type="submit" class="btn w-100">انشئ الحساب</button>
-    </form>
-  </section>
+      <a class="btn w-100 mb-4" href="/ar/login">سجل الدخول الآن</a>
+    </section>
+  </div>
+  {{!-- end go to login form button --}}
+
 </div>
-{{!-- end register form --}}
 
 {{!-- start register footer --}}
 <footer class="register-footer text-center py-4">

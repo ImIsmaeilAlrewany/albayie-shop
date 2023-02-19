@@ -9,6 +9,7 @@
   --bg-light-gray: #e0e0e0;
   --border-red: #b02a37;
   --font-size-light: 14px;
+  --font-size-lightest: 13px;
 }
 
 body {
@@ -520,9 +521,9 @@ a {
 /* end register and login header style */
 /* start register and login content style */
 
-.adj-login-form {
+/* .adj-login-form {
   height: calc(100vh - 177px);
-}
+} */
 
 .register-content,
 .login-content {
@@ -623,13 +624,36 @@ a {
 @media (min-width: 576px) {
 
   .register-content,
-  .login-content {
+  .login-content,
+  .redirect-button {
     max-width: 400px;
     margin: 0 auto;
   }
 }
 
 /* end register and login content style */
+
+/* start borderer style */
+
+.borderer p {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  color: var(--light-gray);
+  font-size: var(--font-size-lightest);
+}
+
+.redirect-button a,
+.redirect-button a:hover,
+.redirect-button a:focus {
+  color: var(--gray);
+  border-color: var(--light-gray);
+  background-color: var(--bg-light-gray);
+}
+
+/* end borderer style */
+
 /* start register and login footer style */
 
 .register-footer,
