@@ -32,6 +32,9 @@ app.use('/', homeRoutes);
 app.use('/en', userRoutes);
 app.use('/ar', userRoutesAr);
 
-app.all('*', (req, res) => res.render('en/error404', { pageTitle: 'Albayie - Page Not Found' }));
+app.all('*', (req, res) => {
+  const lang = req.cookies.lang;
+  res.render(lang === 'ar' ? 'ar/error404.ar.hbs' : 'en/error404', { pageTitle: 'Albayie - Page Not Found' });
+});
 
 module.exports = app;

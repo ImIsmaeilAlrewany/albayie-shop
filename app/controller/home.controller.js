@@ -1,17 +1,24 @@
+const isLogin = (data) => data ? true : false;
+const createCookie = (res, name, data) => {
+  res.cookie(name, data, {
+    httpOnly: true,
+    secure: true
+  });
+};
 class Home {
   static showHome = (req, res) => {
-    const isLogin = req.cookies.Authorization ? true : false;
-    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', isLogin: isLogin });
+    createCookie(res, 'lang', 'ar');
+    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', isLogin: isLogin(req.cookies.Authorization) });
   };
 
   static homeInArabic = (req, res) => {
-    const isLogin = req.cookies.Authorization ? true : false;
-    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', isLogin: isLogin });
+    createCookie(res, 'lang', 'ar');
+    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', isLogin: isLogin(req.cookies.Authorization) });
   };
 
   static homeInEnglish = (req, res) => {
-    const isLogin = req.cookies.Authorization ? true : false;
-    res.render('en/home', { pageTitle: 'Albayie - Online Shopping', path: 'en', isLogin: isLogin });
+    createCookie(res, 'lang', 'en');
+    res.render('en/home', { pageTitle: 'Albayie - Online Shopping', path: 'en', isLogin: isLogin(req.cookies.Authorization) });
   };
 }
 
