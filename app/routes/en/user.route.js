@@ -7,5 +7,8 @@ router.post('/register', user.registerLogic);
 router.get('/login', user.login);
 router.post('/login', user.loginLogic);
 router.get('/logout', auth, user.logout);
+router.get('/account', auth, (req, res) => {
+  res.render('en/account');
+});
 
 module.exports = router;

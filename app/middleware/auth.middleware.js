@@ -15,7 +15,7 @@ const auth = async (req, res, next) => {
     next();
   } catch (err) {
     res.clearCookie('Authorization');
-    res.redirect('ar/login');
+    res.redirect('login');
   }
 };
 
