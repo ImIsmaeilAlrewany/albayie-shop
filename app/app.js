@@ -32,6 +32,13 @@ app.use('/', homeRoutes);
 app.use('/en', userRoutes);
 app.use('/ar', userRoutesAr);
 
+//import dashboard routes
+const dashboard = require('./routes/dashboard.route');
+
+//use dashboard routes
+app.use('/en', dashboard);
+
+
 app.all('*', (req, res) => {
   const lang = req.cookies.lang;
   res.render(lang === 'ar' ? 'ar/error404.ar.hbs' : 'en/error404', { pageTitle: 'Albayie - Page Not Found' });
