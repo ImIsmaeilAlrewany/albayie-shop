@@ -669,3 +669,21 @@ a {
 
 /* end register and login footer style */
 /* end register and login files style */
+
+/* start dashboard style */
+
+/* start dashboard-home file style */
+
+/* start dashboard layout style */
+
+@media (min-width: 1200px) {
+  .dashboard-layout .row>div:first-child {
+    width: 250px;
+  }
+}
+
+/* end dashboard layout style */
+
+/* end dashboard-home file style */
+
+/* end dashboard style */
