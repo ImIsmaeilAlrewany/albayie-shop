@@ -1,15 +1,129 @@
 {{>pageHead}}
 
 <div class="container-xxl px-0 px-xxl-3">
-  <main class="dashboard-layout overflow-hidden">
+  <main class="dashboard-layout">
     <div class="row">
-      <div class="col-3 col-sm-2 col-lg-3 pe-0">
-        <aside class="dashboard-sidebar px-3">Sidebar</aside>
+      <div class="col-4 col-sm-3 col-md-2 col-lg-3 pe-0">
+        {{!-- start dashboard sidebar file --}}
+        <aside class="dashboard-sidebar px-3">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-center p-0" href="/">
+                <img class="logo" src="/images/logo_white.png" alt="site-logo">
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-center p-0 active" href="/en/dash-board">
+                <i class="fa-solid fa-gauge-high"></i>
+                <span class="d-lg-inline-block d-block">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-center p-0" href="/en/dash-board">
+                <i class="fa-solid fa-users"></i>
+                <span class="d-lg-inline-block d-block">Users</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-center p-0" href="/en/dash-board">
+                <i class="fa-solid fa-dolly"></i>
+                <span class="d-lg-inline-block d-block">Products</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-center p-0" href="/en/dash-board">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="d-lg-inline-block d-block">Orders</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-center p-0" href="/en/dash-board">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <span class="d-lg-inline-block d-block">Income</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-center p-0" href="/en/dash-board">
+                <i class="fa-solid fa-message"></i>
+                <span class="d-block d-lg-inline-block">Messages</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-center p-0" href="/en/dash-board">
+                <i class="fa-solid fa-bug"></i>
+                <span class="d-lg-inline-block d-block">Reports</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-center p-0" href="/en/dash-board">
+                <i class="fa-solid fa-gear"></i>
+                <span class="d-lg-inline-block d-block">Settings</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-center p-0" href="/en/dash-board">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span class="d-lg-inline-block d-block">Logout</span>
+              </a>
+            </li>
+          </ul>
+          <div class="d-none d-lg-block text-center py-4 shrink-sidebar">
+            <button id="shrink-toggler" class="shrink-toggler btn" type="button">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+          </div>
+        </aside>
+
+        {{!-- end dashboard sidebar file --}}
+
+
+        {{!-- {{>en/dashboard.sidebar}} --}}
       </div>
-      <div class="col-9 col-sm-8 col-lg-9 px-0">
-        <header class="dashboard-header">Dashboard</header>
+      <div class="col-8 col-sm-9 col-md-10 col-lg-9 px-0 position-relative">
+        {{!-- start dashboard header file --}}
+        <header class="dashboard-header">
+          <ul class="dashboard-nav navbar shadow list-unstyled mb-4 flex-nowrap px-md-3">
+            <li class="nav-item me-auto me-sm-2 d-md-none">
+              <button id="sidebar-toggler" class="sidebar-toggler btn py-2" type="button">
+                <i class="fa-solid fa-bars"></i>
+              </button>
+            </li>
+            <li class="nav-item flex-sm-grow-1">
+              <button id="search-toggler" class="search-toggler btn py-2 d-sm-none" type="button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              <form class="search-box d-none d-sm-flex align-items-center" method="get">
+                <input class="search-input form-control shadow-none" type="search" class="search" placeholder="Search">
+                <button class="btn-search" type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </form>
+            </li>
+            <li class="nav-item">
+              <button class="notification-toggler btn py-2" type="button">
+                <i class="fa-solid fa-bell"></i>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="message-toggler btn py-2" type="button">
+                <i class="fa-solid fa-message"></i>
+              </button>
+            </li>
+            <li class="nav-item d-none d-md-block">
+              <div class="separate-line"></div>
+            </li>
+            <li class="nav-item">
+              <button class="profile-toggler btn p-2" type="button">
+                <img src="/images/logo.png" alt="profile-pic" style="width: 35px">
+              </button>
+            </li>
+          </ul>
+        </header>
+        {{!-- end dashboard header file --}}
         <section class="dashboard-content">Welcome to Dashboard</section>
-        <footer class="dashboard-footer">Footer</footer>
+        <footer class="dashboard-footer text-center">
+          <p class="copyright m-0">&copy;Copyright by: Albayie&trade;</p>
+        </footer>
       </div>
     </div>
   </main>

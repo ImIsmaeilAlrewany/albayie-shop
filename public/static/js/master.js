@@ -124,4 +124,32 @@ if (registerForm) registerForm.addEventListener('submit', (e) => {
   removeNone(registerCheckbox.checked, e, '.register-content .register-form .check-message');
 });
 
+//dashboard sidebar toggler work
+const sidebarToggler = document.getElementById('sidebar-toggler');
+const dashboardSidebar = document.querySelector('.dashboard-layout .row>div:first-child');
+const dashboardHeader = document.querySelector('.dashboard-layout .row>div:last-child');
+const dashboardHeaderList = document.querySelector('.dashboard-layout .row>div:last-child ul');
+
+//toggle during click
+sidebarToggler.onclick = function () {
+  sidebarToggler.classList.toggle('active');
+  if (sidebarToggler.classList.contains('active')) {
+    dashboardSidebar.style.display = 'none';
+    dashboardHeader.classList = 'col-12 col-md-10 col-lg-9 pe-0';
+    dashboardHeaderList.classList.add('px-2');
+  } else {
+    dashboardSidebar.style.display = 'block';
+    dashboardHeader.classList = 'col-8 col-sm-9 col-md-10 px-0';
+    dashboardHeaderList.classList.remove('px-2');
+  }
+};
+
+
+//toggle search box from none display to block and float
+const searchToggler = document.getElementById('search-toggler');
+const searchForm = document.querySelector('#search-toggler + form');
+
+searchToggler.onclick = function () {
+  searchForm.classList.toggle('active');
+};
 
