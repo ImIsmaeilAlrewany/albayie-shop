@@ -5,11 +5,11 @@ const toggleActive = (button, toggler, close = false) => {
     toggler.classList.toggle('active');
   };
   if (close) {
-    window.onclick = function (e) {
+    this.addEventListener('click', (e) => {
       if (e.target !== button && e.target !== toggler) {
         toggler.classList.remove('active');
       }
-    };
+    });
   }
 };
 
@@ -163,7 +163,7 @@ if (sidebarToggler) sidebarToggler.onclick = function () {
 
 //toggle search box from none display to block and float in dashboard
 const searchToggler = document.getElementById('search-toggler');
-const searchForm = document.querySelector('#search-toggler + form');
+const searchForm = document.getElementById('search-box');
 
 if (searchToggler) toggleActive(searchToggler, searchForm, true);
 
@@ -190,3 +190,8 @@ const dropdownMessages = document.getElementById('dropdown-messages');
 if (messageToggler) toggleActive(messageToggler, dropdownMessages, true);
 
 
+//management toggle active dashboard sidebar
+const usersButton = document.getElementById('sidebar-users-button');
+const managementBox = document.getElementById('management');
+
+if (usersButton) toggleActive(usersButton, managementBox);

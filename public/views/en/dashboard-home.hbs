@@ -19,10 +19,24 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-center p-0" href="/en/dash-board">
+              <a id="sidebar-users-button" class="nav-link text-center p-0" role="button">
                 <i class="fa-solid fa-users"></i>
                 <span class="d-lg-inline-block d-block">Users</span>
               </a>
+              <div id="management" class="management py-2">
+                <h5 class="management-header py-2 px-3 m-0">
+                  users management:
+                </h5>
+                <a class="management-item py-2 px-3" href="/en/dash-board">
+                  Overview
+                </a>
+                <a class="management-item py-2 px-3" href="/en/dash-board">
+                  Create User
+                </a>
+                <a class="management-item py-2 px-3" href="/en/dash-board">
+                  Users Tables
+                </a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link text-center p-0" href="/en/dash-board">
@@ -92,7 +106,7 @@
               <button id="search-toggler" class="search-toggler btn py-2 d-sm-none" type="button">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
-              <form class="search-box d-none d-sm-flex align-items-center" method="get">
+              <form id="search-box" class="search-box d-none d-sm-flex align-items-center" method="get">
                 <input class="search-input form-control shadow-none" type="search" class="search" placeholder="Search">
                 <button class="btn-search" type="submit">
                   <i class="fa-solid fa-magnifying-glass"></i>
