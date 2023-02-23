@@ -1,8 +1,16 @@
 //toggle active function
-const toggleActive = (button, toggler) => {
+//remove active function when click else where
+const toggleActive = (button, toggler, close = false) => {
   button.onclick = function () {
     toggler.classList.toggle('active');
   };
+  if (close) {
+    window.onclick = function (e) {
+      if (e.target !== button && e.target !== toggler) {
+        toggler.classList.remove('active');
+      }
+    };
+  }
 };
 
 
@@ -157,7 +165,7 @@ if (sidebarToggler) sidebarToggler.onclick = function () {
 const searchToggler = document.getElementById('search-toggler');
 const searchForm = document.querySelector('#search-toggler + form');
 
-if (searchToggler) toggleActive(searchToggler, searchForm);
+if (searchToggler) toggleActive(searchToggler, searchForm, true);
 
 
 //toggle active to dashboard sidebar to shrink it
@@ -173,5 +181,12 @@ if (shrinkToggler) shrinkToggler.addEventListener('click', () => {
     dashboardContent.classList.remove('grow');
   }
 });
+
+
+//message center toggler add and remove active
+const messageToggler = document.getElementById('message-toggler');
+const dropdownMessages = document.getElementById('dropdown-messages');
+
+if (messageToggler) toggleActive(messageToggler, dropdownMessages, true);
 
 

@@ -107,20 +107,74 @@
               </button>
             </li>
             <li class="nav-item">
-              <button class="message-toggler btn py-2 position-relative" type="button">
+              <button id="message-toggler" class="message-toggler btn py-2 position-relative" type="button">
                 <span
                   class="notify-alert position-absolute end-0 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
                 <i class="fa-solid fa-message"></i>
               </button>
+              <ul id="dropdown-messages"
+                class="dropdown-messages list-unstyled position-absolute p-0 m-0 overflow-hidden">
+                <li class="dropdown-header">
+                  <h5 class="m-0">message center</h5>
+                </li>
+                <li class="dropdown-message">
+                  <a href="/en/dash-board">
+                    <div class="profile-img">
+                      <img src="/images/profile-picture.svg" alt="profile-picture"
+                        style="width: 40px; border-radius: 50%">
+                    </div>
+                    <div class="profile-details ms-3">
+                      <p class="message m-0">Hi There! It's Alrewany</p>
+                      <p class="details m-0">
+                        <span class="profile-name">Ismail Alrewany</span>
+                        .
+                        <span class="time">45m</span>
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li class="dropdown-footer text-center">
+                  <a class="" href="/en/dash-board">
+                    read more messages
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item d-none d-md-block">
               <div class="separate-line"></div>
             </li>
             <li class="nav-item">
-              <button class="profile-toggler btn p-2" type="button">
+              <button class="profile-toggler btn p-2 dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
                 <span class="d-none d-lg-inline-block me-1">Ismail Alrewany</span>
-                <img src="/images/logo.png" alt="profile-pic" style="width: 35px">
+                <img src="/images/profile-picture.svg" alt="profile-pic" style="width: 30px; border-radius: 50%">
               </button>
+              <ul class="dropdown-menu border-0 shadow">
+                <li>
+                  <a class="dropdown-item px-4 d-flex align-items-center" href="/en/dash-board">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="ms-3">Albayie</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item px-4 d-flex align-items-center" href="/en/dash-board">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="ms-3">Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item px-4 d-flex align-items-center" href="/en/dash-board">
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="ms-3">Settings</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item px-4 d-flex align-items-center" href="/en/dash-board">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="ms-3">logout</span>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </header>

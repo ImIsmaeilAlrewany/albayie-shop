@@ -802,7 +802,7 @@ a {
 
 /* start dashboard header file style */
 .dashboard-layout .dashboard-header ul {
-  padding: 14px 0;
+  padding: 17px 0;
 }
 
 .dashboard-layout .dashboard-header ul button {
@@ -820,10 +820,15 @@ a {
 .dashboard-layout .dashboard-header .nav-item i {
   font-size: 22px;
   color: var(--secondary);
+  pointer-events: none;
 }
 
 .dashboard-layout .dashboard-header .nav-item .search-box.active {
   display: flex !important;
+}
+
+.dashboard-layout .dashboard-header .nav-item .search-box.active,
+.dashboard-header .nav-item .dropdown-messages {
   position: absolute;
   top: 85px;
   left: 50%;
@@ -832,7 +837,8 @@ a {
   background-color: #fff;
   border-radius: 6px;
   transform: translateX(-50%);
-  box-shadow: 1px 2px 7px var(--light-gray);
+  /* box-shadow: 1px 2px 7px var(--light-gray); */
+  box-shadow: 0 0.5rem 1rem rgba(var(--bs-body-color-rgb), .15);
 }
 
 .dashboard-layout .dashboard-header .nav-item .search-box.active input {
@@ -872,6 +878,58 @@ a {
   font-size: 16px;
 }
 
+.dashboard-header .nav-item .dropdown-messages {
+  flex-direction: column;
+  display: none;
+}
+
+.dashboard-header .nav-item .dropdown-messages.active {
+  display: flex;
+}
+
+.dashboard-header .nav-item .dropdown-messages .dropdown-header {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.dashboard-header .nav-item .dropdown-messages .dropdown-header,
+.dashboard-header .nav-item .dropdown-messages .dropdown-footer {
+  padding: 12px 16px;
+}
+
+.dashboard-header .nav-item .dropdown-messages .dropdown-header h5 {
+  font-size: var(--font-size-lightest) !important;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.dashboard-header .nav-item .dropdown-messages .dropdown-message {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--bg-light-gray);
+}
+
+.dashboard-header .nav-item .dropdown-messages .dropdown-message a {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+}
+
+.dashboard-header .dropdown-messages .dropdown-message a>div p:first-child {
+  font-size: var(--font-size-lightest);
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.dashboard-header .dropdown-messages .dropdown-message a>div p:last-child {
+  color: var(--light-gray);
+}
+
+.dashboard-header .nav-item .dropdown-messages .dropdown-footer {
+  text-transform: capitalize;
+  font-size: 12px;
+  color: var(--light-gray);
+}
+
 .dashboard-layout .dashboard-header .nav-item .separate-line {
   margin: 0 10px;
   height: 40px;
@@ -883,6 +941,67 @@ a {
 .dashboard-layout .dashboard-header .nav-item:last-child button span {
   color: var(--light-gray);
   font-size: var(--font-size-light);
+}
+
+.dashboard-layout .dashboard-header .nav-item:last-child button::after {
+  display: none;
+}
+
+.dashboard-layout .dashboard-header .nav-item:last-child .dropdown-menu {
+  margin-top: 6px;
+  width: 90%;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.dashboard-header .nav-item:last-child .dropdown-menu li a,
+.dashboard-header .nav-item:last-child .dropdown-menu li a i {
+  font-size: var(--font-size-lightest);
+  color: var(--light-gray);
+}
+
+.dashboard-header .nav-item:last-child .dropdown-menu li:nth-child(3) {
+  border-bottom: 1px solid var(--bg-light-gray);
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+.dashboard-header .nav-item:last-child .dropdown-menu li:first-child a i {
+  width: 11px;
+}
+
+@media (min-width: 576px) {
+  .dashboard-header .nav-item .dropdown-messages {
+    max-width: 320px;
+    right: 60px;
+  }
+
+  .dashboard-header .nav-item .dropdown-messages,
+  .dashboard-layout .dashboard-header .nav-item:last-child .dropdown-menu {
+    transform: translateX(0);
+    left: auto;
+  }
+
+  .dashboard-layout .dashboard-header .nav-item:last-child .dropdown-menu {
+    max-width: 160px;
+    right: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .dashboard-header .nav-item .dropdown-messages {
+    right: 90px;
+  }
+
+  .dashboard-layout .dashboard-header .nav-item:last-child .dropdown-menu {
+    right: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .dashboard-header .nav-item .dropdown-messages {
+    right: 200px;
+  }
 }
 
 /* end dashboard header file style */
