@@ -706,8 +706,13 @@ a {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.dashboard-sidebar .navbar-nav .nav-item a.active {
+.dashboard-sidebar .navbar-nav .nav-item a.active,
+.dashboard-sidebar .navbar-nav .nav-item a:hover {
   color: #fff;
+}
+
+.dashboard-sidebar .navbar-nav .nav-item a:hover::after {
+  border-color: #fff !important;
 }
 
 .dashboard-sidebar .navbar-nav .nav-item a .logo {
