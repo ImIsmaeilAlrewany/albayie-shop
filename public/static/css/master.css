@@ -880,6 +880,11 @@ a {
   opacity: 0.3;
 }
 
+.dashboard-layout .dashboard-header .nav-item:last-child button span {
+  color: var(--light-gray);
+  font-size: var(--font-size-light);
+}
+
 /* end dashboard header file style */
 
 /* start dashboard content file style */

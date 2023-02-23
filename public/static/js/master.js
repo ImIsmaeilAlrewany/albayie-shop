@@ -173,3 +173,5 @@ if (shrinkToggler) shrinkToggler.addEventListener('click', () => {
     dashboardContent.classList.remove('grow');
   }
 });
+
+
