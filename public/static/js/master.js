@@ -1,3 +1,11 @@
+//toggle active function
+const toggleActive = (button, toggler) => {
+  button.onclick = function () {
+    toggler.classList.toggle('active');
+  };
+};
+
+
 //check screen size and hide the wrong header file
 const wideAppearance = document.getElementById('wide-appearance');
 const smallAppearance = document.getElementById('small-appearance');
@@ -16,9 +24,8 @@ if (wideAppearance && smallAppearance)
 const dropdown = document.querySelector('#dropdown-lang button');
 const dropdownMenu = document.getElementById('dropdown-menu');
 
-if (dropdown) dropdown.addEventListener('click', () => {
-  dropdownMenu.classList.toggle('active');
-});
+if (dropdown) toggleActive(dropdown, dropdownMenu);
+
 
 //create form validation for register
 const registerForm = document.querySelector('.register-content .register-form');
@@ -124,32 +131,45 @@ if (registerForm) registerForm.addEventListener('submit', (e) => {
   removeNone(registerCheckbox.checked, e, '.register-content .register-form .check-message');
 });
 
+
 //dashboard sidebar toggler work
 const sidebarToggler = document.getElementById('sidebar-toggler');
 const dashboardSidebar = document.querySelector('.dashboard-layout .row>div:first-child');
-const dashboardHeader = document.querySelector('.dashboard-layout .row>div:last-child');
-const dashboardHeaderList = document.querySelector('.dashboard-layout .row>div:last-child ul');
+const dashboardContent = document.querySelector('.dashboard-layout .row>div:last-child');
+const dashboardHeaderList = document.querySelector('.dashboard-layout .row>div:last-child .dashboard-header ul');
 
 //toggle during click
-sidebarToggler.onclick = function () {
+if (sidebarToggler) sidebarToggler.onclick = function () {
   sidebarToggler.classList.toggle('active');
   if (sidebarToggler.classList.contains('active')) {
     dashboardSidebar.style.display = 'none';
-    dashboardHeader.classList = 'col-12 col-md-10 col-lg-9 pe-0';
+    dashboardContent.classList = 'col-12 col-md-10 col-lg-9 pe-0';
     dashboardHeaderList.classList.add('px-2');
   } else {
     dashboardSidebar.style.display = 'block';
-    dashboardHeader.classList = 'col-8 col-sm-9 col-md-10 px-0';
+    dashboardContent.classList = 'col-8 col-sm-9 col-md-10 px-0';
     dashboardHeaderList.classList.remove('px-2');
   }
 };
 
 
-//toggle search box from none display to block and float
+//toggle search box from none display to block and float in dashboard
 const searchToggler = document.getElementById('search-toggler');
 const searchForm = document.querySelector('#search-toggler + form');
 
-searchToggler.onclick = function () {
-  searchForm.classList.toggle('active');
-};
+if (searchToggler) toggleActive(searchToggler, searchForm);
 
+
+//toggle active to dashboard sidebar to shrink it
+const shrinkToggler = document.getElementById('shrink-toggler');
+
+if (shrinkToggler) shrinkToggler.addEventListener('click', () => {
+  shrinkToggler.classList.toggle('active');
+  if (shrinkToggler.classList.contains('active')) {
+    dashboardSidebar.classList.add('shrink');
+    dashboardContent.classList.add('grow');
+  } else {
+    dashboardSidebar.classList.remove('shrink');
+    dashboardContent.classList.remove('grow');
+  }
+});

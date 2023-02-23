@@ -681,11 +681,11 @@ a {
 
 @media (min-width: 992px) {
   .dashboard-layout .row>div:first-child {
-    width: 250px;
+    width: 240px;
   }
 
   .dashboard-layout .row>div:last-child {
-    width: calc(100% - 250px);
+    width: calc(100% - 240px);
   }
 }
 
@@ -727,6 +727,74 @@ a {
   border-radius: 50%;
   border-color: var(--light-green);
   color: var(--light-green);
+}
+
+.dashboard-layout .shrink {
+  max-width: 140px;
+}
+
+.dashboard-layout .shrink aside .nav-item a {
+  flex-direction: column;
+}
+
+.dashboard-layout .shrink aside .nav-item a span {
+  font-size: var(--font-size-lightest) !important;
+  margin-left: 0 !important;
+}
+
+.dashboard-layout .shrink aside .nav-item a::after {
+  display: none;
+}
+
+.dashboard-layout .shrink aside #shrink-toggler {
+  transform: rotate(180deg);
+}
+
+.dashboard-layout .grow {
+  width: calc(100% - 140px) !important;
+}
+
+@media (min-width: 992px) {
+
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(3),
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(4),
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(5) {
+    position: relative;
+  }
+
+  .dashboard-sidebar .navbar-nav .nav-item:not(:first-child) a {
+    display: flex;
+    align-items: center;
+  }
+
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(3) a::after,
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(4) a::after,
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(5) a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    transform: translateY(-50%) rotate(-45deg);
+    border-right: 1px solid var(--light-green);
+    border-bottom: 1px solid var(--light-green);
+    pointer-events: none;
+    transition: 0.3s transform;
+  }
+
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(3) a.active::after,
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(4) a.active::after,
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(5) a.active::after {
+    border-color: #fff;
+    transform: translateY(-70%) rotate(45deg);
+    right: 17px;
+  }
+
+  .dashboard-sidebar .navbar-nav .nav-item:not(:first-child) a span {
+    font-size: 16px;
+    margin-left: 10px;
+  }
 }
 
 /* end dashboard toggle sidebar file style */
