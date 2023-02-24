@@ -1,1 +1,111 @@
-<aside class="dashboard-sidebar px-3">Sidebar</aside>
+{{!-- start dashboard sidebar file --}}
+
+<aside class="dashboard-sidebar px-3">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link text-center p-0" href="/">
+        <img class="logo" src="/images/logo_white.png" alt="site-logo">
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-center p-0 active" href="/en/dash-board">
+        <i class="fa-solid fa-gauge-high"></i>
+        <span class="d-lg-inline-block d-block">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a id="sidebar-users-button" class="nav-link text-center p-0" role="button">
+        <i class="fa-solid fa-users"></i>
+        <span class="d-lg-inline-block d-block">Users</span>
+      </a>
+      <div id="users-management" class="management users-management py-2 py-lg-0">
+        <h5 class="management-header py-2 px-3 m-0 text-nowrap">
+          users management:
+        </h5>
+        <a class="management-item py-2 px-3" href="/en/dash-board">
+          Overview
+        </a>
+        <a class="management-item py-2 px-3" href="/en/dash-board">
+          Create User
+        </a>
+        <a class="management-item py-2 px-3" href="/en/dash-board">
+          Users Tables
+        </a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a id="sidebar-products-button" class="nav-link text-center p-0" role="button">
+        <i class="fa-solid fa-dolly"></i>
+        <span class="d-lg-inline-block d-block">Products</span>
+      </a>
+      <div id="products-management" class="management products-management py- py-lg-0">
+        <h5 class="management-header py-2 px-3 m-0 text-nowrap">
+          products management:
+        </h5>
+        <a class="management-item py-2 px-3" href="/en/dash-board">
+          Overview
+        </a>
+        <a class="management-item py-2 px-3" href="/en/dash-board">
+          Add Product
+        </a>
+        <a class="management-item py-2 px-3" href="/en/dash-board">
+          Products Tables
+        </a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a id="sidebar-orders-button" class="nav-link text-center p-0" role="button">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="d-lg-inline-block d-block">Orders</span>
+      </a>
+      <div id="orders-management" class="management orders-management py-2 py-lg-0">
+        <h5 class="management-header py-2 px-3 m-0 text-nowrap">
+          orders management:
+        </h5>
+        <a class="management-item py-2 px-3" href="/en/dash-board">
+          Overview
+        </a>
+        <a class="management-item py-2 px-3" href="/en/dash-board">
+          Orders Tables
+        </a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-center p-0" href="/en/dash-board">
+        <i class="fa-solid fa-sack-dollar"></i>
+        <span class="d-lg-inline-block d-block">Income</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-center p-0" href="/en/dash-board">
+        <i class="fa-solid fa-message"></i>
+        <span class="d-block d-lg-inline-block">Messages</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-center p-0" href="/en/dash-board">
+        <i class="fa-solid fa-bug"></i>
+        <span class="d-lg-inline-block d-block">Reports</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-center p-0" href="/en/dash-board">
+        <i class="fa-solid fa-gear"></i>
+        <span class="d-lg-inline-block d-block">Settings</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-center p-0" href="/en/dash-board">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span class="d-lg-inline-block d-block">Logout</span>
+      </a>
+    </li>
+  </ul>
+  <div class="d-none d-lg-block text-center py-4 shrink-sidebar">
+    <button id="shrink-toggler" class="shrink-toggler btn" type="button">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+  </div>
+</aside>
+
+{{!-- end dashboard sidebar file --}}
