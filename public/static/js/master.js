@@ -164,35 +164,6 @@ if (sidebarToggler) sidebarToggler.onclick = function () {
 };
 
 
-//toggle search box from none display to block and float in dashboard
-const searchToggler = document.getElementById('search-toggler');
-const searchForm = document.getElementById('search-box');
-
-if (searchToggler) toggleActive(searchToggler, searchForm, true);
-
-
-//toggle active to dashboard sidebar to shrink it
-const shrinkToggler = document.getElementById('shrink-toggler');
-
-if (shrinkToggler) shrinkToggler.addEventListener('click', () => {
-  shrinkToggler.classList.toggle('active');
-  if (shrinkToggler.classList.contains('active')) {
-    dashboardSidebar.classList.add('shrink');
-    dashboardContent.classList.add('grow');
-  } else {
-    dashboardSidebar.classList.remove('shrink');
-    dashboardContent.classList.remove('grow');
-  }
-});
-
-
-//message center toggler add and remove active
-const messageToggler = document.getElementById('message-toggler');
-const dropdownMessages = document.getElementById('dropdown-messages');
-
-if (messageToggler) toggleActive(messageToggler, dropdownMessages, true);
-
-
 //management toggle active dashboard sidebar
 const usersButton = document.getElementById('sidebar-users-button');
 const productsButton = document.getElementById('sidebar-products-button');
@@ -204,5 +175,44 @@ const ordersManagement = document.getElementById('orders-management');
 if (usersButton) toggleActive(usersButton, [usersManagement, usersButton]);
 if (productsButton) toggleActive(productsButton, [productsManagement, productsButton]);
 if (ordersButton) toggleActive(ordersButton, [ordersManagement, ordersButton]);
+
+
+//toggle active to dashboard sidebar to shrink it
+const shrinkToggler = document.getElementById('shrink-toggler');
+
+if (shrinkToggler) shrinkToggler.addEventListener('click', () => {
+  shrinkToggler.classList.toggle('active');
+  if (shrinkToggler.classList.contains('active')) {
+    dashboardSidebar.classList.add('shrink');
+    dashboardContent.classList.add('grow');
+    [usersManagement, productsManagement, ordersManagement].forEach(ele => {
+      ele.classList.add('management-float');
+    });
+  } else {
+    dashboardSidebar.classList.remove('shrink');
+    dashboardContent.classList.remove('grow');
+    [usersManagement, productsManagement, ordersManagement].forEach(ele => {
+      ele.classList.remove('management-float');
+    });
+  }
+});
+
+
+//toggle search box from none display to block and float in dashboard
+const searchToggler = document.getElementById('search-toggler');
+const searchForm = document.getElementById('search-box');
+
+if (searchToggler) toggleActive(searchToggler, searchForm, true);
+
+
+//message center toggler add and remove active
+const messageToggler = document.getElementById('message-toggler');
+const dropdownMessages = document.getElementById('dropdown-messages');
+
+if (messageToggler) toggleActive(messageToggler, dropdownMessages, true);
+
+
+
+
 
 

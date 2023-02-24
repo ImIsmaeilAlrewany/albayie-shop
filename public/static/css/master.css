@@ -740,11 +740,11 @@ a {
   align-items: start;
 }
 
-.dashboard-sidebar .nav-item #products-management {
+.dashboard-sidebar .nav-item .products-management {
   top: 210px;
 }
 
-.dashboard-sidebar .nav-item #orders-management {
+.dashboard-sidebar .nav-item .orders-management {
   top: 275px;
 }
 
@@ -803,9 +803,53 @@ a {
 
 @media (min-width: 992px) {
 
-  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(3),
-  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(4),
-  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(5) {
+  .dashboard-sidebar .nav-item .management {
+    position: relative;
+    top: auto;
+    left: auto;
+    height: 0;
+    transition: 0.3s;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .dashboard-sidebar .nav-item .management.active {
+    height: 155px;
+    padding: 8px 0 !important;
+    margin-top: 8px;
+  }
+
+  .dashboard-sidebar .nav-item .orders-management.active {
+    height: 120px;
+  }
+
+  .dashboard-sidebar .nav-item .management-float {
+    transition: none;
+    position: absolute;
+    top: 145px;
+    left: 135px;
+  }
+
+  .dashboard-sidebar .nav-item .management-float.products-management {
+    top: 210px;
+  }
+
+  .dashboard-sidebar .nav-item .management-float.orders-management {
+    top: 275px;
+  }
+
+  .dashboard-sidebar .nav-item .management-float a {
+    align-items: start !important;
+  }
+
+  .dashboard-sidebar .nav-item .management-float.active {
+    height: auto;
+    margin-top: 0;
+  }
+
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(3)>a,
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(4)>a,
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(5)>a {
     position: relative;
   }
 
@@ -814,9 +858,9 @@ a {
     align-items: center;
   }
 
-  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(3) a::after,
-  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(4) a::after,
-  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(5) a::after {
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(3)>a::after,
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(4)>a::after,
+  .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(5)>a::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -835,7 +879,6 @@ a {
   .dashboard-sidebar .navbar-nav .nav-item:nth-of-type(5) a.active::after {
     border-color: #fff;
     transform: translateY(-70%) rotate(45deg);
-    right: 17px;
   }
 
   .dashboard-sidebar .navbar-nav .nav-item:not(:first-child) a span {
