@@ -3,6 +3,11 @@ const bcryptjs = require('bcryptjs');
 
 class Dashboard {
   static home = (req, res) => {
+    res.cookie('lang', 'en', {
+      httpOnly: true,
+      secure: true
+    });
+
     res.render('en/dashboard-home', { pageTitle: 'Albayie - Access Dashboard' });
   };
 
@@ -34,6 +39,17 @@ class Dashboard {
     }
     catch (err) {
       res.redirect('/en');
+    }
+  };
+
+  static logout = async (req, res) => {
+    try {
+      req.user.tokens = req.user.tokens.filter(f => f.token !== req.token);
+      await req.user.save();
+      res.clearCookie('Authorization');
+      res.redirect('/en/dash-board/login');
+    } catch (err) {
+      res.send({ error: err.message });
     }
   };
 
