@@ -740,6 +740,14 @@ a {
   align-items: start;
 }
 
+.dashboard-sidebar .nav-item #products-management {
+  top: 210px;
+}
+
+.dashboard-sidebar .nav-item #orders-management {
+  top: 275px;
+}
+
 .dashboard-sidebar .nav-item .management.active {
   display: flex;
 }

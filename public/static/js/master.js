@@ -192,6 +192,12 @@ if (messageToggler) toggleActive(messageToggler, dropdownMessages, true);
 
 //management toggle active dashboard sidebar
 const usersButton = document.getElementById('sidebar-users-button');
-const managementBox = document.getElementById('management');
+const productsButton = document.getElementById('sidebar-products-button');
+const ordersButton = document.getElementById('sidebar-orders-button');
+const usersManagement = document.getElementById('users-management');
+const productsManagement = document.getElementById('products-management');
+const ordersManagement = document.getElementById('orders-management');
 
-if (usersButton) toggleActive(usersButton, managementBox);
+if (usersButton) toggleActive(usersButton, usersManagement);
+if (productsButton) toggleActive(productsButton, productsManagement);
+if (ordersButton) toggleActive(ordersButton, ordersManagement);
