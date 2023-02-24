@@ -542,6 +542,7 @@ a {
 .login-content p {
   font-size: var(--font-size-light);
   text-align: center;
+  color: var(--light-gray);
 }
 
 .register-content .register-form input,
@@ -670,6 +671,13 @@ a {
 
 /* end register and login footer style */
 /* end register and login files style */
+
+/* start dashboard login file style */
+.adj-login-dashboard {
+  height: calc(100vh - 178px);
+}
+
+/* end dashboard login file style */
 
 /* start dashboard style */
 /* start dashboard-home file style */

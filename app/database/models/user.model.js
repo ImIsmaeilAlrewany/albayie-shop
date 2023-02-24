@@ -56,6 +56,10 @@ const userSchema = mongoose.Schema({
       if (value === 'off') throw new Error('agree all term and privacy policy');
     }
   },
+  admin: {
+    type: Boolean,
+    default: false
+  },
   tokens: [
     {
       token: {

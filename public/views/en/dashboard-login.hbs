@@ -1,5 +1,47 @@
+{{!-- start dashboard login (e-mail or phone number and password) --}}
 {{>pageHead}}
 
+{{!-- start login header --}}
+<header class="login-header">
+  <div class="container-md text-center py-4">
+    <a href="/en" class="homeLink">
+      <img src="/images/logo.png" alt="albayie-logo">
+    </a>
+  </div>
+</header>
+{{!-- end login header --}}
 
+<div class="adj-login-dashboard">
+
+  {{!-- start login form --}}
+  <div class="container-md">
+    <section class="login-content p-3 border border-1">
+      <h4 class="form-type mb-1">Dashboard Login</h4>
+      <p class="form-details m-0">You must be Admin to Login or You will be directed to Home page</p>
+      <form method="post" class="login-form mt-3">
+        <div class="mb-3">
+          <label for="login-authPortal" class="form-label">Email Address or Phone Number</label>
+          <input type="text" class="form-control" id="login-authPortal" placeholder="" name="authPortal">
+        </div>
+        <div class="mb-3">
+          <label for="login-password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="login-password" placeholder="" name="password">
+        </div>
+        <button type="submit" class="btn w-100">Login</button>
+      </form>
+    </section>
+  </div>
+  {{!-- end login form --}}
+
+</div>
+
+{{!-- start login footer --}}
+<footer class="login-footer text-center py-4 mt-auto">
+  <div class="container-xxl">
+    <p class="copyright m-0">&copy;Copyright by: Albayie&trade;</p>
+  </div>
+</footer>
+{{!-- end login footer --}}
 
 {{>pageFoot}}
+{{!-- end dashboard login (e-mail or phone number and password) --}}
