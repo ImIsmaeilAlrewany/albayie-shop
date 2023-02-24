@@ -2,7 +2,10 @@
 //remove active function when click else where
 const toggleActive = (button, toggler, close = false) => {
   button.onclick = function () {
-    toggler.classList.toggle('active');
+    if (Array.isArray(toggler))
+      toggler.forEach(ele => ele.classList.toggle('active'));
+    else
+      toggler.classList.toggle('active');
   };
   if (close) {
     this.addEventListener('click', (e) => {
@@ -198,6 +201,8 @@ const usersManagement = document.getElementById('users-management');
 const productsManagement = document.getElementById('products-management');
 const ordersManagement = document.getElementById('orders-management');
 
-if (usersButton) toggleActive(usersButton, usersManagement);
-if (productsButton) toggleActive(productsButton, productsManagement);
-if (ordersButton) toggleActive(ordersButton, ordersManagement);
+if (usersButton) toggleActive(usersButton, [usersManagement, usersButton]);
+if (productsButton) toggleActive(productsButton, [productsManagement, productsButton]);
+if (ordersButton) toggleActive(ordersButton, [ordersManagement, ordersButton]);
+
+
