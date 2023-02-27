@@ -12,6 +12,11 @@ hbs.registerHelper('compare', function (valOne, valTwo) {
   else return false;
 });
 
+hbs.registerHelper('fullName', (fName, lName) => {
+  if (fName && lName) return `${fName} ${lName}`;
+  else throw new Error('full name needs first name and last name');
+});
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

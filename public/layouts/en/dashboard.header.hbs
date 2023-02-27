@@ -63,7 +63,9 @@
     <li class="nav-item">
       <button class="profile-toggler btn p-2 dropdown-toggle" type="button" data-bs-toggle="dropdown"
         aria-expanded="false">
-        <span class="d-none d-lg-inline-block me-1">Ismail Alrewany</span>
+        <span class="d-none d-lg-inline-block me-1 text-capitalize">
+          {{ fullName user.fName user.lName }}
+        </span>
         <img src="/images/profile-picture.svg" alt="profile-pic" style="width: 30px; border-radius: 50%">
       </button>
       <ul class="dropdown-menu border-0 shadow">

@@ -8,7 +8,7 @@ class Dashboard {
       secure: true
     });
 
-    res.render('en/dashboard-home', { pageTitle: 'Albayie - Access Dashboard' });
+    res.render('en/dashboard-home', { pageTitle: 'Albayie - Access Dashboard', user: req.user });
   };
 
   static login = (req, res) => {

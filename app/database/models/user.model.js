@@ -49,14 +49,18 @@ const userSchema = mongoose.Schema({
     }
   },
   agree: {
-    type: String,
+    type: Boolean,
     required: true,
-    default: 'off',
+    default: false,
     validate(value) {
-      if (value === 'off') throw new Error('agree all term and privacy policy');
+      if (value === false) throw new Error('agree all term and privacy policy');
     }
   },
   admin: {
+    type: Boolean,
+    default: false
+  },
+  editor: {
     type: Boolean,
     default: false
   },

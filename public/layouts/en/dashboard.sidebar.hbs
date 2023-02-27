@@ -18,7 +18,9 @@
         <i class="fa-solid fa-users"></i>
         <span class="d-lg-inline-block d-block">Users</span>
       </a>
-      <div id="users-management" class="management users-management py-2 py-lg-0">
+      <div id="users-management"
+        class="management users-management py-2 py-lg-0 {{#unless user.editor}} management-disabled {{/unless}}">
+        {{#if user.editor}}
         <h5 class="management-header py-2 px-3 m-0 text-nowrap">
           users management:
         </h5>
@@ -31,6 +33,11 @@
         <a class="management-item py-2 px-3" href="/en/dash-board">
           Users Tables
         </a>
+        {{else}}
+        <h5 class="management-header py-2 px-3 m-0 text-nowrap">
+          you're not editor!
+        </h5>
+        {{/if}}
       </div>
     </li>
     <li class="nav-item">
@@ -38,7 +45,7 @@
         <i class="fa-solid fa-dolly"></i>
         <span class="d-lg-inline-block d-block">Products</span>
       </a>
-      <div id="products-management" class="management products-management py- py-lg-0">
+      <div id="products-management" class="management products-management py-2 py-lg-0">
         <h5 class="management-header py-2 px-3 m-0 text-nowrap">
           products management:
         </h5>
