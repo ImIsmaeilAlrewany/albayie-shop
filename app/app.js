@@ -39,9 +39,11 @@ app.use('/ar', userRoutesAr);
 
 //import dashboard routes
 const dashboard = require('./routes/dashboard.route');
+const userDashboard = require('./routes/en/dashboard.user.route');
 
 //use dashboard routes
 app.use('/en', dashboard);
+app.use('/en', userDashboard);
 
 
 app.all('*', (req, res) => {

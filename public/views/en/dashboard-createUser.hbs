@@ -1,0 +1,93 @@
+{{>pageHead}}
+{{!-- start dashboard create user (first-name, last-name, e-mail, phone number, password, admin, editor, etc...) --}}
+
+{{!-- start dashboard create user header --}}
+<header class="register-header">
+  <div class="container-md text-center py-4">
+    <a href="/en/dash-board" class="homeLink">
+      <img src="/images/logo.png" alt="albayie-logo">
+    </a>
+  </div>
+</header>
+{{!-- end dashboard create user header --}}
+
+<div class="adj-register-form mb-5">
+
+  {{!-- start dashboard create user form --}}
+  <div class="container-md">
+    <section class="register-content p-3 border border-1">
+      <h4 class="form-type mb-1">create user</h4>
+      <p class="form-details m-0">Complete form below to create a new user</p>
+      <form method="post" class="register-form mt-3">
+        <div class="mb-3">
+          <label for="f-name" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="f-name" name="fName" value="{{data.fName}}">
+          <div class="fName-message d-none text-danger mt-2">You can use characters no white spaces</div>
+        </div>
+        <div class="mb-3">
+          <label for="l-name" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="l-name" name="lName" value="{{data.lName}}">
+          <div class="lName-message d-none text-danger mt-2">You can use characters no white spaces</div>
+        </div>
+        <div class="mb-3">
+          <label for="phone-number" class="form-label">Phone Number</label>
+          <div class="phone-number d-flex">
+            <span class="country-code border border-1 p-2">+20</span>
+            <input type="text" class="form-control" id="phone-number" name="phoneNum" value="{{data.phoneNum}}">
+          </div>
+          <div class="phoneNum-message d-none text-danger mt-2">You can use numbers no white spaces</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1"
+            placeholder="We'll never share your email with anyone else." name="email" value="{{data.email}}">
+          <div class="email-message d-none text-danger mt-2">Invalid email address</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1"
+            placeholder="Must be 8-20 characters long." name="password" value="{{data.password}}">
+          <div class="passOne-message d-none text-danger mt-2">Invalid password</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword2" class="form-label">Re-enter Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword2">
+          <div class="passTwo-message d-none text-danger mt-2">password doesn't match</div>
+        </div>
+        <div class="mb-3 form-check d-none">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" name="agree" value="true" checked>
+          <label class="form-check-label" for="exampleCheck1">
+            I agree to all <a href="/en">Term</a> and <a href="/en">Privacy Policy</a>
+          </label>
+          <div class="check-message d-none text-danger mt-2">Don't forget the checkbox</div>
+        </div>
+        <div class="mb-3 form-check">
+          <input id="admin-checkbox" type="checkbox" class="form-check-input" name="admin" value="true">
+          <label class="form-check-label" for="admin-checkbox">
+            Create a new Admin
+          </label>
+        </div>
+        <div class="mb-3 form-check">
+          <input id="editor-checkbox" type="checkbox" class="form-check-input" name="editor" value="true">
+          <label class="form-check-label" for="editor-checkbox">
+            Must be Admin to Edit Content
+          </label>
+        </div>
+        <button type="submit" class="btn w-100">Create User</button>
+      </form>
+    </section>
+  </div>
+  {{!-- end dashboard create user form --}}
+
+</div>
+
+{{!-- start dashboard create user footer --}}
+<footer class="register-footer text-center py-4">
+  <div class="container-xxl">
+    <p class="copyright m-0">&copy;Copyright by: Albayie&trade;</p>
+  </div>
+</footer>
+{{!-- end dashboard create user footer --}}
+
+{{!-- end dashboard create user (first-name, last-name, e-mail, phone number, password, admin, editor, etc...) --}}
+{{>pageFoot}}
