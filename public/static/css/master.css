@@ -4,6 +4,7 @@
   --dark-green: #4b6e08;
   --light-green: rgb(200, 235, 165);
   --gray: #333;
+  --normal-gray: #5a5c69;
   --light-gray: #999;
   --hover-light: #f9faf8;
   --bg-light: #f3f3f3;
@@ -11,6 +12,7 @@
   --border-red: #b02a37;
   --font-size-light: 14px;
   --font-size-lightest: 13px;
+  --shadow: 0 0.5rem 1rem rgba(var(--bs-body-color-rgb), .15);
 }
 
 body {
@@ -700,9 +702,11 @@ a {
 /* end dashboard layout style */
 
 /* start dashboard toggle sidebar file style */
+.dashboard-layout .row>div:first-child {
+  background-color: var(--primary);
+}
 
 .dashboard-sidebar {
-  background-color: var(--primary);
   color: var(--light-green);
 }
 
@@ -772,9 +776,17 @@ a {
   width: 100%;
 }
 
+.dashboard-sidebar .nav-item .management .management-item.active {
+  color: var(--primary);
+}
+
 .dashboard-sidebar .nav-item .management .management-item:hover {
   background-color: var(--hover-light);
   color: var(--light-gray);
+}
+
+.dashboard-sidebar .nav-item .management .management-item.active:hover {
+  color: var(--primary);
 }
 
 .shrink-sidebar .shrink-toggler {
@@ -1112,11 +1124,40 @@ a {
 
 /* end dashboard header file style */
 
-/* start dashboard content file style */
+/* start dashboard content style */
 
+/* start dashboard users tables content file style */
+.dashboard-users-tables .instructions {
+  color: var(--gray);
+  font-size: var(--font-size-light);
+}
 
+.dashboard-users-tables .instructions ul {
+  color: var(--light-gray);
+  list-style-type: disc;
+}
 
-/* end dashboard content file style */
+.dashboard-users-tables .admin-table {
+  border: 1px solid var(--bg-light-gray);
+  box-shadow: var(--shadow);
+}
+
+.dashboard-users-tables .admin-table tr td {
+  color: var(--normal-gray);
+  /* font-size: var(--font-size-light); */
+}
+
+.dashboard-users-tables .admin-table .table-heading {
+  color: var(--primary);
+  border-bottom: 1px solid var(--bg-light-gray);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: var(--bg-light);
+}
+
+/* end dashboard users tables content file style */
+
+/* end dashboard content style */
 
 /* start dashboard footer file style */
 

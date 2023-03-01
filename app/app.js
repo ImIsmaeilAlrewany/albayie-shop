@@ -7,14 +7,33 @@ const app = express();
 require('./database/connection');
 
 //custom handlebars helper to compare data
-hbs.registerHelper('compare', function (valOne, valTwo) {
+hbs.registerHelper('compare', (valOne, valTwo) => {
   if (valOne === valTwo) return true;
   else return false;
 });
 
+//custom handlebars helper to work as or
+hbs.registerHelper('or', (value, ...others) => {
+  others.length--;
+  let output = false;
+  others.forEach(ele => {
+    if (value === ele) {
+      output = true;
+    }
+  });
+  return output;
+});
+
+//custom handlebars helper to return full name
 hbs.registerHelper('fullName', (fName, lName) => {
   if (fName && lName) return `${fName} ${lName}`;
   else throw new Error('full name needs first name and last name');
+});
+
+//custom handlebars helper to fix time
+hbs.registerHelper('time', (time) => {
+  if (time) return time.toLocaleString();
+  else throw new Error('there\'s no time');
 });
 
 app.use(cookieParser());
@@ -43,7 +62,7 @@ const userDashboard = require('./routes/en/dashboard.user.route');
 
 //use dashboard routes
 app.use('/en', dashboard);
-app.use('/en', userDashboard);
+app.use('/en/dash-board', userDashboard);
 
 
 app.all('*', (req, res) => {

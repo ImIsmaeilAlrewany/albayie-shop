@@ -8,18 +8,20 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-center p-0 active" href="/en/dash-board">
+      <a class="nav-link text-center p-0 {{#if (compare path '/en/dash-board')}} active {{/if}}" href="/en/dash-board">
         <i class="fa-solid fa-gauge-high"></i>
         <span class="d-lg-inline-block d-block">Dashboard</span>
       </a>
     </li>
     <li class="nav-item">
-      <a id="sidebar-users-button" class="nav-link text-center p-0" role="button">
+      <a id="sidebar-users-button"
+        class="nav-link text-center p-0 {{#if (or path '/en/dash-board/create-user' '/en/dash-board/users')}} active text-white {{/if}}"
+        role="button">
         <i class="fa-solid fa-users"></i>
         <span class="d-lg-inline-block d-block">Users</span>
       </a>
       <div id="users-management"
-        class="management users-management py-2 py-lg-0 {{#unless user.editor}} management-disabled {{/unless}}">
+        class="management users-management py-2 py-lg-0 {{#unless user.editor}} management-disabled {{/unless}} {{#if (or path '/en/dash-board/create-user' '/en/dash-board/users')}} active {{/if}}">
         {{#if user.editor}}
         <h5 class="management-header py-2 px-3 m-0 text-nowrap">
           users management:
@@ -27,10 +29,12 @@
         <a class="management-item py-2 px-3" href="/en/dash-board">
           Overview
         </a>
-        <a class="management-item py-2 px-3" href="/en/dash-board/create-user">
+        <a class="management-item py-2 px-3 {{#if (compare path '/en/dash-board/create-user')}} active {{/if}}"
+          href="/en/dash-board/create-user">
           Create User
         </a>
-        <a class="management-item py-2 px-3" href="/en/dash-board">
+        <a class="management-item py-2 px-3 {{#if (compare path '/en/dash-board/users')}} active {{/if}}"
+          href="/en/dash-board/users">
           Users Tables
         </a>
         {{else}}

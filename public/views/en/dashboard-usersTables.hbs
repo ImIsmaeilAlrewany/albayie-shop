@@ -1,0 +1,83 @@
+{{>pageHead}}
+{{!-- start dashboard users tables (admin - customer) with filters --}}
+<div class="container-xxl px-0 px-xxl-3">
+  <main class="dashboard-layout">
+    <div class="row">
+      <div class="col-4 col-sm-3 col-md-2 col-lg-3 pe-0 d-lg-block">
+        {{!-- dashboard sidebar --}}
+        {{>en/dashboard.sidebar}}
+        {{!-- dashboard sidebar --}}
+      </div>
+      <div class="col-8 col-sm-9 col-md-10 col-lg-9 px-0 position-relative">
+        {{!-- dashboard header --}}
+        {{>en/dashboard.header}}
+        {{!-- dashboard header --}}
+
+        {{!-- dashboard users tables content --}}
+        <section class="dashboard-users-tables px-3 mb-4">
+          <div class="instructions mb-4">
+            <h4 class="mb-2 p-0">Instructions:</h4>
+            <ul class="ps-3 m-0">
+              <li class="instruction mb-2 p-0">
+                Open the profile page by clicking on it's row.
+              </li>
+              <li class="instruction mb-2 p-0">
+                Keep this data save and don't copy it somewhere else.
+              </li>
+              <li class="instruction mb-2 p-0">
+                Don't edit any user's data without a direct permission.
+              </li>
+            </ul>
+          </div>
+          <div class="admin-table rounded">
+            <h2 class="table-heading m-0 px-3 fs-4 text-capitalize">
+              admins table
+            </h2>
+            <div class="table-responsive p-3">
+              {{!-- div. --}}
+              <table class="table table-bordered table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-nowrap" scope="col">Full name</th>
+                    <th class="text-nowrap" scope="col">Phone number</th>
+                    <th class="text-nowrap" scope="col">Email address</th>
+                    <th class="text-nowrap" scope="col">City name</th>
+                    <th class="text-nowrap" scope="col">Start date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each admins}}
+                  <tr role="button">
+                    <td class="text-nowrap">
+                      {{fullName this.fName this.lName}}
+                    </td>
+                    <td class="text-nowrap">
+                      {{this.phoneNum}}
+                    </td>
+                    <td class="text-nowrap">
+                      {{this.email}}
+                    </td>
+                    <td class="text-nowrap">
+                      {{this.city}}
+                    </td>
+                    <td class="text-nowrap">
+                      {{time this.createdAt}}
+                    </td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        {{!-- dashboard users tables content --}}
+
+        {{!-- dashboard footer --}}
+        {{>en/dashboard.footer}}
+        {{!-- dashboard footer --}}
+      </div>
+    </div>
+  </main>
+</div>
+{{!-- end dashboard users tables (admin - customer) with filters --}}
+{{>pageFoot}}

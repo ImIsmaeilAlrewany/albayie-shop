@@ -64,6 +64,33 @@ class userDashboard {
     }
   };
 
+  static all = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+
+      let admins = await userModel.find({ admin: true });
+      if (admins.length > 10) {
+        admins = admins.slice(0, 10);
+      }
+      let customers = await userModel.find({ admin: false });
+      if (customers.length > 10) {
+        customers = customers.slice(0, 10);
+      }
+
+      res.cookie('last_admin', '10', {
+        httpOnly: true,
+        secure: true
+      });
+      res.cookie('last_customer', '10', {
+        httpOnly: true,
+        secure: true
+      });
+      res.render('en/dashboard-usersTables', { pageTitle: 'Albayie - Dashboard Users\' Tables', user: req.user, path: '/en/dash-board/users', admins, customers });
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
+
 }
 
 
