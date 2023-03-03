@@ -69,23 +69,33 @@ class userDashboard {
       if (!req.user.editor) throw new Error('not editor');
 
       let admins = await userModel.find({ admin: true });
+      const allAdmins = admins.length;
       if (admins.length > 10) {
         admins = admins.slice(0, 10);
       }
+
       let customers = await userModel.find({ admin: false });
+      const allCustomers = admins.length;
       if (customers.length > 10) {
         customers = customers.slice(0, 10);
       }
 
-      res.cookie('last_admin', '10', {
-        httpOnly: true,
-        secure: true
-      });
-      res.cookie('last_customer', '10', {
-        httpOnly: true,
-        secure: true
-      });
-      res.render('en/dashboard-usersTables', { pageTitle: 'Albayie - Dashboard Users\' Tables', user: req.user, path: '/en/dash-board/users', admins, customers });
+      const adminsTableInfo = {
+        fAdminNum: 1,
+        lAdminNum: 10,
+        allAdmins: allAdmins,
+        message: `Showing 1 to 10 of ${allAdmins} entries`
+      };
+      const customersTableInfo = {
+        fCustomerNum: 1,
+        lCustomerNum: 10,
+        allCustomers: allCustomers,
+        message: `Showing 1 to 10 of ${allCustomers} entries`
+      };
+
+      res.cookie('last_admin', 10);
+      res.cookie('last_customer', 10);
+      res.render('en/dashboard-usersTables', { pageTitle: 'Albayie - Dashboard Users\' Tables', user: req.user, path: '/en/dash-board/users', admins, adminsTableInfo, customers, customersTableInfo });
     } catch (err) {
       res.redirect('/en/dash-board');
     }

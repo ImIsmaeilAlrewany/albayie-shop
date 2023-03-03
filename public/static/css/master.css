@@ -1155,6 +1155,57 @@ a {
   background-color: var(--bg-light);
 }
 
+.table-responsive .table-header,
+.table-responsive .table-footer {
+  width: 820px;
+  margin: 0 auto;
+}
+
+.table-responsive .table-header,
+.table-responsive .table-footer,
+.table-responsive .table-header select,
+.table-responsive .table-header input[type="search"] {
+  color: var(--normal-gray);
+}
+
+.table-responsive .table-header select,
+.table-responsive .table-header input[type="search"] {
+  box-shadow: none;
+}
+
+.table-responsive .table-header select:focus,
+.table-responsive .table-header input[type="search"]:focus {
+  border-color: var(--primary);
+}
+
+.table-footer .table-info {
+  color: var(--normal-gray);
+}
+
+.table-footer .pagination li a {
+  color: var(--primary);
+}
+
+.table-footer .pagination li.disabled a {
+  color: var(--light-gray);
+}
+
+@media (min-width: 1200px) {
+
+  .table-responsive .table-header,
+  .table-responsive .table-footer {
+    width: 930px;
+  }
+}
+
+@media (min-width: 1400px) {
+
+  .table-responsive .table-header,
+  .table-responsive .table-footer {
+    width: 990px;
+  }
+}
+
 /* end dashboard users tables content file style */
 
 /* end dashboard content style */
