@@ -88,13 +88,14 @@
                 </div>
                 <div class="col-6 text-end pe-0">
                   <ul class="pagination pagination-sm m-0 p-0 justify-content-end">
-                    <li class="page-item disabled">
+                    <li class="page-item {{#if (compare adminsTableInfo.fAdminNum '1')}} disabled {{/if}}">
                       <a class="page-link" role="button">Previous</a>
                     </li>
                     <li class="page-item">
                       <a class="page-link" role="button">***</a>
                     </li>
-                    <li class="page-item">
+                    <li
+                      class="page-item {{#if (compare adminsTableInfo.lAdminNum adminsTableInfo.allAdmins)}} disabled {{/if}}">
                       <a class="page-link" role="button">Next</a>
                     </li>
                   </ul>

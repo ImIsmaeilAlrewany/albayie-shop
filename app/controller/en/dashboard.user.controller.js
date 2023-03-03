@@ -69,26 +69,26 @@ class userDashboard {
       if (!req.user.editor) throw new Error('not editor');
 
       let admins = await userModel.find({ admin: true });
-      const allAdmins = admins.length;
+      const allAdmins = admins.length.toString();
       if (admins.length > 10) {
         admins = admins.slice(0, 10);
       }
 
       let customers = await userModel.find({ admin: false });
-      const allCustomers = admins.length;
+      const allCustomers = admins.length.toString();
       if (customers.length > 10) {
         customers = customers.slice(0, 10);
       }
 
       const adminsTableInfo = {
-        fAdminNum: 1,
-        lAdminNum: 10,
+        fAdminNum: '1',
+        lAdminNum: '10',
         allAdmins: allAdmins,
         message: `Showing 1 to 10 of ${allAdmins} entries`
       };
       const customersTableInfo = {
-        fCustomerNum: 1,
-        lCustomerNum: 10,
+        fCustomerNum: '1',
+        lCustomerNum: '10',
         allCustomers: allCustomers,
         message: `Showing 1 to 10 of ${allCustomers} entries`
       };
