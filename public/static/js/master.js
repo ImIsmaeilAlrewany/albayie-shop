@@ -212,22 +212,12 @@ const dropdownMessages = document.getElementById('dropdown-messages');
 if (messageToggler) toggleActive(messageToggler, dropdownMessages, true);
 
 
-//showing table information
-// const adminTableInfo = document.getElementById('table-info');
-// let selectCookie = document.cookie.split(';');
-// let lastAdmin;
-// let lastCustomer;
+//table select to show the number of rows in it
+const tableSelect = document.getElementById('table-select');
 
-// if (adminTableInfo) {
-//   selectCookie.forEach(ele => {
-//     if (ele.includes('last_admin'))
-//       lastAdmin = ele.split('=');
-//     if (ele.includes('last_customer'))
-//       lastCustomer = ele.split('=');
-//   });
-//   adminTableInfo.innerHTML =
-//     `Showing ${Number(lastAdmin[1]) - 9} to ${lastAdmin[1]} of `;
-// }
+if (tableSelect) tableSelect.addEventListener('change', () => {
+  sessionStorage.setItem('adminTableSelectValue', tableSelect.value);
+});
 
-
+tableSelect.value = sessionStorage.getItem('adminTableSelectValue') || '10';
 
