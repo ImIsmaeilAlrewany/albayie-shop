@@ -7,6 +7,7 @@ router.post('/login', user.loginLogic);
 router.get('/logout', admin, user.logout);
 router.get('/create-user', admin, user.createUser);
 router.post('/create-user', admin, user.createUserLogic);
-router.get('/users', admin, user.all);
+router.get('/users/getAll', admin, user.all);
+router.get('/users', admin, user.users);
 
 module.exports = router;

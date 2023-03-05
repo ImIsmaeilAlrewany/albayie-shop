@@ -212,12 +212,61 @@ const dropdownMessages = document.getElementById('dropdown-messages');
 if (messageToggler) toggleActive(messageToggler, dropdownMessages, true);
 
 
-//table select to show the number of rows in it
-const tableSelect = document.getElementById('table-select');
 
-if (tableSelect) tableSelect.addEventListener('change', () => {
-  sessionStorage.setItem('adminTableSelectValue', tableSelect.value);
+//get data by fetching it and filter it functions
+const adminTable = document.querySelector('#admin-table tbody');
+const adminTableSelect = document.getElementById('admin-table-select');
+// const adminTableSearch = document.getElementById('admin-search-admin');
+const adminTableInfo = document.getElementById('admin-table-info');
+// const adminTablePrevious = document.getElementById('admin-table-previous');
+// const adminTableNext = document.getElementById('admin-table-next');
+
+const createRow = (data) => {
+  const tr = document.createElement('tr');
+  const tdContent = [`${data.fName} ${data.lName}`, data.phoneNum, data.email, data.city || 'no address', data.createdAt.split('T')[0]];
+
+  tdContent.forEach(content => {
+    const cell = document.createElement('td');
+    cell.innerHTML = content;
+    cell.classList.add('text-nowrap');
+    tr.appendChild(cell);
+  });
+
+  tr.setAttribute('role', 'button');
+  adminTable.appendChild(tr);
+};
+
+let showAdmins;
+if (adminTableSelect) adminTableSelect.addEventListener('change', () => {
+  showAdmins = +adminTableSelect.value;
+  adminTable.innerHTML = '';
+  getAllUsers();
 });
 
-tableSelect.value = sessionStorage.getItem('adminTableSelectValue') || '10';
+const getAllUsers = async () => {
+  const res = await fetch(`http://127.0.0.1:3000/en/dash-board/users/getAll`, {
+    method: 'GET'
+  });
+  try {
+    const data = await res.json();
+    const showAdminsNumber = showAdmins || +adminTableSelect.value;
+    let allAdmins = data.admins;
+
+    if (showAdminsNumber < allAdmins.length) {
+      allAdmins = data.admins.slice(0, showAdminsNumber);
+    } else {
+      //next will be disabled and previous too
+    }
+
+    allAdmins.forEach(admin => {
+      createRow(admin);
+    });
+
+    adminTableInfo.innerHTML = `Showing ${1} to ${allAdmins.length} of ${data.admins.length} entires`;
+  } catch (err) {
+    console.log('error', err);
+  }
+};
+
+if (adminTable) getAllUsers();
 

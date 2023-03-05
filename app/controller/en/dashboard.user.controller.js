@@ -67,35 +67,20 @@ class userDashboard {
   static all = async (req, res) => {
     try {
       if (!req.user.editor) throw new Error('not editor');
+      const admins = await userModel.find({ admin: true });
+      const customers = await userModel.find({ admin: false });
 
-      let admins = await userModel.find({ admin: true });
-      const allAdmins = admins.length.toString();
-      if (admins.length > 10) {
-        admins = admins.slice(0, 10);
-      }
+      res.status(200).json({ admins, customers });
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
 
-      let customers = await userModel.find({ admin: false });
-      const allCustomers = admins.length.toString();
-      if (customers.length > 10) {
-        customers = customers.slice(0, 10);
-      }
+  static users = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
 
-      const adminsTableInfo = {
-        fAdminNum: '1',
-        lAdminNum: '10',
-        allAdmins: allAdmins,
-        message: `Showing 1 to 10 of ${allAdmins} entries`
-      };
-      const customersTableInfo = {
-        fCustomerNum: '1',
-        lCustomerNum: '10',
-        allCustomers: allCustomers,
-        message: `Showing 1 to 10 of ${allCustomers} entries`
-      };
-
-      res.cookie('last_admin', 10);
-      res.cookie('last_customer', 10);
-      res.render('en/dashboard-usersTables', { pageTitle: 'Albayie - Dashboard Users\' Tables', user: req.user, path: '/en/dash-board/users', admins, adminsTableInfo, customers, customersTableInfo });
+      res.render('en/dashboard-usersTables', { pageTitle: 'Albayie - Dashboard Users\' Tables', user: req.user, path: '/en/dash-board/users' });
     } catch (err) {
       res.redirect('/en/dash-board');
     }

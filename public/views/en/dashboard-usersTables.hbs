@@ -36,21 +36,21 @@
             <div class="table-responsive p-3">
               <div class="table-header row">
                 <div class="col-6 text-start bg-white ps-0">
-                  <label class="select-label" for="rows-number">Show</label>
-                  <select id="table-select" class="form-select form-select-sm w-auto d-inline-block" name="show">
+                  <label class="admin-select-label" for="rows-number">Show</label>
+                  <select id="admin-table-select" class="form-select form-select-sm w-auto d-inline-block" name="show">
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
                   </select>
-                  <label class="select-label" for="rows-number">entries</label>
+                  <label class="admin-select-label" for="rows-number">entries</label>
                 </div>
                 <div class="col-6 text-end pe-0">
-                  <label for="search-admin" class="search-label">Search: </label>
-                  <input id="search-admin" type="search" class="form-control form-control-sm w-50 d-inline-block"
+                  <label for="admin-search-admin" class="search-label">Search: </label>
+                  <input id="admin-search-admin" type="search" class="form-control form-control-sm w-50 d-inline-block"
                     placeholder="" aria-controls="dataTable" name="searchAdmin">
                 </div>
               </div>
-              <table class="table table-bordered table-hover my-3">
+              <table id="admin-table" class="table table-bordered table-hover my-3">
                 <thead>
                   <tr>
                     <th class="text-nowrap" scope="col">Full name</th>
@@ -60,43 +60,22 @@
                     <th class="text-nowrap" scope="col">Start date</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {{#each admins}}
-                  <tr role="button">
-                    <td class="text-nowrap">
-                      {{fullName this.fName this.lName}}
-                    </td>
-                    <td class="text-nowrap">
-                      {{this.phoneNum}}
-                    </td>
-                    <td class="text-nowrap">
-                      {{this.email}}
-                    </td>
-                    <td class="text-nowrap">
-                      {{this.city}}
-                    </td>
-                    <td class="text-nowrap">
-                      {{time this.createdAt}}
-                    </td>
-                  </tr>
-                  {{/each}}
-                </tbody>
+                <tbody></tbody>
               </table>
               <div class="table-footer row">
                 <div class="col-6 text-start bg-white ps-0">
-                  <p class="table-info m-0 p-0">{{adminsTableInfo.message}}</p>
+                  <p id="admin-table-info" class="table-info m-0 p-0"></p>
                 </div>
                 <div class="col-6 text-end pe-0">
                   <ul class="pagination pagination-sm m-0 p-0 justify-content-end">
-                    <li class="page-item {{#if (compare adminsTableInfo.fAdminNum '1')}} disabled {{/if}}">
-                      <a class="page-link" role="button">Previous</a>
+                    <li class="page-item disabled">
+                      <a id="admin-table-previous" class="page-link" role="button">Previous</a>
                     </li>
                     <li class="page-item">
                       <a class="page-link" role="button">***</a>
                     </li>
-                    <li
-                      class="page-item {{#if (compare adminsTableInfo.lAdminNum adminsTableInfo.allAdmins)}} disabled {{/if}}">
-                      <a class="page-link" role="button">Next</a>
+                    <li class="page-item">
+                      <a id="admin-table-next" class="page-link" role="button">Next</a>
                     </li>
                   </ul>
                 </div>
