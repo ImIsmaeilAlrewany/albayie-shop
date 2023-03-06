@@ -1,0 +1,96 @@
+{{>pageHead}}
+{{!-- start dashboard users tables (admin - customer) with filters --}}
+<div class="container-xxl px-0 px-xxl-3">
+  <main class="dashboard-layout">
+    <div class="row">
+      <div class="col-4 col-sm-3 col-md-2 col-lg-3 pe-0 d-lg-block">
+        {{!-- dashboard sidebar --}}
+        {{>en/dashboard.sidebar}}
+        {{!-- dashboard sidebar --}}
+      </div>
+      <div class="col-8 col-sm-9 col-md-10 col-lg-9 px-0 position-relative">
+        {{!-- dashboard header --}}
+        {{>en/dashboard.header}}
+        {{!-- dashboard header --}}
+
+        {{!-- dashboard users tables content --}}
+        <section class="dashboard-users-tables px-3 mb-4">
+          <div class="instructions mb-4">
+            <h4 class="mb-2 p-0">Instructions:</h4>
+            <ul class="ps-3 m-0">
+              <li class="instruction mb-2 p-0">
+                Open the profile page by clicking on it's row.
+              </li>
+              <li class="instruction mb-2 p-0">
+                Keep this data save and don't copy it somewhere else.
+              </li>
+              <li class="instruction mb-2 p-0">
+                Don't edit any user's data without a direct permission.
+              </li>
+            </ul>
+          </div>
+          <div class="admin-table rounded">
+            <h2 class="table-heading m-0 px-3 fs-4 text-capitalize">
+              customers table
+            </h2>
+            <div class="table-responsive p-3">
+              <div class="table-header row">
+                <div class="col-6 text-start bg-white ps-0">
+                  <label class="admin-select-label" for="rows-number">Show</label>
+                  <select id="admin-table-select" class="form-select form-select-sm w-auto d-inline-block" name="show">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                  </select>
+                  <label class="admin-select-label" for="rows-number">entries</label>
+                </div>
+                <div class="col-6 text-end pe-0">
+                  <label for="admin-search-admin" class="search-label">Search: </label>
+                  <input id="admin-search-admin" type="search" class="form-control form-control-sm w-50 d-inline-block"
+                    placeholder="" aria-controls="dataTable" name="searchAdmin">
+                </div>
+              </div>
+              <table id="admin-table" class="table table-bordered table-hover my-3">
+                <thead>
+                  <tr>
+                    <th class="text-nowrap" scope="col">Full name</th>
+                    <th class="text-nowrap" scope="col">Phone number</th>
+                    <th class="text-nowrap" scope="col">Email address</th>
+                    <th class="text-nowrap" scope="col">City name</th>
+                    <th class="text-nowrap" scope="col">Start date</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <div class="table-footer row">
+                <div class="col-6 text-start bg-white ps-0">
+                  <p id="admin-table-info" class="table-info m-0 p-0"></p>
+                </div>
+                <div class="col-6 text-end pe-0">
+                  <ul class="pagination pagination-sm m-0 p-0 justify-content-end">
+                    <li class="page-item">
+                      <a id="admin-table-previous" class="page-link" role="button">Previous</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" role="button">***</a>
+                    </li>
+                    <li class="page-item">
+                      <a id="admin-table-next" class="page-link" role="button">Next</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {{!-- dashboard users tables content --}}
+
+        {{!-- dashboard footer --}}
+        {{>en/dashboard.footer}}
+        {{!-- dashboard footer --}}
+      </div>
+    </div>
+  </main>
+</div>
+{{!-- end dashboard users tables (admin - customer) with filters --}}
+{{>pageFoot}}

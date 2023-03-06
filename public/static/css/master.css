@@ -834,9 +834,13 @@ a {
   }
 
   .dashboard-sidebar .nav-item .management.active {
-    height: 155px;
+    height: 190px;
     padding: 8px 0 !important;
     margin-top: 8px;
+  }
+
+  .dashboard-sidebar .nav-item .products-management.active {
+    height: 155px;
   }
 
   .dashboard-sidebar .nav-item .orders-management.active {

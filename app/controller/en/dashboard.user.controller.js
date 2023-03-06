@@ -72,10 +72,10 @@ class userDashboard {
       if (req.query.searchAdmin != 'undefined' && req.query.searchAdmin != '') {
         admins = await userModel.find({
           $or: [
-            { fName: { $regex: req.query.searchAdmin } },
-            { lName: { $regex: req.query.searchAdmin } },
-            { phoneNum: { $regex: req.query.searchAdmin } },
-            { email: { $regex: req.query.searchAdmin } },
+            { fName: { $regex: req.query.searchAdmin }, admin: true },
+            { lName: { $regex: req.query.searchAdmin }, admin: true },
+            { phoneNum: { $regex: req.query.searchAdmin }, admin: true },
+            { email: { $regex: req.query.searchAdmin }, admin: true },
           ]
         });
       } else {
@@ -92,7 +92,41 @@ class userDashboard {
     try {
       if (!req.user.editor) throw new Error('not editor');
 
-      res.render('en/dashboard-usersTables', { pageTitle: 'Albayie - Dashboard Admins\' Table', user: req.user, path: '/en/dash-board/users/admin' });
+      res.render('en/dashboard-adminsTable', { pageTitle: 'Albayie - Dashboard Admins\' Table', user: req.user, path: '/en/dash-board/users/admin' });
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
+
+  static customers = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+      let customers;
+
+      if (req.query.searchCustomer != 'undefined' && req.query.searchCustomer != '') {
+        customers = await userModel.find({
+          $or: [
+            { fName: { $regex: req.query.searchCustomer }, admin: false },
+            { lName: { $regex: req.query.searchCustomer }, admin: false },
+            { phoneNum: { $regex: req.query.searchCustomer }, admin: false },
+            { email: { $regex: req.query.searchCustomer }, admin: false },
+          ]
+        });
+      } else {
+        customers = await userModel.find({ admin: false });
+      }
+
+      res.status(200).json({ customers });
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
+
+  static customersTable = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+
+      res.render('en/dashboard-customersTable', { pageTitle: 'Albayie - Dashboard Customers\' Table', user: req.user, path: '/en/dash-board/users/customer' });
     } catch (err) {
       res.redirect('/en/dash-board');
     }

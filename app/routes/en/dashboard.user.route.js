@@ -9,5 +9,7 @@ router.get('/create-user', admin, user.createUser);
 router.post('/create-user', admin, user.createUserLogic);
 router.get('/users/getAllAdmins', admin, user.admins);
 router.get('/users/admin', admin, user.adminsTable);
+router.get('/users/getAllCustomers', admin, user.customers);
+router.get('/users/customer', admin, user.customersTable);
 
 module.exports = router;
