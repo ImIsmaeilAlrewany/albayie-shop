@@ -216,10 +216,10 @@ if (messageToggler) toggleActive(messageToggler, dropdownMessages, true);
 //get data by fetching it and filter it functions
 const adminTable = document.querySelector('#admin-table tbody');
 const adminTableSelect = document.getElementById('admin-table-select');
-// const adminTableSearch = document.getElementById('admin-search-admin');
+const adminTableSearch = document.getElementById('admin-search-admin');
 const adminTableInfo = document.getElementById('admin-table-info');
-// const adminTablePrevious = document.getElementById('admin-table-previous');
-// const adminTableNext = document.getElementById('admin-table-next');
+const adminTablePrevious = document.getElementById('admin-table-previous');
+const adminTableNext = document.getElementById('admin-table-next');
 
 const createRow = (data) => {
   const tr = document.createElement('tr');
@@ -236,37 +236,100 @@ const createRow = (data) => {
   adminTable.appendChild(tr);
 };
 
+//search option
+let searchValue;
+if (adminTableSearch) adminTableSearch.addEventListener('input', () => {
+  searchValue = adminTableSearch.value;
+  adminTable.innerHTML = '';
+  getAllUsers(false, false, searchValue);
+});
+
+//table rows adjust
 let showAdmins;
 if (adminTableSelect) adminTableSelect.addEventListener('change', () => {
   showAdmins = +adminTableSelect.value;
   adminTable.innerHTML = '';
-  getAllUsers();
+  getAllUsers(false, false, searchValue);
 });
 
-const getAllUsers = async () => {
-  const res = await fetch(`http://127.0.0.1:3000/en/dash-board/users/getAll`, {
+
+const getAllUsers = async (previous, next, searchAdmin) => {
+  const res = await fetch(`http://127.0.0.1:3000/en/dash-board/users/getAllAdmins?searchAdmin=${searchAdmin}`, {
     method: 'GET'
   });
   try {
     const data = await res.json();
     const showAdminsNumber = showAdmins || +adminTableSelect.value;
     let allAdmins = data.admins;
+    console.log(searchAdmin);
+
+    if (allAdmins.length === 0) {
+      adminTable.innerHTML =
+        '<tr class="text-muted text-center"><td colspan="5">No matching records found</td></tr>';
+    }
 
     if (showAdminsNumber < allAdmins.length) {
-      allAdmins = data.admins.slice(0, showAdminsNumber);
+      if (next) {
+        lastLength = sessionStorage.getItem('showAdmins');
+        allAdmins = data.admins.slice(+lastLength, (+lastLength + showAdminsNumber));
+        sessionStorage.setItem('lastAdmin', +lastLength + allAdmins.length);
+        adminTablePrevious.parentElement.classList.remove('disabled');
+
+        if (data.admins.length <= (+lastLength + showAdminsNumber)) {
+          adminTableNext.parentElement.classList.add('disabled');
+        } else {
+          lastLength = sessionStorage.setItem('showAdmins', +lastLength + showAdminsNumber);
+        }
+      } else if (previous) {
+        lastLength = sessionStorage.getItem('showAdmins');
+        allAdmins = data.admins.slice((+lastLength - showAdminsNumber), showAdminsNumber);
+        sessionStorage.setItem('lastAdmin', +lastLength);
+        adminTableNext.parentElement.classList.remove('disabled');
+
+        if (+lastLength === showAdminsNumber) {
+          adminTablePrevious.parentElement.classList.add('disabled');
+        } else {
+          sessionStorage.setItem('showAdmins', +lastLength - allAdmins.length);
+        }
+      } else {
+        allAdmins = data.admins.slice(0, showAdminsNumber);
+        sessionStorage.setItem('showAdmins', allAdmins.length);
+        sessionStorage.setItem('lastAdmin', allAdmins.length);
+        adminTablePrevious.parentElement.classList.add('disabled');
+        adminTableNext.parentElement.classList.remove('disabled');
+      }
     } else {
-      //next will be disabled and previous too
+      sessionStorage.setItem('showAdmins', data.admins.length);
+      sessionStorage.setItem('lastAdmin', data.admins.length);
+      adminTablePrevious.parentElement.classList.add('disabled');
+      adminTableNext.parentElement.classList.add('disabled');
     }
 
     allAdmins.forEach(admin => {
       createRow(admin);
     });
 
-    adminTableInfo.innerHTML = `Showing ${1} to ${allAdmins.length} of ${data.admins.length} entires`;
+    if (allAdmins.length !== 0) {
+      adminTableInfo.innerHTML = `Showing ${+sessionStorage.getItem('showAdmins') - (allAdmins.length - 1)} to ${+sessionStorage.getItem('lastAdmin')} of ${data.admins.length} entires`;
+    } else {
+      adminTableInfo.innerHTML = `Showing 0 to 0 of 0 entires`;
+    }
   } catch (err) {
     console.log('error', err);
   }
 };
 
 if (adminTable) getAllUsers();
+
+//show previous
+if (adminTablePrevious) adminTablePrevious.addEventListener('click', () => {
+  adminTable.innerHTML = '';
+  getAllUsers(true, false, searchValue);
+});
+
+//show next
+if (adminTableNext) adminTableNext.addEventListener('click', () => {
+  adminTable.innerHTML = '';
+  getAllUsers(false, true, searchValue);
+});
 

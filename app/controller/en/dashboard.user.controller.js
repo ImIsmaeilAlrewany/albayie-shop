@@ -64,23 +64,35 @@ class userDashboard {
     }
   };
 
-  static all = async (req, res) => {
+  static admins = async (req, res) => {
     try {
       if (!req.user.editor) throw new Error('not editor');
-      const admins = await userModel.find({ admin: true });
-      const customers = await userModel.find({ admin: false });
+      let admins;
 
-      res.status(200).json({ admins, customers });
+      if (req.query.searchAdmin != 'undefined' && req.query.searchAdmin != '') {
+        admins = await userModel.find({
+          $or: [
+            { fName: { $regex: req.query.searchAdmin } },
+            { lName: { $regex: req.query.searchAdmin } },
+            { phoneNum: { $regex: req.query.searchAdmin } },
+            { email: { $regex: req.query.searchAdmin } },
+          ]
+        });
+      } else {
+        admins = await userModel.find({ admin: true });
+      }
+
+      res.status(200).json({ admins });
     } catch (err) {
       res.redirect('/en/dash-board');
     }
   };
 
-  static users = async (req, res) => {
+  static adminsTable = async (req, res) => {
     try {
       if (!req.user.editor) throw new Error('not editor');
 
-      res.render('en/dashboard-usersTables', { pageTitle: 'Albayie - Dashboard Users\' Tables', user: req.user, path: '/en/dash-board/users' });
+      res.render('en/dashboard-usersTables', { pageTitle: 'Albayie - Dashboard Admins\' Table', user: req.user, path: '/en/dash-board/users/admin' });
     } catch (err) {
       res.redirect('/en/dash-board');
     }
