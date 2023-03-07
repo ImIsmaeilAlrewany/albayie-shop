@@ -1141,17 +1141,20 @@ a {
   list-style-type: disc;
 }
 
-.dashboard-users-tables .admin-table {
+.dashboard-users-tables .admin-table,
+.dashboard-users-tables .customer-table {
   border: 1px solid var(--bg-light-gray);
   box-shadow: var(--shadow);
 }
 
-.dashboard-users-tables .admin-table tr td {
+.dashboard-users-tables .admin-table tr td,
+.dashboard-users-tables .customer-table tr td {
   color: var(--normal-gray);
   /* font-size: var(--font-size-light); */
 }
 
-.dashboard-users-tables .admin-table .table-heading {
+.dashboard-users-tables .admin-table .table-heading,
+.dashboard-users-tables .customer-table .table-heading {
   color: var(--primary);
   border-bottom: 1px solid var(--bg-light-gray);
   padding-top: 12px;

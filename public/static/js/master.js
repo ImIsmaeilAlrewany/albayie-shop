@@ -214,6 +214,8 @@ if (messageToggler) toggleActive(messageToggler, dropdownMessages, true);
 
 
 //get data by fetching it and filter it functions
+
+//select all adminTable elements
 const adminTable = document.querySelector('#admin-table tbody');
 const adminTableSelect = document.getElementById('admin-table-select');
 const adminTableSearch = document.getElementById('admin-search-admin');
@@ -221,7 +223,15 @@ const adminTableInfo = document.getElementById('admin-table-info');
 const adminTablePrevious = document.getElementById('admin-table-previous');
 const adminTableNext = document.getElementById('admin-table-next');
 
-const createRow = (data) => {
+//select all customerTable elements
+const customerTable = document.querySelector('#customer-table tbody');
+const customerTableSelect = document.getElementById('customer-table-select');
+const customerTableSearch = document.getElementById('customer-search-admin');
+const customerTableInfo = document.getElementById('customer-table-info');
+const customerTablePrevious = document.getElementById('customer-table-previous');
+const customerTableNext = document.getElementById('customer-table-next');
+
+const createRow = (table, data, url) => {
   const tr = document.createElement('tr');
   const tdContent = [`${data.fName} ${data.lName}`, data.phoneNum, data.email, data.city || 'no address', data.createdAt.split('T')[0]];
 
@@ -233,35 +243,41 @@ const createRow = (data) => {
   });
 
   tr.setAttribute('role', 'button');
-  adminTable.appendChild(tr);
+  table.appendChild(tr);
+
+  //open user profile when click on it's row
+  tr.addEventListener('click', async () => {
+    location.href = url;
+  });
 };
 
-//search option
-let searchValue;
+
+//admin table activation
+//search option in admin table
+let searchAdminValue;
 if (adminTableSearch) adminTableSearch.addEventListener('input', () => {
-  searchValue = adminTableSearch.value;
+  searchAdminValue = adminTableSearch.value;
   adminTable.innerHTML = '';
-  getAllUsers(false, false, searchValue);
+  getAllAdmins(false, false, searchAdminValue);
 });
 
-//table rows adjust
+//table rows adjust in admin table
 let showAdmins;
 if (adminTableSelect) adminTableSelect.addEventListener('change', () => {
   showAdmins = +adminTableSelect.value;
   adminTable.innerHTML = '';
-  getAllUsers(false, false, searchValue);
+  getAllAdmins(false, false, searchAdminValue);
 });
 
 
-const getAllUsers = async (previous, next, searchAdmin) => {
-  const res = await fetch(`http://127.0.0.1:3000/en/dash-board/users/getAllAdmins?searchAdmin=${searchAdmin}`, {
+const getAllAdmins = async (previous, next, search) => {
+  const res = await fetch(`http://127.0.0.1:3000/en/dash-board/users/getAllAdmins` + `?search=${search}`, {
     method: 'GET'
   });
   try {
     const data = await res.json();
     const showAdminsNumber = showAdmins || +adminTableSelect.value;
     let allAdmins = data.admins;
-    console.log(searchAdmin);
 
     if (allAdmins.length === 0) {
       adminTable.innerHTML =
@@ -306,7 +322,7 @@ const getAllUsers = async (previous, next, searchAdmin) => {
     }
 
     allAdmins.forEach(admin => {
-      createRow(admin);
+      createRow(adminTable, admin, `http://127.0.0.1:3000/en/dash-board/users/admin/profile/${admin._id}`);
     });
 
     if (allAdmins.length !== 0) {
@@ -319,17 +335,116 @@ const getAllUsers = async (previous, next, searchAdmin) => {
   }
 };
 
-if (adminTable) getAllUsers();
+if (adminTable) getAllAdmins();
 
-//show previous
+//show previous in admin table
 if (adminTablePrevious) adminTablePrevious.addEventListener('click', () => {
   adminTable.innerHTML = '';
-  getAllUsers(true, false, searchValue);
+  getAllAdmins(true, false, searchAdminValue);
 });
 
-//show next
+//show next in admin table
 if (adminTableNext) adminTableNext.addEventListener('click', () => {
   adminTable.innerHTML = '';
-  getAllUsers(false, true, searchValue);
+  getAllAdmins(false, true, searchAdminValue);
 });
+
+
+//customer table activation
+//search option in customer table
+let searchCustomerValue;
+if (customerTableSearch) customerTableSearch.addEventListener('input', () => {
+  searchCustomerValue = customerTableSearch.value;
+  customerTable.innerHTML = '';
+  getAllCustomers(false, false, searchCustomerValue);
+});
+
+//table rows adjust in customer table
+let showCustomers;
+if (customerTableSelect) customerTableSelect.addEventListener('change', () => {
+  showCustomers = +customerTableSelect.value;
+  customerTable.innerHTML = '';
+  getAllCustomers(false, false, searchCustomerValue);
+});
+
+
+const getAllCustomers = async (previous, next, search) => {
+  const res = await fetch(`http://127.0.0.1:3000/en/dash-board/users/getAllCustomers` + `?search=${search}`, {
+    method: 'GET'
+  });
+  try {
+    const data = await res.json();
+    const showCustomersNumber = showCustomers || +customerTableSelect.value;
+    let allCustomers = data.customers;
+
+    if (allCustomers.length === 0) {
+      customerTable.innerHTML =
+        '<tr class="text-muted text-center"><td colspan="5">No matching records found</td></tr>';
+    }
+
+    if (showCustomersNumber < allCustomers.length) {
+      if (next) {
+        lastLength = sessionStorage.getItem('showCustomers');
+        allCustomers = data.customers.slice(+lastLength, (+lastLength + showCustomersNumber));
+        sessionStorage.setItem('lastAdmin', +lastLength + allCustomers.length);
+        customerTablePrevious.parentElement.classList.remove('disabled');
+
+        if (data.customers.length <= (+lastLength + showCustomersNumber)) {
+          customerTableNext.parentElement.classList.add('disabled');
+        } else {
+          lastLength = sessionStorage.setItem('showCustomers', +lastLength + showCustomersNumber);
+        }
+      } else if (previous) {
+        lastLength = sessionStorage.getItem('showCustomers');
+        allCustomers = data.customers.slice((+lastLength - showCustomersNumber), showCustomersNumber);
+        sessionStorage.setItem('lastCustomer', +lastLength);
+        customerTableNext.parentElement.classList.remove('disabled');
+
+        if (+lastLength === showCustomersNumber) {
+          customerTablePrevious.parentElement.classList.add('disabled');
+        } else {
+          sessionStorage.setItem('showCustomers', +lastLength - allCustomers.length);
+        }
+      } else {
+        allCustomers = data.customers.slice(0, showCustomersNumber);
+        sessionStorage.setItem('showCustomers', allCustomers.length);
+        sessionStorage.setItem('lastCustomer', allCustomers.length);
+        customerTablePrevious.parentElement.classList.add('disabled');
+        customerTableNext.parentElement.classList.remove('disabled');
+      }
+    } else {
+      sessionStorage.setItem('showCustomers', data.customers.length);
+      sessionStorage.setItem('lastCustomer', data.customers.length);
+      customerTablePrevious.parentElement.classList.add('disabled');
+      customerTableNext.parentElement.classList.add('disabled');
+    }
+
+    allCustomers.forEach(customer => {
+      createRow(customerTable, customer, `http://127.0.0.1:3000/en/dash-board/users/customer/profile/${customer._id}`);
+    });
+
+    if (allCustomers.length !== 0) {
+      customerTableInfo.innerHTML = `Showing ${+sessionStorage.getItem('showCustomers') - (allCustomers.length - 1)} to ${+sessionStorage.getItem('lastCustomer')} of ${data.customers.length} entires`;
+    } else {
+      customerTableInfo.innerHTML = `Showing 0 to 0 of 0 entires`;
+    }
+  } catch (err) {
+    console.log('error', err);
+  }
+};
+
+if (customerTable) getAllCustomers();
+
+//show previous in customer table
+if (customerTablePrevious) customerTablePrevious.addEventListener('click', () => {
+  customerTable.innerHTML = '';
+  getAllCustomers(true, false, searchCustomerValue);
+});
+
+//show next in customer table
+if (customerTableNext) customerTableNext.addEventListener('click', () => {
+  customerTable.innerHTML = '';
+  getAllCustomers(false, true, searchCustomerValue);
+});
+
 

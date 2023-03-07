@@ -69,13 +69,13 @@ class userDashboard {
       if (!req.user.editor) throw new Error('not editor');
       let admins;
 
-      if (req.query.searchAdmin != 'undefined' && req.query.searchAdmin != '') {
+      if (req.query.search != 'undefined' && req.query.searchAdmin != '') {
         admins = await userModel.find({
           $or: [
-            { fName: { $regex: req.query.searchAdmin }, admin: true },
-            { lName: { $regex: req.query.searchAdmin }, admin: true },
-            { phoneNum: { $regex: req.query.searchAdmin }, admin: true },
-            { email: { $regex: req.query.searchAdmin }, admin: true },
+            { fName: { $regex: req.query.search }, admin: true },
+            { lName: { $regex: req.query.search }, admin: true },
+            { phoneNum: { $regex: req.query.search }, admin: true },
+            { email: { $regex: req.query.search }, admin: true },
           ]
         });
       } else {
@@ -103,13 +103,13 @@ class userDashboard {
       if (!req.user.editor) throw new Error('not editor');
       let customers;
 
-      if (req.query.searchCustomer != 'undefined' && req.query.searchCustomer != '') {
+      if (req.query.search != 'undefined' && req.query.search != '') {
         customers = await userModel.find({
           $or: [
-            { fName: { $regex: req.query.searchCustomer }, admin: false },
-            { lName: { $regex: req.query.searchCustomer }, admin: false },
-            { phoneNum: { $regex: req.query.searchCustomer }, admin: false },
-            { email: { $regex: req.query.searchCustomer }, admin: false },
+            { fName: { $regex: req.query.search }, admin: false },
+            { lName: { $regex: req.query.search }, admin: false },
+            { phoneNum: { $regex: req.query.search }, admin: false },
+            { email: { $regex: req.query.search }, admin: false },
           ]
         });
       } else {
