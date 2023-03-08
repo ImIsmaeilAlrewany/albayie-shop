@@ -1131,18 +1131,21 @@ a {
 /* start dashboard content style */
 
 /* start dashboard users tables content file style */
-.dashboard-users-tables .instructions {
+.dashboard-users-tables .instructions,
+.dashboard-user-profile .instructions {
   color: var(--gray);
   font-size: var(--font-size-light);
 }
 
-.dashboard-users-tables .instructions ul {
+.dashboard-users-tables .instructions ul,
+.dashboard-user-profile .instructions ul {
   color: var(--light-gray);
   list-style-type: disc;
 }
 
 .dashboard-users-tables .admin-table,
-.dashboard-users-tables .customer-table {
+.dashboard-users-tables .customer-table,
+.dashboard-user-profile .profile {
   border: 1px solid var(--bg-light-gray);
   box-shadow: var(--shadow);
 }
@@ -1154,7 +1157,8 @@ a {
 }
 
 .dashboard-users-tables .admin-table .table-heading,
-.dashboard-users-tables .customer-table .table-heading {
+.dashboard-users-tables .customer-table .table-heading,
+.dashboard-user-profile .profile .profile-heading {
   color: var(--primary);
   border-bottom: 1px solid var(--bg-light-gray);
   padding-top: 12px;
@@ -1214,6 +1218,120 @@ a {
 }
 
 /* end dashboard users tables content file style */
+
+/* start dashboard users profile content file style  */
+
+.dashboard-user-profile .profile .profile-heading button {
+  color: var(--primary);
+}
+
+.dashboard-user-profile .profile .profile-pic>div {
+  width: fit-content;
+}
+
+.dashboard-user-profile .profile .profile-pic img {
+  width: 90px;
+  height: 90px;
+}
+
+.dashboard-user-profile .profile .profile-pic span {
+  top: -5px;
+  right: -5px;
+}
+
+.dashboard-user-profile .profile .add-picture label,
+.dashboard-user-profile .profile .user-data-form button {
+  color: #fff;
+  background-color: var(--primary);
+  font-size: 10px;
+  padding: 5px 10px;
+}
+
+.dashboard-user-profile .profile .add-picture p {
+  font-size: 10px;
+  color: var(--normal-gray);
+}
+
+.dashboard-user-profile .profile .profile-data h2 {
+  color: var(--normal-gray);
+  font-size: 16px;
+}
+
+.dashboard-user-profile .profile .profile-data h2+p {
+  font-size: var(--font-size-lightest);
+  color: var(--light-gray);
+}
+
+.dashboard-user-profile .profile .profile-data .form-check input {
+  margin-top: .35em;
+}
+
+.dashboard-user-profile .profile .profile-data .form-check label {
+  font-size: var(--font-size-light);
+}
+
+.dashboard-user-profile .profile .profile-data input {
+  box-shadow: none;
+  color: var(--light-gray);
+}
+
+.dashboard-user-profile .profile .profile-data input:disabled {
+  background-color: var(--bg-light);
+  color: var(--gray);
+}
+
+.dashboard-user-profile .profile .profile-data input:focus {
+  border-color: var(--primary);
+}
+
+.dashboard-user-profile .profile .profile-data input::placeholder {
+  transition: 0.3s;
+  opacity: 1;
+}
+
+.dashboard-user-profile .profile .profile-data input:focus::placeholder {
+  opacity: 0;
+}
+
+.dashboard-user-profile .profile .profile-data input[type="checkbox"]:checked {
+  background-color: var(--primary);
+  border-color: var(--light-gray);
+}
+
+.dashboard-user-profile .profile .user-data-form button {
+  border: 1px solid var(--primary);
+}
+
+@media (min-width: 768px) {
+  .dashboard-user-profile .profile .profile-pic img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .dashboard-user-profile .profile .add-picture label,
+  .dashboard-user-profile .profile .user-data-form button {
+    font-size: var(--font-size-light);
+    padding: 6px 12px;
+  }
+
+  .dashboard-user-profile .profile .add-picture p {
+    font-size: var(--font-size-light);
+  }
+
+  .dashboard-user-profile .profile .profile-data h2 {
+    font-size: 24px;
+  }
+
+  .dashboard-user-profile .profile .profile-data input {
+    max-width: 450px;
+  }
+
+  .dashboard-user-profile .profile .profile-data span+input {
+    max-width: 405px;
+  }
+}
+
+/* end dashboard users profile content file style  */
 
 /* end dashboard content style */
 

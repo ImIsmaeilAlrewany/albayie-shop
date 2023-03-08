@@ -15,7 +15,7 @@
     </li>
     <li class="nav-item">
       <a id="sidebar-users-button"
-        class="nav-link text-center p-0 {{#if (or path '/en/dash-board/create-user' '/en/dash-board/users/admin' '/en/dash-board/users/customer')}} active text-white {{/if}}"
+        class="nav-link text-center p-0 {{#if (or path '/en/dash-board/create-user' '/en/dash-board/users/admin' '/en/dash-board/users/customer')}} active text-white {{/if}} {{#if (compare path '/en/dash-board/users')}} text-white {{/if}}"
         role="button">
         <i class="fa-solid fa-users"></i>
         <span class="d-lg-inline-block d-block">Users</span>
