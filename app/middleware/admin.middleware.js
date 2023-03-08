@@ -15,7 +15,7 @@ const admin = async (req, res, next) => {
     next();
   } catch (err) {
     res.clearCookie('Authorization');
-    res.redirect('dash-board/login');
+    res.redirect('/en/dash-board/login');
   }
 };
 

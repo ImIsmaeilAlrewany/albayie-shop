@@ -132,6 +132,17 @@ class userDashboard {
     }
   };
 
+  static getProfile = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+
+      const userData = await userModel.findOne({ _id: req.params.id });
+      res.render('en/dashboard-userProfile', { pageTitle: `Albayie - Dashboard - ${userData.fName} ${userData.lName}'s Profile`, user: userData });
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
+
 }
 
 
