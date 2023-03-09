@@ -1258,7 +1258,7 @@ a {
 }
 
 .dashboard-user-profile .profile .profile-data h2+p {
-  font-size: var(--font-size-lightest);
+  font-size: 12px;
   color: var(--light-gray);
 }
 
@@ -1270,17 +1270,31 @@ a {
   font-size: var(--font-size-light);
 }
 
-.dashboard-user-profile .profile .profile-data input {
+.dashboard-user-profile .profile .profile-data input,
+.dashboard-user-profile .profile .profile-data select,
+.dashboard-user-profile .profile .profile-data textarea {
   box-shadow: none;
   color: var(--light-gray);
 }
 
-.dashboard-user-profile .profile .profile-data input:disabled {
+.dashboard-user-profile .profile .profile-data input:disabled,
+.dashboard-user-profile .profile .profile-data select:disabled,
+.dashboard-user-profile .profile .profile-data textarea:disabled {
   background-color: var(--bg-light);
   color: var(--gray);
 }
 
-.dashboard-user-profile .profile .profile-data input:focus {
+.dashboard-user-profile .profile .profile-data textarea {
+  padding-top: 30px;
+}
+
+.dashboard-user-profile .profile .profile-data textarea+label {
+  opacity: 0.85;
+}
+
+.dashboard-user-profile .profile .profile-data input:focus,
+.dashboard-user-profile .profile .profile-data select:focus,
+.dashboard-user-profile .profile .profile-data textarea:focus {
   border-color: var(--primary);
 }
 
@@ -1300,6 +1314,11 @@ a {
 
 .dashboard-user-profile .profile .user-data-form button {
   border: 1px solid var(--primary);
+}
+
+.dashboard-user-profile .profile .user-data-form button.disabled,
+.dashboard-user-profile .profile .profile-pic label.disabled {
+  opacity: 0.9;
 }
 
 @media (min-width: 768px) {
@@ -1322,13 +1341,33 @@ a {
     font-size: 24px;
   }
 
-  .dashboard-user-profile .profile .profile-data input {
+  .dashboard-user-profile .profile .profile-data input,
+  .dashboard-user-profile .profile .profile-data textarea {
     max-width: 450px;
   }
 
   .dashboard-user-profile .profile .profile-data span+input {
     max-width: 405px;
   }
+}
+
+@media (min-width: 992px) {
+  .dashboard-user-profile .profile .profile-data {
+    position: relative;
+  }
+
+  .dashboard-user-profile .profile .profile-data .row>div {
+    flex: 1;
+  }
+
+  .dashboard-user-profile .profile .profile-data .profile-id {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    margin: 0 !important;
+    font-size: var(--font-size-light);
+  }
+
 }
 
 /* end dashboard users profile content file style  */

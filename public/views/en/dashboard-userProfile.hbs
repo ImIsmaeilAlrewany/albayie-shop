@@ -30,6 +30,9 @@
               <li class="instruction mb-2 p-0">
                 Edit data by clicking on edit button.
               </li>
+              <li class="instruction mb-2 p-0">
+                Block only lawbreakers.
+              </li>
             </ul>
           </div>
           <div class="profile rounded">
@@ -50,6 +53,8 @@
                   <span
                     class="position-absolute p-2 rounded-circle {{#if profileData.activeNow}} bg-success {{else}} bg-danger {{/if}} shadow-sm d-block"></span>
                 </div>
+
+                {{!-- change profile picture form --}}
                 <form class="add-picture align-self-sm-end mt-3 mt-sm-0 mx-sm-3" method="post">
                   <label class="mb-1 btn border-0 text-nowrap disabled" for="upload-picture">
                     Choose picture
@@ -58,135 +63,217 @@
                   <p class="m-0 p-0 text-nowrap">Acceptable formats jpg only</p>
                 </form>
               </div>
-              <h2 class="mt-4 mb-2 text-capitalize text-nowrap">
-                account information
+              <div class="row">
+                <div class="col-xl-6 bg-white">
+
+                  {{!-- change general information form --}}
+                  <form class="user-data-form" method="post">
+                    <h2 class="mt-4 mb-2 mb-lg-4 text-capitalize text-nowrap">
+                      account information
+                    </h2>
+                    <p class="mt-2 mb-4 p-0 profile-id">
+                      ID: {{profileData._id}}
+                    </p>
+                    <div class="mb-3">
+                      <label for="exampleInputFirstName" class="form-label">
+                        First name
+                      </label>
+                      <input type="text" class="form-control" id="exampleInputFirstName" name="fName"
+                        value="{{profileData.fName}}" disabled>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputLastName" class="form-label">
+                        Last name
+                      </label>
+                      <input type="text" class="form-control" id="exampleInputLastName" name="lName"
+                        value="{{profileData.lName}}" disabled>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputCity" class="form-label">
+                        City
+                      </label>
+                      <input type="text" class="form-control" id="exampleInputCity" name="city" {{#if profileData.city}}
+                        value="{{profileData.city}}" {{else}} placeholder="No city found." {{/if}} disabled>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputAddress" class="form-label">
+                        Address
+                      </label>
+                      <input type="text" class="form-control" id="exampleInputAddress" name="address" {{#if
+                        profileData.address}} value="{{profileData.address}}" {{else}} placeholder="No address found."
+                        {{/if}} disabled>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPhoneNumber" class="form-label">
+                        Phone number
+                      </label>
+                      <div class="d-flex">
+                        <span class="border rounded-start-2 py-1 px-2">+20</span>
+                        <input type="text" class="form-control rounded-start-0" id="exampleInputPhoneNumber"
+                          name="phoneNum" value="{{profileData.phoneNum}}" disabled>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">
+                        Email address
+                      </label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" name="email"
+                        value="{{profileData.email}}" disabled>
+                    </div>
+                    <h2 class="my-4 my-md-4 text-capitalize text-nowrap">
+                      change accessability
+                    </h2>
+                    {{#unless profileData.admin}}
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="setAdmin"
+                        value="true" disabled>
+                      <label class="form-check-label" for="exampleCheckAdmin">
+                        Set me Admin
+                      </label>
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="setEditor"
+                        value="true" disabled>
+                      <label class="form-check-label" for="exampleCheckEditor">
+                        Set me Editor
+                      </label>
+                    </div>
+                    {{else}}
+                    {{#if profileData.editor}}
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="removeAdmin"
+                        value="true" disabled>
+                      <label class="form-check-label" for="exampleCheckAdmin">
+                        Not Admin anymore
+                      </label>
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="removeEditor"
+                        value="true" disabled>
+                      <label class="form-check-label" for="exampleCheckEditor">
+                        Not Editor anymore
+                      </label>
+                    </div>
+                    {{else}}
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="removeAdmin"
+                        value="true" disabled>
+                      <label class="form-check-label" for="exampleCheckAdmin">
+                        Not Admin anymore
+                      </label>
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="setEditor"
+                        value="true" disabled>
+                      <label class="form-check-label" for="exampleCheckEditor">
+                        Set me Editor
+                      </label>
+                    </div>
+                    {{/if}}
+                    {{/unless}}
+                    <button type="submit" class="btn text-nowrap fs-6 px-4 disabled">
+                      Save Changes
+                    </button>
+                  </form>
+                </div>
+                <div class="col-xl-6 bg-white">
+
+                  {{!-- change password form --}}
+                  <form class="user-data-form" method="post">
+                    <h2 class="my-4 my-md-4 text-capitalize text-nowrap">
+                      change password
+                    </h2>
+                    <div class="mb-3">
+                      <label for="exampleInputCurrentPassword" class="form-label">
+                        Current password
+                      </label>
+                      <input type="password" class="form-control" id="exampleInputCurrentPassword"
+                        name="currentPassword" placeholder="Must add current password." disabled>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputNewPassword" class="form-label">
+                        New password
+                      </label>
+                      <input type="password" class="form-control" id="exampleInputNewPassword" name="newPassword"
+                        placeholder="Must be 8-20 characters long." disabled>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputConfirmPassword" class="form-label">
+                        Re-enter password
+                      </label>
+                      <input type="password" class="form-control" id="exampleInputConfirmPassword" disabled>
+                    </div>
+                    <button type="submit" class="btn text-nowrap fs-6 px-4 disabled">
+                      Change Password
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="profile rounded mt-4">
+            <div class="profile-heading">
+              <h2 class="m-0 px-3 fs-4 text-capitalize">
+                manage profile
               </h2>
-              <p class="mt-2 mb-4 p-0 profile-id">ID: {{profileData._id}}</p>
-              <form class="user-data-form" method="post">
-                <div class="mb-3">
-                  <label for="exampleInputFirstName" class="form-label">
-                    First name
-                  </label>
-                  <input type="text" class="form-control" id="exampleInputFirstName" name="fName"
-                    value="{{profileData.fName}}" disabled>
+            </div>
+            <section class="profile-data p-3">
+              <div class="row">
+                <div class="col-xl-6 bg-white">
+
+                  {{!-- block user form --}}
+                  <form class="user-data-form" method="post">
+                    <h2 class="mb-4 text-capitalize text-nowrap">
+                      Block User
+                    </h2>
+                    <div class="mb-3">
+                      <p class="mb-2 p-0">
+                        {{#if user.block.isBlocked}}
+                        User's blocked and has this time left: {{user.block.timeLeft}}
+                        {{else}}
+                        User's not blocked
+                        {{/if}}
+                      </p>
+                      <select id="block-user-select" class="form-select w-auto d-inline-block" name="block">
+                        <option value="no">Not block</option>
+                        <option value="day">Day block</option>
+                        <option value="week">Week block</option>
+                      </select>
+                      <label class="block-select-label" for="block-user-select">
+                        Block user
+                      </label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                      <textarea class="form-control" id="floatingBlockTextarea" style="height: 100px"></textarea>
+                      <label for="floatingBlockTextarea">
+                        Notify user why this account has been blocked
+                      </label>
+                    </div>
+                    <button type="submit" class="btn bg-danger border-danger text-nowrap fs-6 px-4">
+                      Send notification
+                    </button>
+                  </form>
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputLastName" class="form-label">
-                    Last name
-                  </label>
-                  <input type="text" class="form-control" id="exampleInputLastName" name="lName"
-                    value="{{profileData.lName}}" disabled>
+                <div class="col-xl-6 bg-white">
+
+                  {{!-- delete user account form --}}
+                  <form class="user-data-form" method="post">
+                    <h2 class="my-4 mt-lg-0 text-capitalize text-nowrap">
+                      Delete Account
+                    </h2>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheckDelete" name="delete"
+                        value="true">
+                      <label class="form-check-label" for="exampleCheckDelete">
+                        Delete this account
+                      </label>
+                    </div>
+                    <button type="submit" class="btn bg-danger border-danger text-nowrap fs-6 px-4">
+                      Delete Account
+                    </button>
+                  </form>
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputCity" class="form-label">
-                    City
-                  </label>
-                  <input type="text" class="form-control" id="exampleInputCity" name="city" {{#if profileData.city}}
-                    value="{{profileData.city}}" {{else}} placeholder="No city found." {{/if}} disabled>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputAddress" class="form-label">
-                    Address
-                  </label>
-                  <input type="text" class="form-control" id="exampleInputAddress" name="address" {{#if
-                    profileData.address}} value="{{profileData.address}}" {{else}} placeholder="No address found."
-                    {{/if}} disabled>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPhoneNumber" class="form-label">
-                    Phone number
-                  </label>
-                  <div class="d-flex">
-                    <span class="border rounded-start-2 py-1 px-2">+20</span>
-                    <input type="text" class="form-control rounded-start-0" id="exampleInputPhoneNumber" name="phoneNum"
-                      value="{{profileData.phoneNum}}" disabled>
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">
-                    Email address
-                  </label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" name="email"
-                    value="{{profileData.email}}" disabled>
-                </div>
-                <h2 class="my-4 my-md-4 text-capitalize text-nowrap">
-                  change password
-                </h2>
-                <div class="mb-3">
-                  <label for="exampleInputCurrentPassword" class="form-label">
-                    Current password
-                  </label>
-                  <input type="password" class="form-control" id="exampleInputCurrentPassword" name="currentPassword"
-                    placeholder="Must add current password." disabled>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputNewPassword" class="form-label">
-                    New password
-                  </label>
-                  <input type="password" class="form-control" id="exampleInputNewPassword" name="newPassword"
-                    placeholder="Must be 8-20 characters long." disabled>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputConfirmPassword" class="form-label">
-                    Re-enter password
-                  </label>
-                  <input type="password" class="form-control" id="exampleInputConfirmPassword" disabled>
-                </div>
-                <h2 class="my-4 my-md-4 text-capitalize text-nowrap">
-                  change accessability
-                </h2>
-                {{#unless profileData.admin}}
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="setAdmin" value="true"
-                    disabled>
-                  <label class="form-check-label" for="exampleCheckAdmin">
-                    Set me Admin
-                  </label>
-                </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="setEditor" value="true"
-                    disabled>
-                  <label class="form-check-label" for="exampleCheckEditor">
-                    Set me Editor
-                  </label>
-                </div>
-                {{else}}
-                {{#if profileData.editor}}
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="removeAdmin" value="true"
-                    disabled>
-                  <label class="form-check-label" for="exampleCheckAdmin">
-                    Not Admin anymore
-                  </label>
-                </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="removeEditor"
-                    value="true" disabled>
-                  <label class="form-check-label" for="exampleCheckEditor">
-                    Not Editor anymore
-                  </label>
-                </div>
-                {{else}}
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="removeAdmin" value="true"
-                    disabled>
-                  <label class="form-check-label" for="exampleCheckAdmin">
-                    Not Admin anymore
-                  </label>
-                </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="setEditor" value="true"
-                    disabled>
-                  <label class="form-check-label" for="exampleCheckEditor">
-                    Set me Editor
-                  </label>
-                </div>
-                {{/if}}
-                {{/unless}}
-                <button type="submit" class="btn text-nowrap fs-6 px-4 disabled">
-                  Save Changes
-                </button>
-              </form>
+              </div>
             </section>
           </div>
         </section>
