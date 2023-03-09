@@ -143,6 +143,44 @@ class userDashboard {
     }
   };
 
+  static deleteAdmin = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+      if (!req.body.delete) throw new Error('no value');
+
+
+      await userModel.findOneAndDelete({ _id: req.params.id });
+      await userData.save();
+
+      res.redirect('/en/dash-board/users/admin');
+    } catch (err) {
+      if (err.message === 'no value') {
+        res.redirect(`/en/dash-board/users/admin/profile/${req.params.id}`);
+      } else {
+        res.redirect('/en/dash-board');
+      }
+    }
+  };
+
+  static deleteCustomer = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+      if (!req.body.delete) throw new Error('no value');
+
+
+      await userModel.findOneAndDelete({ _id: req.params.id });
+      await userData.save();
+
+      res.redirect('/en/dash-board/users/customer');
+    } catch (err) {
+      if (err.message === 'no value') {
+        res.redirect(`/en/dash-board/users/customer/profile/${req.params.id}`);
+      } else {
+        res.redirect('/en/dash-board');
+      }
+    }
+  };
+
 }
 
 

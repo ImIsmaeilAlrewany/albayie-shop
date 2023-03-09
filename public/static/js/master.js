@@ -448,3 +448,34 @@ if (customerTableNext) customerTableNext.addEventListener('click', () => {
 });
 
 
+//remove disabled when click on edit button
+const editProfileData = document.getElementById('edit-profile-button');
+const editProfileInputs = document.querySelectorAll('.dashboard-user-profile .profile #profile-edit-section input');
+const editProfileSelects = document.querySelectorAll('.dashboard-user-profile .profile #profile-edit-section select');
+const addPictureButton = document.getElementById('add-picture-label');
+const saveEditData = document.getElementById('save-edit-button');
+const saveEditPassword = document.getElementById('save-edit-password');
+
+//collect all elements in arrays depend on their type (attribute, class)
+const allAttrEdit = [...editProfileInputs, ...editProfileSelects];
+const allClassEdit = [addPictureButton, saveEditData, saveEditPassword];
+
+//create a function to remove disabled
+const removeDisabled = (type, array, button) => {
+  button.addEventListener('click', () => {
+    if (type === 'attr') {
+      array.forEach(ele => {
+        ele.removeAttribute('disabled');
+      });
+    } else if (type === 'btn') {
+      array.forEach(ele => {
+        ele.classList.remove('disabled');
+      });
+    }
+  });
+};
+
+if (editProfileData) removeDisabled('attr', allAttrEdit, editProfileData);
+if (editProfileData) removeDisabled('btn', allClassEdit, editProfileData);
+
+

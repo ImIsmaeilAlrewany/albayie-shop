@@ -12,9 +12,12 @@ router.post('/users/create-user', admin, user.createUserLogic);
 router.get('/users/getAllAdmins', admin, user.admins);
 router.get('/users/admin', admin, user.adminsTable);
 router.get('/users/admin/profile/:id', admin, user.getProfile);
+router.post('/users/admin/profile/:id/delete', admin, user.deleteAdmin);
 
 router.get('/users/getAllCustomers', admin, user.customers);
 router.get('/users/customer', admin, user.customersTable);
 router.get('/users/customer/profile/:id', admin, user.getProfile);
+router.post('/users/customer/profile/:id/delete', admin, user.deleteCustomer);
+
 
 module.exports = router;

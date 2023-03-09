@@ -40,11 +40,11 @@
               <h2 class="m-0 px-3 fs-4 text-capitalize">
                 {{#if profileData.admin}} admin {{else}} customer {{/if}} profile
               </h2>
-              <button class="border-0 px-3" type="button">
+              <button id="edit-profile-button" class="border-0 px-3" type="button">
                 <i class="fa-solid fa-pen-to-square fs-6"></i>
               </button>
             </div>
-            <section class="profile-data p-3">
+            <section id="profile-edit-section" class="profile-data p-3">
               <div class="profile-pic d-flex flex-column flex-sm-row">
                 <div class="position-relative">
                   <img
@@ -56,7 +56,7 @@
 
                 {{!-- change profile picture form --}}
                 <form class="add-picture align-self-sm-end mt-3 mt-sm-0 mx-sm-3" method="post">
-                  <label class="mb-1 btn border-0 text-nowrap disabled" for="upload-picture">
+                  <label id="add-picture-label" class="mb-1 btn border-0 text-nowrap disabled" for="upload-picture">
                     Choose picture
                   </label>
                   <input id="upload-picture" class="d-none" type="file">
@@ -171,7 +171,7 @@
                     </div>
                     {{/if}}
                     {{/unless}}
-                    <button type="submit" class="btn text-nowrap fs-6 px-4 disabled">
+                    <button id="save-edit-button" type="submit" class="btn text-nowrap fs-6 px-4 disabled">
                       Save Changes
                     </button>
                   </form>
@@ -203,7 +203,7 @@
                       </label>
                       <input type="password" class="form-control" id="exampleInputConfirmPassword" disabled>
                     </div>
-                    <button type="submit" class="btn text-nowrap fs-6 px-4 disabled">
+                    <button id="save-edit-password" type="submit" class="btn text-nowrap fs-6 px-4 disabled">
                       Change Password
                     </button>
                   </form>
@@ -228,8 +228,8 @@
                     </h2>
                     <div class="mb-3">
                       <p class="mb-2 p-0">
-                        {{#if user.block.isBlocked}}
-                        User's blocked and has this time left: {{user.block.timeLeft}}
+                        {{#if profileData.block.isBlocked}}
+                        User's blocked and has this time left: {{profileData.block.timeLeft}}
                         {{else}}
                         User's not blocked
                         {{/if}}
@@ -257,7 +257,7 @@
                 <div class="col-xl-6 bg-white">
 
                   {{!-- delete user account form --}}
-                  <form class="user-data-form" method="post">
+                  <form class="user-data-form" action="{{profileData._id}}/delete" method="post">
                     <h2 class="my-4 mt-lg-0 text-capitalize text-nowrap">
                       Delete Account
                     </h2>
