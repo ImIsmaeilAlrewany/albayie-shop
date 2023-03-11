@@ -20,6 +20,16 @@ const userSchema = mongoose.Schema({
     lowercase: true,
     minlength: 3
   },
+  city: {
+    type: String,
+    trim: true,
+    lowercase: true
+  },
+  address: {
+    type: String,
+    trim: true,
+    lowercase: true
+  },
   phoneNum: {
     type: String,
     required: true,

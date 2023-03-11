@@ -143,15 +143,44 @@ class userDashboard {
     }
   };
 
+  static editData = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+
+      if (!req.body.admin) req.body.admin = false;
+      if (!req.body.editor) req.body.editor = false;
+      const data = await userModel.findOneAndUpdate({ _id: req.params.id }, { ...req.body });
+      await data.save();
+
+      if (req.body.admin) {
+        res.redirect(`/en/dash-board/users/admin/profile/${data._id}`);
+      } else {
+        res.redirect(`/en/dash-board/users/customer/profile/${data._id}`);
+      }
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
+
+  static changePassword = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+
+    } catch (err) {
+      if (err.message === '') {
+        res.render();
+      } else {
+        res.redirect('/en/dash-board');
+      }
+    }
+  };
+
   static deleteAdmin = async (req, res) => {
     try {
       if (!req.user.editor) throw new Error('not editor');
       if (!req.body.delete) throw new Error('no value');
 
-
       await userModel.findOneAndDelete({ _id: req.params.id });
-      await userData.save();
-
       res.redirect('/en/dash-board/users/admin');
     } catch (err) {
       if (err.message === 'no value') {
@@ -167,10 +196,7 @@ class userDashboard {
       if (!req.user.editor) throw new Error('not editor');
       if (!req.body.delete) throw new Error('no value');
 
-
       await userModel.findOneAndDelete({ _id: req.params.id });
-      await userData.save();
-
       res.redirect('/en/dash-board/users/customer');
     } catch (err) {
       if (err.message === 'no value') {

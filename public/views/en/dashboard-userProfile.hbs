@@ -123,54 +123,20 @@
                     <h2 class="my-4 my-md-4 text-capitalize text-nowrap">
                       change accessability
                     </h2>
-                    {{#unless profileData.admin}}
                     <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="setAdmin"
-                        value="true" disabled>
+                      <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="admin" value="true"
+                        {{#if profileData.admin}} checked {{/if}} disabled>
                       <label class="form-check-label" for="exampleCheckAdmin">
-                        Set me Admin
+                        User is Admin
                       </label>
                     </div>
                     <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="setEditor"
-                        value="true" disabled>
+                      <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="editor" value="true"
+                        {{#if profileData.editor}} checked {{/if}} disabled>
                       <label class="form-check-label" for="exampleCheckEditor">
-                        Set me Editor
+                        User is Editor
                       </label>
                     </div>
-                    {{else}}
-                    {{#if profileData.editor}}
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="removeAdmin"
-                        value="true" disabled>
-                      <label class="form-check-label" for="exampleCheckAdmin">
-                        Not Admin anymore
-                      </label>
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="removeEditor"
-                        value="true" disabled>
-                      <label class="form-check-label" for="exampleCheckEditor">
-                        Not Editor anymore
-                      </label>
-                    </div>
-                    {{else}}
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheckAdmin" name="removeAdmin"
-                        value="true" disabled>
-                      <label class="form-check-label" for="exampleCheckAdmin">
-                        Not Admin anymore
-                      </label>
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheckEditor" name="setEditor"
-                        value="true" disabled>
-                      <label class="form-check-label" for="exampleCheckEditor">
-                        Set me Editor
-                      </label>
-                    </div>
-                    {{/if}}
-                    {{/unless}}
                     <button id="save-edit-button" type="submit" class="btn text-nowrap fs-6 px-4 disabled">
                       Save Changes
                     </button>
@@ -179,7 +145,7 @@
                 <div class="col-xl-6 bg-white">
 
                   {{!-- change password form --}}
-                  <form class="user-data-form" method="post">
+                  <form class="user-data-form" action="{{profileData._id}}/newPass" method="post">
                     <h2 class="my-4 my-md-4 text-capitalize text-nowrap">
                       change password
                     </h2>
@@ -222,7 +188,7 @@
                 <div class="col-xl-6 bg-white">
 
                   {{!-- block user form --}}
-                  <form class="user-data-form" method="post">
+                  <form class="user-data-form" action="{{profileData._id}}/block" method="post">
                     <h2 class="mb-4 text-capitalize text-nowrap">
                       Block User
                     </h2>
