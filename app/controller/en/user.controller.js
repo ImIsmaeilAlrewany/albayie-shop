@@ -40,6 +40,10 @@ class User {
         httpOnly: true,
         secure: true
       });
+
+      userData.online = true;
+      await userData.save();
+
       res.redirect('/en');
     }
     catch (err) {
@@ -50,7 +54,9 @@ class User {
   static logout = async (req, res) => {
     try {
       req.user.tokens = req.user.tokens.filter(f => f.token !== req.token);
+      req.user.online = false;
       await req.user.save();
+
       res.clearCookie('Authorization');
       res.redirect('/en');
     } catch (err) {

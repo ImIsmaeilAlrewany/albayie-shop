@@ -51,7 +51,7 @@
                     src="{{#unless profileData.picture}} /images/profile-picture.svg {{else}} /images/users/{{profileData.picture}} {{/unless}}"
                     alt="profile-picture">
                   <span
-                    class="position-absolute p-2 rounded-circle {{#if profileData.activeNow}} bg-success {{else}} bg-danger {{/if}} shadow-sm d-block"></span>
+                    class="position-absolute p-2 rounded-circle {{#if profileData.online}} bg-success {{else}} bg-danger {{/if}} shadow-sm d-block"></span>
                 </div>
 
                 {{!-- change profile picture form --}}
@@ -157,18 +157,21 @@
                         name="currentPassword" placeholder="Must add current password." disabled>
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputNewPassword" class="form-label">
+                      <label for="exampleInputPassword1" class="form-label">
                         New password
                       </label>
-                      <input type="password" class="form-control" id="exampleInputNewPassword" name="newPassword"
+                      <input type="password" class="form-control" id="exampleInputPassword1" name="newPassword"
                         placeholder="Must be 8-20 characters long." disabled>
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputConfirmPassword" class="form-label">
+                      <label for="exampleInputPassword2" class="form-label">
                         Re-enter password
                       </label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword" disabled>
+                      <input type="password" class="form-control" id="exampleInputPassword2" disabled>
                     </div>
+                    <p class="p-0 mb-3 {{#unless message}} d-none {{/unless}} text-danger">
+                      {{message}}
+                    </p>
                     <button id="save-edit-password" type="submit" class="btn text-nowrap fs-6 px-4 disabled">
                       Change Password
                     </button>

@@ -26,6 +26,9 @@ class userDashboard {
       const admin = userData.admin;
       if (!admin) throw new Error('user is\'t admin');
 
+      userData.online = true;
+      await userData.save();
+
       res.redirect('/en/dash-board');
     }
     catch (err) {
@@ -36,7 +39,9 @@ class userDashboard {
   static logout = async (req, res) => {
     try {
       req.user.tokens = req.user.tokens.filter(f => f.token !== req.token);
+      req.user.online = false;
       await req.user.save();
+
       res.clearCookie('Authorization');
       res.redirect('/en/dash-board/login');
     } catch (err) {
@@ -136,8 +141,13 @@ class userDashboard {
     try {
       if (!req.user.editor) throw new Error('not editor');
 
+      let message;
+      if (req.cookies.wrongPass) message = 'Current password is wrong';
+      else if (req.cookies.emptyInput) message = 'New password input is empty';
+
       const userData = await userModel.findOne({ _id: req.params.id });
-      res.render('en/dashboard-userProfile', { pageTitle: `Albayie - Dashboard - ${userData.fName} ${userData.lName}'s Profile`, user: req.user, path: '/en/dash-board/users', profileData: userData });
+      // console.log('dashboard', userData.online);
+      res.render('en/dashboard-userProfile', { pageTitle: `Albayie - Dashboard - ${userData.fName} ${userData.lName}'s Profile`, user: req.user, path: '/en/dash-board/users', profileData: userData, message });
     } catch (err) {
       res.redirect('/en/dash-board');
     }
@@ -162,16 +172,79 @@ class userDashboard {
     }
   };
 
-  static changePassword = async (req, res) => {
+  static changeAdminPassword = async (req, res) => {
     try {
       if (!req.user.editor) throw new Error('not editor');
 
-    } catch (err) {
-      if (err.message === '') {
-        res.render();
+      const userData = await userModel.findOne({ _id: req.params.id });
+
+      //check password if it's correct or not
+      const password = await bcryptjs.compare(req.body.currentPassword, userData.password);
+
+      if (!password) {
+        res.cookie('wrongPass', true, {
+          httpOnly: true,
+          secure: true
+        });
+        return res.redirect(`/en/dash-board/users/admin/profile/${userData._id}`);
       } else {
-        res.redirect('/en/dash-board');
+        res.clearCookie('wrongPass');
       }
+
+      if (!req.body.newPassword) {
+        res.cookie('emptyInput', true, {
+          httpOnly: true,
+          secure: true
+        });
+        return res.redirect(`/en/dash-board/users/admin/profile/${userData._id}`);
+      } else {
+        res.clearCookie('emptyInput');
+      }
+
+      userData.password = req.body.newPassword;
+      await userData.save();
+
+      res.redirect(`/en/dash-board/users/admin/profile/${userData._id}`);
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
+
+  static changeCustomerPassword = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+
+      const userData = await userModel.findOne({ _id: req.params.id });
+
+      //check password if it's correct or not
+      const password = await bcryptjs.compare(req.body.currentPassword, userData.password);
+
+      if (!password) {
+        res.cookie('wrongPass', true, {
+          httpOnly: true,
+          secure: true
+        });
+        return res.redirect(`/en/dash-board/users/customer/profile/${userData._id}`);
+      } else {
+        res.clearCookie('wrongPass');
+      }
+
+      if (!req.body.newPassword) {
+        res.cookie('emptyInput', true, {
+          httpOnly: true,
+          secure: true
+        });
+        return res.redirect(`/en/dash-board/users/customer/profile/${userData._id}`);
+      } else {
+        res.clearCookie('emptyInput');
+      }
+
+      userData.password = req.body.newPassword;
+      await userData.save();
+
+      res.redirect(`/en/dash-board/users/customer/profile/${userData._id}`);
+    } catch (err) {
+      res.redirect('/en/dash-board');
     }
   };
 

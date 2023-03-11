@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const auth = require('../middleware/auth.middleware');
 const home = require('../controller/home.controller');
 
 router.get('/', home.showHome);

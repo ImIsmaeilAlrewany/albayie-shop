@@ -1,3 +1,5 @@
+const userModel = require('../database/models/user.model');
+
 const isLogin = (data) => data ? true : false;
 const createCookie = (res, name, data) => {
   res.cookie(name, data, {
@@ -20,6 +22,7 @@ class Home {
     createCookie(res, 'lang', 'en');
     res.render('en/home', { pageTitle: 'Albayie - Online Shopping', path: 'en', isLogin: isLogin(req.cookies.Authorization) });
   };
+
 }
 
 module.exports = Home;
