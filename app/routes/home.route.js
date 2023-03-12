@@ -8,4 +8,6 @@ router.get('/ar', home.homeInArabic);
 
 router.get('/en', home.homeInEnglish);
 
+router.post('/users/offline', auth, home.offline);
+
 module.exports = router;

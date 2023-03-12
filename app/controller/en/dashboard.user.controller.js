@@ -81,6 +81,7 @@ class userDashboard {
             { lName: { $regex: req.query.search }, admin: true },
             { phoneNum: { $regex: req.query.search }, admin: true },
             { email: { $regex: req.query.search }, admin: true },
+            { city: { $regex: req.query.search }, admin: true },
           ]
         });
       } else {
@@ -115,6 +116,7 @@ class userDashboard {
             { lName: { $regex: req.query.search }, admin: false },
             { phoneNum: { $regex: req.query.search }, admin: false },
             { email: { $regex: req.query.search }, admin: false },
+            { city: { $regex: req.query.search }, admin: false },
           ]
         });
       } else {

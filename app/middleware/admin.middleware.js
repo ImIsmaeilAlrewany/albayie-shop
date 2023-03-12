@@ -10,6 +10,10 @@ const admin = async (req, res, next) => {
     const breakPass = jwt.verify(token, process.env.KEY);
     const userData = await userModel.findOne({ _id: breakPass._id, 'tokens.token': token });
     if (!userData) throw new Error('can\'t access token');
+
+    userData.online = true;
+    await userData.save();
+
     req.user = userData;
     req.token = token;
     next();

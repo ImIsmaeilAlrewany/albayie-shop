@@ -479,3 +479,23 @@ if (editProfileData) removeDisabled('attr', allAttrEdit, editProfileData);
 if (editProfileData) removeDisabled('btn', allClassEdit, editProfileData);
 
 
+//user offline notice server
+//before unload page fetch api to set false to user online
+
+window.onbeforeunload = async function (e) {
+  await fetch('http://127.0.0.1:3000/users/offline', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({ online: false })
+  });
+};
+
+//disable confirmation message
+window.onbeforeunload = null;
+
+
+
+

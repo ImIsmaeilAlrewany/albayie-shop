@@ -23,6 +23,10 @@ class Home {
     res.render('en/home', { pageTitle: 'Albayie - Online Shopping', path: 'en', isLogin: isLogin(req.cookies.Authorization) });
   };
 
+  static offline = async (req, res) => {
+    req.user.online = req.body.online;
+    await req.user.save();
+  };
 }
 
 module.exports = Home;
