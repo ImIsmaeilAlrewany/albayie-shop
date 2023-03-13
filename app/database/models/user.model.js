@@ -78,6 +78,27 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false
   },
+  block: [
+    {
+      isBlocked: {
+        type: Boolean,
+        default: false
+      },
+      message: {
+        type: String,
+        trim: true,
+        lowercase: true
+      },
+      days: {
+        type: Number,
+        default: 0
+      },
+      endOn: {
+        type: Date,
+        default: Date.now()
+      }
+    }
+  ],
   tokens: [
     {
       token: {

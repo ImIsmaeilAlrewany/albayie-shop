@@ -196,14 +196,19 @@
                       Block User
                     </h2>
                     <div class="mb-3">
-                      <p class="mb-2 p-0">
+                      <p class="mb-2 p-0 text-success {{#if profileData.block.isBlocked}} text-danger {{/if}}">
+                        {{#unless profileData.admin}}
                         {{#if profileData.block.isBlocked}}
                         User's blocked and has this time left: {{profileData.block.timeLeft}}
                         {{else}}
                         User's not blocked
                         {{/if}}
+                        {{else}}
+                        Admin Can't be blocked
+                        {{/unless}}
                       </p>
-                      <select id="block-user-select" class="form-select w-auto d-inline-block" name="block">
+                      <select id="block-user-select" class="form-select w-auto d-inline-block" name="block" {{#if
+                        profileData.admin}} disabled {{/if}}>
                         <option value="no">Not block</option>
                         <option value="day">Day block</option>
                         <option value="week">Week block</option>
@@ -213,12 +218,14 @@
                       </label>
                     </div>
                     <div class="mb-3 form-floating">
-                      <textarea class="form-control" id="floatingBlockTextarea" style="height: 100px"></textarea>
+                      <textarea class="form-control" id="floatingBlockTextarea" style="height: 100px" {{#if
+                        profileData.admin}} disabled {{/if}}></textarea>
                       <label for="floatingBlockTextarea">
                         Notify user why this account has been blocked
                       </label>
                     </div>
-                    <button type="submit" class="btn bg-danger border-danger text-nowrap fs-6 px-4">
+                    <button type="submit"
+                      class="btn bg-danger border-danger text-nowrap fs-6 px-4 {{#if profileData.admin}} disabled {{/if}}">
                       Send notification
                     </button>
                   </form>
