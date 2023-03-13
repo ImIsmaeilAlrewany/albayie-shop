@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const path = require('path');
 const hbs = require('hbs');
 const app = express();
@@ -76,6 +77,7 @@ hbs.registerHelper('getDays', (date) => {
 });
 
 
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

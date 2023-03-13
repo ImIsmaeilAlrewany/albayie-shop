@@ -1,5 +1,7 @@
 const userModel = require('../../database/models/user.model');
 const bcryptjs = require('bcryptjs');
+const path = require('path');
+const fs = require('fs');
 
 class userDashboard {
   static login = (req, res) => {
@@ -313,6 +315,38 @@ class userDashboard {
     }
   };
 
+  static uploadImg = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+
+      const dir = path.join(
+        __dirname,
+        '../../../public/static/images/uploaded/'
+      );
+      const userData = await userModel.findById(req.params.id);
+
+      if (req.file && userData.profilePic) {
+        if (fs.existsSync(dir + userData.profilePic)) {
+          fs.unlinkSync(dir + userData.profilePic);
+        }
+      }
+
+      if (req.file.mimetype !== 'image/jpeg') {
+        fs.unlinkSync(dir + req.file.filename);
+        throw new Error('image not jpg');
+      }
+
+      await userModel.findByIdAndUpdate(req.params.id, { profilePic: req.file.filename });
+
+      if (userData.admin) {
+        res.redirect(`/en/dash-board/users/admin/profile/${req.params.id}`);
+      } else {
+        res.redirect(`/en/dash-board/users/customer/profile/${req.params.id}`);
+      }
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
 }
 
 

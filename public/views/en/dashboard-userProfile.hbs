@@ -48,18 +48,19 @@
               <div class="profile-pic d-flex flex-column flex-sm-row">
                 <div class="position-relative">
                   <img
-                    src="{{#unless profileData.picture}} /images/profile-picture.svg {{else}} /images/users/{{profileData.picture}} {{/unless}}"
+                    src="{{#unless profileData.profilePic}} /images/profile-picture.svg {{else}} /images/uploaded/{{profileData.profilePic}} {{/unless}}"
                     alt="profile-picture">
                   <span
                     class="position-absolute p-2 rounded-circle {{#if profileData.online}} bg-success {{else}} bg-danger {{/if}} shadow-sm d-block"></span>
                 </div>
 
                 {{!-- change profile picture form --}}
-                <form class="add-picture align-self-sm-end mt-3 mt-sm-0 mx-sm-3" method="post">
+                <form id="edit-picture-form" class="add-picture align-self-sm-end mt-3 mt-sm-0 mx-sm-3"
+                  action="{{profileData._id}}/upload" method="post" enctype="multipart/form-data">
                   <label id="add-picture-label" class="mb-1 btn border-0 text-nowrap disabled" for="upload-picture">
                     Choose picture
                   </label>
-                  <input id="upload-picture" class="d-none" type="file">
+                  <input id="upload-picture" class="d-none" type="file" name="profilePic">
                   <p class="m-0 p-0 text-nowrap">Acceptable formats jpg only</p>
                 </form>
               </div>

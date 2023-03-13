@@ -78,6 +78,9 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false
   },
+  profilePic: {
+    type: String,
+  },
   block: [
     {
       message: {

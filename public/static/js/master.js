@@ -497,5 +497,13 @@ window.onbeforeunload = async function (e) {
 window.onbeforeunload = null;
 
 
+//submit form after selecting an image with change
+const editPicForm = document.getElementById('edit-picture-form');
+const editPicInput = document.getElementById('upload-picture');
+
+if (editPicInput) editPicInput.addEventListener('change', () => {
+  editPicForm.submit();
+});
+
 
 
