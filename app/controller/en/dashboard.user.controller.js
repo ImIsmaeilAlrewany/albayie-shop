@@ -282,6 +282,37 @@ class userDashboard {
     }
   };
 
+  static block = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+      const { block, blockMessage } = req.body;
+      const userData = await userModel.findOne({ _id: req.params.id });
+
+      if (block === 'no') {
+        userData.block = [];
+        await userData.save();
+      } else if (block === 'day') {
+        userData.block = userData.block.concat({
+          message: blockMessage,
+          days: 1,
+          endOn: Date.now() + 8.64e+7,
+        });
+        await userData.save();
+      } else if (block === 'week') {
+        userData.block = userData.block.concat({
+          message: blockMessage,
+          days: 7,
+          endOn: Date.now() + 6.048e+8,
+        });
+        await userData.save();
+      }
+
+      res.redirect(`/en/dash-board/users/customer/profile/${req.params.id}`);
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
+
 }
 
 

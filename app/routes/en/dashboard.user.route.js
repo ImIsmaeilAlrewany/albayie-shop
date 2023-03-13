@@ -22,6 +22,7 @@ router.get('/users/customer/profile/:id', admin, user.getProfile);
 router.post('/users/customer/profile/:id', admin, user.editData);
 router.post('/users/customer/profile/:id/newPass', admin, user.changeCustomerPassword);
 router.post('/users/customer/profile/:id/delete', admin, user.deleteCustomer);
+router.post('/users/customer/profile/:id/block', admin, user.block);
 
 
 module.exports = router;

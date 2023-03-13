@@ -36,6 +36,46 @@ hbs.registerHelper('time', (time) => {
   else throw new Error('there\'s no time');
 });
 
+//custom handlebars helper to get time left
+hbs.registerHelper('timeLeft', (date) => {
+  let output = 0;
+  let timeLeft = 0;
+
+  if (date) {
+    for (const key in date) {
+      timeLeft = date[key].endOn - Date.now();
+
+      if (output < timeLeft) {
+        output = timeLeft;
+      } else {
+        break;
+      }
+    }
+    return Math.round(output / 3600000);
+  } else {
+    throw new Error('there\'s no date to compare it');
+  }
+});
+
+//custom handlebars helper to get block days in all objects
+hbs.registerHelper('getDays', (date) => {
+  let days = 0;
+
+  if (date) {
+    for (const key in date) {
+      if (days < date[key].days) {
+        days = date[key].days;
+      } else {
+        break;
+      }
+    }
+    return days;
+  } else {
+    throw new Error('there\'s no days to compare it');
+  }
+});
+
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

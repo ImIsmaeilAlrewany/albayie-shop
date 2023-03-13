@@ -80,10 +80,6 @@ const userSchema = mongoose.Schema({
   },
   block: [
     {
-      isBlocked: {
-        type: Boolean,
-        default: false
-      },
       message: {
         type: String,
         trim: true,
@@ -94,7 +90,7 @@ const userSchema = mongoose.Schema({
         default: 0
       },
       endOn: {
-        type: Date,
+        type: Number,
         default: Date.now()
       }
     }

@@ -198,8 +198,9 @@
                     <div class="mb-3">
                       <p class="mb-2 p-0 text-success {{#if profileData.block.isBlocked}} text-danger {{/if}}">
                         {{#unless profileData.admin}}
-                        {{#if profileData.block.isBlocked}}
-                        User's blocked and has this time left: {{profileData.block.timeLeft}}
+                        {{#if profileData.block}}
+                        User's blocked and has this time left:
+                        {{timeLeft profileData.block}}/hr
                         {{else}}
                         User's not blocked
                         {{/if}}
@@ -209,17 +210,23 @@
                       </p>
                       <select id="block-user-select" class="form-select w-auto d-inline-block" name="block" {{#if
                         profileData.admin}} disabled {{/if}}>
-                        <option value="no">Not block</option>
-                        <option value="day">Day block</option>
-                        <option value="week">Week block</option>
+                        <option value="no" {{#unless profileData.block}} selected {{/unless}}>
+                          Not block
+                        </option>
+                        <option value="day" {{#if (compare (getDays profileData.block) 1)}} selected {{/if}}>
+                          Day block
+                        </option>
+                        <option value="week" {{#if (compare (getDays profileData.block) 7)}} selected {{/if}}>
+                          Week block
+                        </option>
                       </select>
                       <label class="block-select-label" for="block-user-select">
                         Block user
                       </label>
                     </div>
                     <div class="mb-3 form-floating">
-                      <textarea class="form-control" id="floatingBlockTextarea" style="height: 100px" {{#if
-                        profileData.admin}} disabled {{/if}}></textarea>
+                      <textarea class="form-control" id="floatingBlockTextarea" style="height: 100px"
+                        name="blockMessage" {{#if profileData.admin}} disabled {{/if}}></textarea>
                       <label for="floatingBlockTextarea">
                         Notify user why this account has been blocked
                       </label>
