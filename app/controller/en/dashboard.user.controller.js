@@ -55,7 +55,15 @@ class userDashboard {
     try {
       if (!req.user.editor) throw new Error('not editor');
 
-      res.render('en/dashboard-usersOverview', { pageTitle: 'Albayie - Dashboard - Users Overview', path: '/en/dash-board/users/overview', user: req.user });
+      const admins = await userModel.find({ admin: true });
+      const customers = await userModel.find({ admin: false });
+
+      res.render('en/dashboard-usersOverview', {
+        pageTitle: 'Albayie - Dashboard - Users Overview', path: '/en/dash-board/users/overview', user: req.user, overview: {
+          adminsNum: admins.length,
+          customersNum: customers.length,
+        }
+      });
     } catch (err) {
       res.redirect('/en/dash-board');
     }
