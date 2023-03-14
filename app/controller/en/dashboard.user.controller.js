@@ -51,6 +51,16 @@ class userDashboard {
     }
   };
 
+  static overview = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+
+      res.render('en/dashboard-usersOverview', { pageTitle: 'Albayie - Dashboard - Users Overview', path: '/en/dash-board/users/overview', user: req.user });
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
+
   static createUser = (req, res) => {
     try {
       if (!req.user.editor) throw new Error('not editor');

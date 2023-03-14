@@ -7,6 +7,8 @@ router.get('/login', user.login);
 router.post('/login', user.loginLogic);
 router.get('/logout', admin, user.logout);
 
+router.get('/users/overview', admin, user.overview);
+
 router.get('/users/create-user', admin, user.createUser);
 router.post('/users/create-user', admin, user.createUserLogic);
 

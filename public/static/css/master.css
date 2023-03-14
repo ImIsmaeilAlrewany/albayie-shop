@@ -1130,6 +1130,14 @@ a {
 
 /* start dashboard content style */
 
+/* start dashboard users overview */
+
+.dashboard-layout .users-overview .overview-heading {
+  color: var(--gray);
+}
+
+/* end dashboard users overview */
+
 /* start dashboard users tables content file style */
 .dashboard-users-tables .instructions,
 .dashboard-user-profile .instructions {
