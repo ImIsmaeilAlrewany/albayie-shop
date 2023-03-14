@@ -1,4 +1,5 @@
 const userModel = require('../../database/models/user.model');
+const counter = require('../../database/models/count.model');
 const bcryptjs = require('bcryptjs');
 const path = require('path');
 const fs = require('fs');
@@ -57,11 +58,14 @@ class userDashboard {
 
       const admins = await userModel.find({ admin: true });
       const customers = await userModel.find({ admin: false });
+      const count = await counter.findById('6410899ea821615f4e4638e6');
 
       res.render('en/dashboard-usersOverview', {
         pageTitle: 'Albayie - Dashboard - Users Overview', path: '/en/dash-board/users/overview', user: req.user, overview: {
-          adminsNum: admins.length,
-          customersNum: customers.length,
+          admins: admins.length,
+          customers: customers.length,
+          visitors: count.visitors,
+          pageViews: count.pageViews
         }
       });
     } catch (err) {
