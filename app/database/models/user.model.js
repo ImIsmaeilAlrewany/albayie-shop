@@ -134,6 +134,21 @@ userSchema.methods.generateToken = async function () {
   return token;
 };
 
+//create delete executed block date method to unblock user
+userSchema.methods.unblock = async function () {
+  const userData = this;
+  const date = new Date.now();
+  const block = userData.block;
+
+  for (const key in block) {
+    if (block[key].endOn <= date) {
+      userData.block = userData.block.filter(b => b === block[key].endOn);
+    }
+  }
+
+  await userData.save();
+};
+
 const userModel = mongoose.model('User', userSchema);
 
 module.exports = userModel;
