@@ -1217,7 +1217,8 @@ a {
 
 .dashboard-users-tables .admin-table,
 .dashboard-users-tables .customer-table,
-.dashboard-user-profile .profile {
+.dashboard-user-profile .profile,
+.dashboard-layout .chart {
   border: 1px solid var(--bg-light-gray);
   box-shadow: var(--shadow);
 }
@@ -1230,7 +1231,8 @@ a {
 
 .dashboard-users-tables .admin-table .table-heading,
 .dashboard-users-tables .customer-table .table-heading,
-.dashboard-user-profile .profile .profile-heading {
+.dashboard-user-profile .profile .profile-heading,
+.dashboard-layout .chart-heading {
   color: var(--primary);
   border-bottom: 1px solid var(--bg-light-gray);
   padding-top: 12px;
