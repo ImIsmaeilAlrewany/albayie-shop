@@ -13,10 +13,14 @@ const counter = async (req, res, next) => {
           secure: true
         });
 
-        const counter = await count.findOneAndUpdate(
-          { _id: '6410899ea821615f4e4638e6' },
-          { $inc: { visitors: 1, pageViews: 1 } }
-        );
+        const date = new Date();
+        const counter = await count.findById('6410899ea821615f4e4638e6');
+
+        await count.findByIdAndUpdate('6410899ea821615f4e4638e6',
+          { $inc: { visitors: 1, pageViews: 1 } });
+
+        await counter.findMonthAndUpdate(date.getMonth(), 'visitors', 1);
+        await counter.findMonthAndUpdate(date.getMonth(), 'pageViews', 1);
         await counter.save();
       } else {
         res.cookie('pageViews', 1, {
@@ -24,9 +28,12 @@ const counter = async (req, res, next) => {
           secure: true
         });
 
-        const counter = await count.findOneAndUpdate(
-          { _id: '6410899ea821615f4e4638e6' }, { $inc: { pageViews: 1 } }
-        );
+        const date = new Date();
+        const counter = await count.findById('6410899ea821615f4e4638e6');
+
+        await count.findByIdAndUpdate('6410899ea821615f4e4638e6', { $inc: { pageViews: 1 } });
+
+        await counter.findMonthAndUpdate(date.getMonth(), 'pageViews', 1);
         await counter.save();
       }
     } else {
@@ -35,9 +42,12 @@ const counter = async (req, res, next) => {
         secure: true
       });
 
-      const counter = await count.findOneAndUpdate(
-        { _id: '6410899ea821615f4e4638e6' }, { $inc: { pageViews: 1 } }
-      );
+      const date = new Date();
+      const counter = await count.findById('6410899ea821615f4e4638e6');
+
+      await count.findByIdAndUpdate('6410899ea821615f4e4638e6', { $inc: { pageViews: 1 } });
+
+      await counter.findMonthAndUpdate(date.getMonth(), 'pageViews', 1);
       await counter.save();
     }
 

@@ -97,7 +97,6 @@ class userDashboard {
       res.redirect('/en/dash-board/users/overview');
     }
     catch (err) {
-      console.log(err.message);
       res.render('en/dashboard-createUser', { pageTitle: 'Albayie - Dashboard Create User', data: req.body, error: err.message });
     }
   };
@@ -199,17 +198,25 @@ class userDashboard {
       const data = await userModel.findOneAndUpdate({ _id: req.params.id }, { ...req.body });
       await data.save();
 
+      const date = new Date();
+      const counter = await count.findById('6410899ea821615f4e4638e6');
+
       if (req.body.admin != userData.admin) {
         if (req.body.admin) {
           await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
             $inc: { admins: 1, customers: -1 }
           });
+          await counter.findMonthAndUpdate(date.getMonth(), 'admins', 1);
+          await counter.findMonthAndUpdate(date.getMonth(), 'customers', -1);
         } else {
           await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
             $inc: { admins: -1, customers: 1 }
           });
+          await counter.findMonthAndUpdate(date.getMonth(), 'admins', -1);
+          await counter.findMonthAndUpdate(date.getMonth(), 'customers', 1);
         }
       }
+      await counter.save();
 
       if (req.body.admin) {
         res.redirect(`/en/dash-board/users/admin/profile/${data._id}`);
@@ -307,6 +314,11 @@ class userDashboard {
         $inc: { admins: -1 }
       });
 
+      const date = new Date();
+      const counter = await count.findById('6410899ea821615f4e4638e6');
+      await counter.findMonthAndUpdate(date.getMonth(), 'admins', -1);
+      await counter.save();
+
       res.redirect('/en/dash-board/users/admin');
     } catch (err) {
       if (err.message === 'no value') {
@@ -326,6 +338,11 @@ class userDashboard {
       await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
         $inc: { customers: -1 }
       });
+
+      const date = new Date();
+      const counter = await count.findById('6410899ea821615f4e4638e6');
+      await counter.findMonthAndUpdate(date.getMonth(), 'customers', -1);
+      await counter.save();
 
       res.redirect('/en/dash-board/users/customer');
     } catch (err) {

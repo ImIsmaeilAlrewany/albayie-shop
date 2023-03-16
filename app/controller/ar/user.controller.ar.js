@@ -20,6 +20,11 @@ class User {
         $inc: { customers: 1 }
       });
 
+      const date = new Date();
+      const counter = await count.findById('6410899ea821615f4e4638e6');
+      await counter.findMonthAndUpdate(date.getMonth(), 'customers', 1);
+      await counter.save();
+
       res.cookie('loggedIn', true);
       res.redirect('/');
     }
