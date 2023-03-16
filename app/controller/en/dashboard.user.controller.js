@@ -80,17 +80,24 @@ class userDashboard {
 
   static createUserLogic = async (req, res) => {
     try {
+      const date = new Date();
       const userData = userModel(req.body);
       await userData.save();
 
       const counter = await count.findById('6410899ea821615f4e4638e6');
-      if (req.body.admin) counter.admins = counter.admins + 1;
-      else counter.customers = counter.customers + 1;
+      if (req.body.admin) {
+        counter.admins = counter.admins + 1;
+        await counter.findMonthAndUpdate(date.getMonth(), 'admins', 1);
+      } else {
+        counter.customers = counter.customers + 1;
+        await counter.findMonthAndUpdate(date.getMonth(), 'customers', 1);
+      }
       await counter.save();
 
       res.redirect('/en/dash-board/users/overview');
     }
     catch (err) {
+      console.log(err.message);
       res.render('en/dashboard-createUser', { pageTitle: 'Albayie - Dashboard Create User', data: req.body, error: err.message });
     }
   };

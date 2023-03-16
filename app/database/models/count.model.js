@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('count', {
+const countSchema = mongoose.Schema({
+  currentMonth: {
+    type: Number,
+    default: 0
+  },
   admins: {
     type: Number,
     default: 0
@@ -236,6 +240,25 @@ module.exports = mongoose.model('count', {
     }
   }
 });
+
+
+countSchema.methods.findMonthAndUpdate = async function (month, key, value) {
+  const counter = this;
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  if (counter.currentMonth === month) {
+    counter.months[months[month]][key] = counter.months[months[month]][key] + value;
+  } else {
+    counter.currentMonth = month;
+    const keys = ['admins', 'customers', 'visitors', 'pageViews'];
+    keys.forEach(key => counter.months[months[month]][key] = 0);
+    counter.months[months[month]][key] = counter.months[months[month]][key] + value;
+  }
+
+  await counter.save();
+};
+
+module.exports = mongoose.model('count', countSchema);
 
 
 
