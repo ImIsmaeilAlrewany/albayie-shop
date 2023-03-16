@@ -64,8 +64,8 @@
               </div>
             </div>
           </div>
-          <div class="row g-0">
-            <div class="chart col-lg-6 rounded my-4">
+          <div class="row g-0 justify-content-between">
+            <div class="chart col-lg-8 rounded my-4 pageviews-chart">
               <div class="chart-heading">
                 <h2 class="m-0 px-3 fs-4 text-capitalize text-nowrap">
                   page views
@@ -75,15 +75,86 @@
                 <canvas id="page-views"></canvas>
               </div>
             </div>
-            <div class="chart col-lg-6 rounded my-4">
+            <div class="chart col-lg-4 rounded my-4">
               <div class="chart-heading">
                 <h2 class="m-0 px-3 fs-4 text-capitalize text-nowrap">
                   most users
                 </h2>
               </div>
-
+              <div class="p-3">
+                <canvas id="most-users"></canvas>
+              </div>
             </div>
           </div>
+          <div class="chart col rounded my-4">
+            <div class="chart-heading">
+              <h2 class="m-0 px-3 fs-4 text-capitalize text-nowrap">
+                users increasement
+              </h2>
+            </div>
+            <div class="p-3">
+              <canvas id="all-users"></canvas>
+            </div>
+          </div>
+
+
+          {{!-- table new users --}}
+
+          <div class="customer-table rounded mt-5 mb-4">
+            <h2 class="table-heading m-0 px-3 fs-4 text-capitalize">
+              customers table
+            </h2>
+            <div class="table-responsive p-3">
+              <div class="table-header row">
+                <div class="col-6 text-start bg-white ps-0">
+                  <label class="customer-select-label" for="rows-number">Show</label>
+                  <select id="customer-table-select" class="form-select form-select-sm w-auto d-inline-block"
+                    name="show">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                  </select>
+                  <label class="customer-select-label" for="rows-number">entries</label>
+                </div>
+                <div class="col-6 text-end pe-0">
+                  <label for="customer-search-customer" class="search-label">Search: </label>
+                  <input id="customer-search-customer" type="search"
+                    class="form-control form-control-sm w-50 d-inline-block" placeholder="" aria-controls="dataTable"
+                    name="searchCustomer">
+                </div>
+              </div>
+              <table id="customer-table" class="table table-bordered table-hover my-3">
+                <thead>
+                  <tr>
+                    <th class="text-nowrap" scope="col">Full name</th>
+                    <th class="text-nowrap" scope="col">Phone number</th>
+                    <th class="text-nowrap" scope="col">Email address</th>
+                    <th class="text-nowrap" scope="col">City name</th>
+                    <th class="text-nowrap" scope="col">Start date</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <div class="table-footer row">
+                <div class="col-6 text-start bg-white ps-0">
+                  <p id="customer-table-info" class="table-info m-0 p-0"></p>
+                </div>
+                <div class="col-6 text-end pe-0">
+                  <ul class="pagination pagination-sm m-0 p-0 justify-content-end">
+                    <li class="page-item">
+                      <a id="customer-table-previous" class="page-link" role="button">Previous</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" role="button">***</a>
+                    </li>
+                    <li class="page-item">
+                      <a id="customer-table-next" class="page-link" role="button">Next</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
         </section>
         {{!-- dashboard users overview content --}}
 
@@ -96,9 +167,116 @@
 </div>
 
 
+{{!--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"
   integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
-<script></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const barChart = document.getElementById('page-views');
+  const doughnutChart = document.getElementById('most-users');
+  const lineChart = document.getElementById('all-users');
+
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  //get all data for each month from 0 to 11
+  let viewsData = [];
+  let adminsData = [];
+  let customersData = [];
+  let visitorsData = [];
+  const fetchData = {{ counter.months }};
+
+  months.forEach(month => {
+    viewsData.push(fetchData[month].pageViews);
+    adminsData.push(fetchData[month].admins);
+    customersData.push(fetchData[month].customers);
+    visitorsData.push(fetchData[month].visitors);
+  });
+
+  new Chart(barChart, {
+    type: 'bar',
+    data: {
+      labels: months,
+      datasets: [{
+        label: 'page views',
+        data: viewsData,
+        borderWidth: 1,
+        borderColor: '#f6c23e',
+        backgroundColor: '#f6c23ead',
+        maxBarThickness: 20,
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      responsive: true
+    }
+  });
+
+
+  //working with doughnut chart
+  new Chart(doughnutChart, {
+    type: 'doughnut',
+    data: {
+      labels: ['admins', 'customers', 'visitors'],
+      datasets: [{
+        label: 'all users',
+        data: [
+          {{ counter.admins }},
+      {{ counter.customers }}, 
+          {{ counter.visitors }}
+        ],
+    borderWidth: 2,
+    borderColor: '#fff',
+    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+    hoverOffset: 4
+    }],
+    },
+    options: {
+    maintainAspectRatio: false,
+    responsive: true
+  }
+  });
+
+
+  //working with line chart
+  new Chart(lineChart, {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: 'admins',
+          data: adminsData,
+          borderColor: '#4e73df',
+          fill: false,
+          tension: 0.1,
+          borderWidth: 2
+        },
+        {
+          label: 'customers',
+          data: customersData,
+          borderColor: '#1cc88a',
+          fill: false,
+          tension: 0.1,
+          borderWidth: 2
+        },
+        {
+          label: 'visitors',
+          data: visitorsData,
+          borderColor: '#36b9cc',
+          fill: false,
+          tension: 0.1,
+          borderWidth: 2
+        }
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      responsive: true
+    }
+  });
+
+</script>
 {{>pageFoot}}
