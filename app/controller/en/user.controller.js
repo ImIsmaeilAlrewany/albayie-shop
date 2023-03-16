@@ -1,5 +1,7 @@
 const bcryptjs = require('bcryptjs');
 const userModel = require('../../database/models/user.model');
+const count = require('../../database/models/count.model');
+
 class User {
   static register = (req, res) => {
     res.render('en/register', { pageTitle: 'Albayie - register', path: 'en/register' });
@@ -9,11 +11,17 @@ class User {
     try {
       const userData = userModel(req.body);
       await userData.save();
+
       const token = await userData.generateToken();
       res.cookie('Authorization', token, {
         httpOnly: true,
         secure: true
       });
+
+      await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
+        $inc: { customers: 1 }
+      });
+
       res.redirect('/en');
     }
     catch (err) {

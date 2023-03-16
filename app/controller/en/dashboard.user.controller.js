@@ -1,5 +1,5 @@
 const userModel = require('../../database/models/user.model');
-const counter = require('../../database/models/count.model');
+const count = require('../../database/models/count.model');
 const bcryptjs = require('bcryptjs');
 const path = require('path');
 const fs = require('fs');
@@ -56,17 +56,13 @@ class userDashboard {
     try {
       if (!req.user.editor) throw new Error('not editor');
 
-      const admins = await userModel.find({ admin: true });
-      const customers = await userModel.find({ admin: false });
-      const count = await counter.findById('6410899ea821615f4e4638e6');
+      const counter = await count.findById('6410899ea821615f4e4638e6');
 
       res.render('en/dashboard-usersOverview', {
-        pageTitle: 'Albayie - Dashboard - Users Overview', path: '/en/dash-board/users/overview', user: req.user, overview: {
-          admins: admins.length,
-          customers: customers.length,
-          visitors: count.visitors,
-          pageViews: count.pageViews
-        }
+        pageTitle: 'Albayie - Dashboard - Users Overview',
+        path: '/en/dash-board/users/overview',
+        user: req.user,
+        counter
       });
     } catch (err) {
       res.redirect('/en/dash-board');
@@ -86,7 +82,13 @@ class userDashboard {
     try {
       const userData = userModel(req.body);
       await userData.save();
-      res.redirect('/en/dash-board');
+
+      const counter = await count.findById('6410899ea821615f4e4638e6');
+      if (req.body.admin) counter.admins = counter.admins + 1;
+      else counter.customers = counter.customers + 1;
+      await counter.save();
+
+      res.redirect('/en/dash-board/users/overview');
     }
     catch (err) {
       res.render('en/dashboard-createUser', { pageTitle: 'Albayie - Dashboard Create User', data: req.body, error: err.message });
@@ -183,10 +185,24 @@ class userDashboard {
     try {
       if (!req.user.editor) throw new Error('not editor');
 
+      const userData = await userModel.findById(req.params.id);
+
       if (!req.body.admin) req.body.admin = false;
       if (!req.body.editor) req.body.editor = false;
       const data = await userModel.findOneAndUpdate({ _id: req.params.id }, { ...req.body });
       await data.save();
+
+      if (req.body.admin != userData.admin) {
+        if (req.body.admin) {
+          await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
+            $inc: { admins: 1, customers: -1 }
+          });
+        } else {
+          await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
+            $inc: { admins: -1, customers: 1 }
+          });
+        }
+      }
 
       if (req.body.admin) {
         res.redirect(`/en/dash-board/users/admin/profile/${data._id}`);
@@ -280,6 +296,10 @@ class userDashboard {
       if (!req.body.delete) throw new Error('no value');
 
       await userModel.findOneAndDelete({ _id: req.params.id });
+      await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
+        $inc: { admins: -1 }
+      });
+
       res.redirect('/en/dash-board/users/admin');
     } catch (err) {
       if (err.message === 'no value') {
@@ -296,6 +316,10 @@ class userDashboard {
       if (!req.body.delete) throw new Error('no value');
 
       await userModel.findOneAndDelete({ _id: req.params.id });
+      await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
+        $inc: { customers: -1 }
+      });
+
       res.redirect('/en/dash-board/users/customer');
     } catch (err) {
       if (err.message === 'no value') {

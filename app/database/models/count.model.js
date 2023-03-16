@@ -240,8 +240,6 @@ module.exports = mongoose.model('count', {
 
 
 
-
-// also I need to make admin, customer, visitors and pageviews increasement monthly
 //and when create new user or delete one will ref here
 //as well as will change in the count middleware
 //also will check every month to know if this a new one or not and if it's will

@@ -9,11 +9,17 @@ class User {
     try {
       const userData = userModel(req.body);
       await userData.save();
+
       const token = await userData.generateToken();
       res.cookie('Authorization', token, {
         httpOnly: true,
         secure: true
       });
+
+      await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
+        $inc: { customers: 1 }
+      });
+
       res.cookie('loggedIn', true);
       res.redirect('/');
     }

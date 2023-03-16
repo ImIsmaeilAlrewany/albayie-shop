@@ -41,10 +41,6 @@ const counter = async (req, res, next) => {
       await counter.save();
     }
 
-
-    // const counter = await count.findById('6410899ea821615f4e4638e6');
-    // req.visitors = counter.visitors;
-    // req.pageViews = counter.pageViews;
     next();
   } catch (err) {
     if (req.cookies.lang === 'ar') {
