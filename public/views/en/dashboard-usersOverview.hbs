@@ -100,55 +100,55 @@
 
           {{!-- table new users --}}
 
-          <div class="customer-table rounded mt-5 mb-4">
+          <div class="table rounded mt-5 mb-4">
             <h2 class="table-heading m-0 px-3 fs-4 text-capitalize">
-              customers table
+              new users
             </h2>
             <div class="table-responsive p-3">
               <div class="table-header row">
                 <div class="col-6 text-start bg-white ps-0">
-                  <label class="customer-select-label" for="rows-number">Show</label>
-                  <select id="customer-table-select" class="form-select form-select-sm w-auto d-inline-block"
+                  <label class="newUser-select-label" for="rows-number">Show</label>
+                  <select id="newUser-table-select" class="form-select form-select-sm w-auto d-inline-block"
                     name="show">
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
                   </select>
-                  <label class="customer-select-label" for="rows-number">entries</label>
+                  <label class="newUser-select-label" for="rows-number">entries</label>
                 </div>
                 <div class="col-6 text-end pe-0">
-                  <label for="customer-search-customer" class="search-label">Search: </label>
-                  <input id="customer-search-customer" type="search"
+                  <label for="newUser-search-newUser" class="search-label">Search: </label>
+                  <input id="newUser-search-newUser" type="search"
                     class="form-control form-control-sm w-50 d-inline-block" placeholder="" aria-controls="dataTable"
-                    name="searchCustomer">
+                    name="searchNewUser">
                 </div>
               </div>
-              <table id="customer-table" class="table table-bordered table-hover my-3">
+              <table id="newUser-table" class="table table-bordered table-hover my-3">
                 <thead>
                   <tr>
                     <th class="text-nowrap" scope="col">Full name</th>
                     <th class="text-nowrap" scope="col">Phone number</th>
                     <th class="text-nowrap" scope="col">Email address</th>
-                    <th class="text-nowrap" scope="col">City name</th>
-                    <th class="text-nowrap" scope="col">Start date</th>
+                    <th class="text-nowrap" scope="col">User type</th>
+                    <th class="text-nowrap" scope="col">Status</th>
                   </tr>
                 </thead>
                 <tbody></tbody>
               </table>
               <div class="table-footer row">
                 <div class="col-6 text-start bg-white ps-0">
-                  <p id="customer-table-info" class="table-info m-0 p-0"></p>
+                  <p id="newUser-table-info" class="table-info m-0 p-0"></p>
                 </div>
                 <div class="col-6 text-end pe-0">
                   <ul class="pagination pagination-sm m-0 p-0 justify-content-end">
                     <li class="page-item">
-                      <a id="customer-table-previous" class="page-link" role="button">Previous</a>
+                      <a id="newUser-table-previous" class="page-link" role="button">Previous</a>
                     </li>
                     <li class="page-item">
                       <a class="page-link" role="button">***</a>
                     </li>
                     <li class="page-item">
-                      <a id="customer-table-next" class="page-link" role="button">Next</a>
+                      <a id="newUser-table-next" class="page-link" role="button">Next</a>
                     </li>
                   </ul>
                 </div>

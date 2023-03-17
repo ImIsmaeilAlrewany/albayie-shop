@@ -231,6 +231,14 @@ const customerTableInfo = document.getElementById('customer-table-info');
 const customerTablePrevious = document.getElementById('customer-table-previous');
 const customerTableNext = document.getElementById('customer-table-next');
 
+//select all new user Table elements
+const newUserTable = document.querySelector('#newUser-table tbody');
+const newUserTableSelect = document.getElementById('newUser-table-select');
+const newUserTableSearch = document.getElementById('newUser-search-newUser');
+const newUserTableInfo = document.getElementById('newUser-table-info');
+const newUserTablePrevious = document.getElementById('newUser-table-previous');
+const newUserTableNext = document.getElementById('newUser-table-next');
+
 const createRow = (table, data, url) => {
   const tr = document.createElement('tr');
   const tdContent = [`${data.fName} ${data.lName}`, data.phoneNum, data.email, data.city || 'no address', data.createdAt.split('T')[0]];
