@@ -239,9 +239,15 @@ const newUserTableInfo = document.getElementById('newUser-table-info');
 const newUserTablePrevious = document.getElementById('newUser-table-previous');
 const newUserTableNext = document.getElementById('newUser-table-next');
 
-const createRow = (table, data, url) => {
+const createRow = (table, data, url, status = false) => {
   const tr = document.createElement('tr');
-  const tdContent = [`${data.fName} ${data.lName}`, data.phoneNum, data.email, data.city || 'no address', data.createdAt.split('T')[0]];
+  const tdContent = [`${data.fName} ${data.lName}`, data.phoneNum, data.email, data.city || 'no address'];
+
+  if (status) {
+    data.online ? tdContent.push('online') : tdContent.push('offline');
+  } else {
+    tdContent.push(data.createdAt.split('T')[0]);
+  }
 
   tdContent.forEach(content => {
     const cell = document.createElement('td');
@@ -453,6 +459,104 @@ if (customerTablePrevious) customerTablePrevious.addEventListener('click', () =>
 if (customerTableNext) customerTableNext.addEventListener('click', () => {
   customerTable.innerHTML = '';
   getAllCustomers(false, true, searchCustomerValue);
+});
+
+
+//newUser table activation
+//search option in newUser table
+let searchNewUserValue;
+if (newUserTableSearch) newUserTableSearch.addEventListener('input', () => {
+  searchNewUserValue = newUserTableSearch.value;
+  newUserTable.innerHTML = '';
+  getAllNewUsers(false, false, searchNewUserValue);
+});
+
+//table rows adjust in newUser table
+let showNewUsers;
+if (newUserTableSelect) newUserTableSelect.addEventListener('change', () => {
+  showNewUsers = +newUserTableSelect.value;
+  newUserTable.innerHTML = '';
+  getAllNewUsers(false, false, searchNewUserValue);
+});
+
+
+const getAllNewUsers = async (previous, next, search) => {
+  const res = await fetch(`http://127.0.0.1:3000/en/dash-board/users/getAllNewUsers` + `?search=${search}`, {
+    method: 'GET'
+  });
+  try {
+    const data = await res.json();
+    const showNewUsersNumber = showNewUsers || +newUserTableSelect.value;
+    let allNewUsers = data.newUsers;
+
+    if (allNewUsers.length === 0) {
+      newUserTable.innerHTML =
+        '<tr class="text-muted text-center"><td colspan="5">No matching records found</td></tr>';
+    }
+
+    if (showNewUsersNumber < allNewUsers.length) {
+      if (next) {
+        lastLength = sessionStorage.getItem('showNewUsers');
+        allNewUsers = data.newUsers.slice(+lastLength, (+lastLength + showNewUsersNumber));
+        sessionStorage.setItem('lastAdmin', +lastLength + allNewUsers.length);
+        newUserTablePrevious.parentElement.classList.remove('disabled');
+
+        if (data.newUsers.length <= (+lastLength + showNewUsersNumber)) {
+          newUserTableNext.parentElement.classList.add('disabled');
+        } else {
+          lastLength = sessionStorage.setItem('showNewUsers', +lastLength + showNewUsersNumber);
+        }
+      } else if (previous) {
+        lastLength = sessionStorage.getItem('showNewUsers');
+        allNewUsers = data.newUsers.slice((+lastLength - showNewUsersNumber), showNewUsersNumber);
+        sessionStorage.setItem('lastNewUser', +lastLength);
+        newUserTableNext.parentElement.classList.remove('disabled');
+
+        if (+lastLength === showNewUsersNumber) {
+          newUserTablePrevious.parentElement.classList.add('disabled');
+        } else {
+          sessionStorage.setItem('showNewUsers', +lastLength - allNewUsers.length);
+        }
+      } else {
+        allNewUsers = data.newUsers.slice(0, showNewUsersNumber);
+        sessionStorage.setItem('showNewUsers', allNewUsers.length);
+        sessionStorage.setItem('lastNewUser', allNewUsers.length);
+        newUserTablePrevious.parentElement.classList.add('disabled');
+        newUserTableNext.parentElement.classList.remove('disabled');
+      }
+    } else {
+      sessionStorage.setItem('showNewUsers', data.newUsers.length);
+      sessionStorage.setItem('lastNewUser', data.newUsers.length);
+      newUserTablePrevious.parentElement.classList.add('disabled');
+      newUserTableNext.parentElement.classList.add('disabled');
+    }
+
+    allNewUsers.forEach(newUser => {
+      createRow(newUserTable, newUser, `http://127.0.0.1:3000/en/dash-board/users/customer/profile/${newUser._id}`, true);
+    });
+
+    if (allNewUsers.length !== 0) {
+      newUserTableInfo.innerHTML = `Showing ${+sessionStorage.getItem('showNewUsers') - (allNewUsers.length - 1)} to ${+sessionStorage.getItem('lastNewUser')} of ${data.newUsers.length} entires`;
+    } else {
+      newUserTableInfo.innerHTML = `Showing 0 to 0 of 0 entires`;
+    }
+  } catch (err) {
+    console.log('error', err);
+  }
+};
+
+if (newUserTable) getAllNewUsers();
+
+//show previous in newUser table
+if (newUserTablePrevious) newUserTablePrevious.addEventListener('click', () => {
+  newUserTable.innerHTML = '';
+  getAllNewUsers(true, false, searchNewUserValue);
+});
+
+//show next in newUser table
+if (newUserTableNext) newUserTableNext.addEventListener('click', () => {
+  newUserTable.innerHTML = '';
+  getAllNewUsers(false, true, searchNewUserValue);
 });
 
 

@@ -1190,6 +1190,12 @@ a {
   height: 200px;
 }
 
+/* if table search and buttons width aren't ok delete this */
+.dashboard-layout .newUser-table .newUser-table-header,
+.dashboard-layout .newUser-table .newUser-table-footer {
+  width: 685px;
+}
+
 @media (min-width: 768px) {
   .dashboard-layout .users-overview .row .users-info-box {
     width: 48.5%;
@@ -1217,6 +1223,21 @@ a {
 
   .dashboard-layout canvas {
     height: 300px;
+  }
+
+  /* if table search and buttons width aren't ok delete this */
+  .dashboard-layout .newUser-table .newUser-table-header,
+  .dashboard-layout .newUser-table .newUser-table-footer {
+    width: 930px;
+  }
+}
+
+@media (min-width: 1400px) {
+
+  /* if table search and buttons width aren't ok delete this */
+  .dashboard-layout .newUser-table .newUser-table-header,
+  .dashboard-layout .newUser-table .newUser-table-footer {
+    width: 990px;
   }
 }
 

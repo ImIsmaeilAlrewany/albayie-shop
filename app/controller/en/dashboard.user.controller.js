@@ -69,6 +69,32 @@ class userDashboard {
     }
   };
 
+  static newUsers = async (req, res) => {
+    try {
+      if (!req.user.editor) throw new Error('not editor');
+      const start = new Date().toDateString();
+      let newUsers;
+
+      if (req.query.search != 'undefined' && req.query.searchNewUser != '') {
+        newUsers = await userModel.find({
+          $or: [
+            { fName: { $regex: req.query.search }, admin: false, createdAt: { $gte: start } },
+            { lName: { $regex: req.query.search }, admin: false, createdAt: { $gte: start } },
+            { phoneNum: { $regex: req.query.search }, admin: false, createdAt: { $gte: start } },
+            { email: { $regex: req.query.search }, admin: false, createdAt: { $gte: start } },
+            { city: { $regex: req.query.search }, admin: false, createdAt: { $gte: start } },
+          ]
+        });
+      } else {
+        newUsers = await userModel.find({ createdAt: { $gte: start }, admin: false });
+      }
+
+      res.status(200).json({ newUsers });
+    } catch (err) {
+      res.redirect('/en/dash-board');
+    }
+  };
+
   static createUser = (req, res) => {
     try {
       if (!req.user.editor) throw new Error('not editor');
