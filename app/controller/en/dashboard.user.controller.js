@@ -227,8 +227,8 @@ class userDashboard {
       const date = new Date();
       const counter = await count.findById('6410899ea821615f4e4638e6');
 
-      if (req.body.admin != userData.admin) {
-        if (req.body.admin) {
+      if (JSON.parse(req.body.admin) != userData.admin) {
+        if (JSON.parse(req.body.admin)) {
           await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
             $inc: { admins: 1, customers: -1 }
           });
