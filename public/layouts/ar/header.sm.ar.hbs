@@ -54,10 +54,29 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2 {{#if (compare path 'ar/account')}} active {{/if}}" href="/ar/account">
+          <a class="nav-link p-2 {{#if  (or path 'en/users/profile/:id')}} active {{/if}}" data-bs-toggle="dropdown"
+            role="button">
             <i class="fa-solid fa-user"></i>
             حسابي الشخصي
           </a>
+          <ul class="dropdown-menu border-0 m-0 rounded-0">
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/general">عرض
+                البيانات</a>
+            </li>
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/wishlist">قائمة الرغبات</a>
+            </li>
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/cart">عربة التسوق</a>
+            </li>
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/orders">الطلبات</a>
+            </li>
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/history">النشاطات</a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link p-2 {{#if (compare path 'ar/cart')}} active {{/if}}" href="/ar/cart">
@@ -75,7 +94,7 @@
       <p class="registration">
 
         {{!-- toggle between login / create account and logout --}}
-        {{#if isLogin}}
+        {{#if data.isLogin}}
         <a href="/ar/logout" class="logout">سجل الخروج</a>
         {{else}}
         <a href="/ar/login" class="login">سجل الدخول</a>

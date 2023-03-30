@@ -71,6 +71,10 @@ body {
 
 /* start search box style in header-sm file*/
 
+.header-sm .toggle-sidebar .navbar-nav .nav-item:nth-of-type(2) ul {
+  text-align: right;
+}
+
 .search-sm .search-box button[type="submit"] {
   border-right: 2px solid var(--primary);
   border-left: 1px solid #fff;

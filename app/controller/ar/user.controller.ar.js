@@ -25,8 +25,8 @@ class User {
       await counter.findMonthAndUpdate(date.getMonth(), 'customers', 1);
       await counter.save();
 
-      res.cookie('loggedIn', true);
-      res.redirect('/');
+      // res.cookie('loggedIn', true);
+      res.redirect('/ar');
     }
     catch (err) {
       res.render('ar/register.ar.hbs', { pageTitle: 'Albayie - register', path: 'ar/register', data: req.body, error: err.message });

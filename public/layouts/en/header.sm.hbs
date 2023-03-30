@@ -54,13 +54,31 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2 {{#if  (compare path 'en/account')}} active {{/if}}" href="/en/account">
+          <a class="nav-link p-2 {{#if  (or path 'en/users/profile/:id')}} active {{/if}}" data-bs-toggle="dropdown"
+            role="button">
             <i class="fa-solid fa-user"></i>
             my account
           </a>
+          <ul class="dropdown-menu border-0 m-0 rounded-0">
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/general">General</a>
+            </li>
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/wishlist">Wishlist</a>
+            </li>
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/cart">My cart</a>
+            </li>
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/orders">Orders</a>
+            </li>
+            <li class="">
+              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/history">History</a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2 {{#if (compare path 'en/cart')}} active {{/if}}" href="/en/cart">
+          <a class="nav-link p-2 {{#if (compare path 'en/users/profile/:id/cart')}} active {{/if}}" href="/en/cart">
             <i class="fa-solid fa-cart-shopping"></i>
             my cart
           </a>
@@ -75,7 +93,7 @@
       <p id="" class="registration">
 
         {{!-- toggle between login / create account and logout --}}
-        {{#if isLogin}}
+        {{#if data.isLogin}}
         <a href="/en/logout" class="logout">log out</a>
         {{else}}
         <a href="/en/login" class="login">log in</a>

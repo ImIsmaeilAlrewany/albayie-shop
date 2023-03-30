@@ -233,9 +233,15 @@ a {
   text-transform: capitalize;
 }
 
-.header-sm .toggle-sidebar .navbar-nav a.active {
+.header-sm .toggle-sidebar .navbar-nav a.active,
+.header-sm .toggle-sidebar .navbar-nav .nav-item:nth-of-type(2) ul li.active {
   background-color: var(--primary);
   color: #fff;
+}
+
+.header-sm .toggle-sidebar .navbar-nav .nav-item:nth-of-type(2) ul {
+  background-color: #ededed;
+  font-size: var(--font-size-light);
 }
 
 .header-sm .toggle-sidebar .registration {
