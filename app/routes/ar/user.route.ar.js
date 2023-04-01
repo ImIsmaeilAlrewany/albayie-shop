@@ -8,8 +8,5 @@ router.post('/register', user.registerLogic);
 router.get('/login', count, user.login);
 router.post('/login', user.loginLogic);
 router.get('/logout', auth, user.logout);
-router.get('/account', auth, count, (req, res) => {
-  res.render('ar/account.ar.hbs');
-});
 
 module.exports = router;

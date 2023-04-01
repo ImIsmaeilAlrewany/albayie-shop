@@ -2,6 +2,19 @@ const bcryptjs = require('bcryptjs');
 const userModel = require('../../database/models/user.model');
 const count = require('../../database/models/count.model');
 
+const changeLang = (lang, screen, id) => {
+  let output;
+  if (lang === 'ar') {
+    output = screen ?
+      `/ar/users/profile/${id}/general?screen=small-medium` :
+      `/ar/users/profile/${id}/general`;
+  } else if (lang === 'en') {
+    output = screen ?
+      `/en/users/profile/${id}/general?screen=small-medium` :
+      `/en/users/profile/${id}/general`;
+  }
+  return output;
+};
 class User {
   static register = (req, res) => {
     res.render('en/register', { pageTitle: 'Albayie - register', path: 'en/register' });
@@ -75,6 +88,16 @@ class User {
     } catch (err) {
       res.send({ error: err.message });
     }
+  };
+
+  static accountGeneralInfo = async (req, res) => {
+    const smallScreen = req.query.screen === 'small-medium' ? true : false;
+    const userData = await userModel.findById(req.params.id);
+    const id = req.params.id;
+
+    res.render('en/account', {
+      pageTitle: 'Albayie - My Account', path: `en/users/profile/general`, smallScreen, data: { isLogin: true, user: userData }, arLink: changeLang('ar', smallScreen, id), enLink: changeLang('en', smallScreen, id)
+    });
   };
 }
 

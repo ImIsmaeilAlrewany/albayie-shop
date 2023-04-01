@@ -23,17 +23,17 @@ const createCookie = (res, name, data) => {
 class Home {
   static showHome = async (req, res) => {
     createCookie(res, 'lang', 'ar');
-    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', data: await isLogin(req.cookies.Authorization) });
+    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', data: await isLogin(req.cookies.Authorization), arLink: '/ar', enLink: '/en' });
   };
 
   static homeInArabic = async (req, res) => {
     createCookie(res, 'lang', 'ar');
-    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', data: await isLogin(req.cookies.Authorization) });
+    res.render('ar/home.ar.hbs', { pageTitle: 'Albayie - Online Shopping', path: 'ar', data: await isLogin(req.cookies.Authorization), arLink: '/ar', enLink: '/en' });
   };
 
   static homeInEnglish = async (req, res) => {
     createCookie(res, 'lang', 'en');
-    res.render('en/home', { pageTitle: 'Albayie - Online Shopping', path: 'en', data: await isLogin(req.cookies.Authorization) });
+    res.render('en/home', { pageTitle: 'Albayie - Online Shopping', path: 'en', data: await isLogin(req.cookies.Authorization), arLink: '/ar', enLink: '/en' });
   };
 
   static offline = async (req, res) => {

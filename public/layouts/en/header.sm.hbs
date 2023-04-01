@@ -34,11 +34,11 @@
             <span class="arrow-down"><i class="fa-solid fa-chevron-down"></i></span>
           </button>
           <ul id="dropdown-menu" class="dropdown-menu">
-            <li><a id="ar" class="dropdown-item d-flex align-items-center" href="/ar">
+            <li><a id="ar" class="dropdown-item d-flex align-items-center" href="{{arLink}}">
                 <img src="/images/egypt.svg" alt="arabic" style="width: 20px;">
                 <span class="text-capitalize ms-2">arabic</span>
               </a></li>
-            <li><a id="en" class="dropdown-item d-flex align-items-center" href="/en">
+            <li><a id="en" class="dropdown-item d-flex align-items-center" href="{{enLink}}">
                 <img src="/images/united.svg" alt="english" style="width: 20px;">
                 <span class="text-capitalize ms-2">english</span>
               </a></li>
@@ -48,43 +48,47 @@
       </div>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link p-2 active {{#if (compare path 'en')}} active {{/if}}" href="/en">
+          <a class="nav-link p-2 {{#if (compare path 'en')}} active {{/if}}" href="/en">
             <i class="fa-solid fa-house"></i>
             home
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2 {{#if  (or path 'en/users/profile/:id')}} active {{/if}}" data-bs-toggle="dropdown"
+          <a class="nav-link p-2 {{#if  (or path 'en/users/profile/general')}} active {{/if}}" data-bs-toggle="dropdown"
             role="button">
             <i class="fa-solid fa-user"></i>
             my account
           </a>
           <ul class="dropdown-menu border-0 m-0 rounded-0">
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/general">General</a>
+              <a class="dropdown-item px-4 py-2"
+                href="/en/users/profile/{{data.user._id}}/general?screen=small-medium">General</a>
             </li>
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/wishlist">Wishlist</a>
+              <a class="dropdown-item px-4 py-2"
+                href="/en/users/profile/{{data.user._id}}/wishlist?screen=small-medium">Wishlist</a>
             </li>
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/cart">My cart</a>
+              <a class="dropdown-item px-4 py-2" href="/en/users/profile/{{data.user._id}}/cart">My cart</a>
             </li>
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/orders">Orders</a>
+              <a class="dropdown-item px-4 py-2"
+                href="/en/users/profile/{{data.user._id}}/orders?screen=small-medium">Orders</a>
             </li>
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/history">History</a>
+              <a class="dropdown-item px-4 py-2"
+                href="/en/users/profile/{{data.user._id}}/history?screen=small-medium">History</a>
             </li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2 {{#if (compare path 'en/users/profile/:id/cart')}} active {{/if}}" href="/en/cart">
+          <a class="nav-link p-2 {{#if (compare path 'en/users/profile/:id/cart')}} active {{/if}}" href="">
             <i class="fa-solid fa-cart-shopping"></i>
             my cart
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2 {{#if (compare path 'en/checkout')}} active {{/if}}" href="/en/checkout">
+          <a class="nav-link p-2 {{#if (compare path 'en/checkout')}} active {{/if}}" href="">
             <i class="fa-regular fa-square-check"></i>
             checkout
           </a>
