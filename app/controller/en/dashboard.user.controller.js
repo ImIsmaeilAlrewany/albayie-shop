@@ -22,7 +22,8 @@ class userDashboard {
       const token = await userData.generateToken();
       res.cookie('Authorization', token, {
         httpOnly: true,
-        secure: true
+        secure: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000
       });
 
       //check if this user is Admin

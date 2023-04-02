@@ -28,7 +28,8 @@ class User {
       const token = await userData.generateToken();
       res.cookie('Authorization', token, {
         httpOnly: true,
-        secure: true
+        secure: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000
       });
 
       await count.findByIdAndUpdate('6410899ea821615f4e4638e6', {
@@ -64,7 +65,8 @@ class User {
       const token = await userData.generateToken();
       res.cookie('Authorization', token, {
         httpOnly: true,
-        secure: true
+        secure: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000
       });
 
       userData.online = true;

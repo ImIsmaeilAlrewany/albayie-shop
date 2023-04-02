@@ -1510,3 +1510,113 @@ a {
 /* end dashboard footer file style */
 /* end dashboard-home file style */
 /* end dashboard style */
+
+/* start account file style */
+
+/* start changeInfo layout file style (general settings) */
+
+.profile-info .profile-header h1 {
+  color: var(--gray);
+}
+
+.profile-info .profile .profile-pic {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.profile-info .profile .profile-pic>div {
+  width: fit-content;
+}
+
+.profile-info .profile .profile-pic img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.profile-info .profile .add-picture label {
+  font-size: var(--font-size-light);
+  background-color: var(--bg-light);
+  border-radius: 5px;
+  color: var(--primary);
+}
+
+.profile-info .profile .add-picture label:hover {
+  background-color: var(--bg-light);
+  color: var(--primary);
+}
+
+.profile-info .profile .add-picture p {
+  font-size: var(--font-size-lightest);
+}
+
+.profile-info .profile .user-info form button {
+  background-color: var(--primary);
+  color: #fff;
+  font-size: var(--font-size-light);
+}
+
+.profile-info .profile .user-info form input {
+  transition: 0.3s;
+  color: var(--normal-gray);
+}
+
+.profile-info .profile .user-info form input:focus {
+  border-color: var(--primary);
+}
+
+.profile-info .profile .user-info form input:focus::placeholder {
+  opacity: 0;
+}
+
+/* @media (min-width: 768px) {
+  .dashboard-user-profile .profile .profile-pic img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .dashboard-user-profile .profile .add-picture label,
+  .dashboard-user-profile .profile .user-data-form button {
+    font-size: var(--font-size-light);
+    padding: 6px 12px;
+  }
+
+  .dashboard-user-profile .profile .add-picture p {
+    font-size: var(--font-size-light);
+  }
+
+  .dashboard-user-profile .profile .profile-data h2 {
+    font-size: 24px;
+  }
+
+  .dashboard-user-profile .profile .profile-data input,
+  .dashboard-user-profile .profile .profile-data textarea {
+    max-width: 450px;
+  }
+
+  .dashboard-user-profile .profile .profile-data span+input {
+    max-width: 405px;
+  }
+}
+
+@media (min-width: 992px) {
+  .dashboard-user-profile .profile .profile-data {
+    position: relative;
+  }
+
+  .dashboard-user-profile .profile .profile-data .row>div {
+    flex: 1;
+  }
+
+  .dashboard-user-profile .profile .profile-data .profile-id {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    margin: 0 !important;
+    font-size: var(--font-size-light);
+  }
+
+} */
+/* end changeInfo layout file style (general settings) */
+
+/* end account file style */

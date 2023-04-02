@@ -2,14 +2,13 @@ const userModel = require('../database/models/user.model');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const isLogin = async (data) => {
+const isLogin = async (token) => {
   try {
-    // data ? true : false;
-    const breakPass = jwt.verify(data, process.env.KEY);
-    const userData = await userModel.findOne({ _id: breakPass._id, 'tokens.token': data });
+    if (!token) throw new Error('no token');
+    const breakPass = jwt.verify(token, process.env.KEY);
+    const userData = await userModel.findOne({ _id: breakPass._id, 'tokens.token': token });
     if (!userData) throw new Error('can\'t access token');
     else return { isLogin: true, user: userData };
-    // console.log({ isLogin: true, user: userData });
   } catch (err) {
     console.log(err.message);
   }

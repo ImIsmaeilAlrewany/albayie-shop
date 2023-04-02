@@ -1,0 +1,90 @@
+{{!-- start the profile information updating and reading --}}
+
+<section class="profile-info my-4">
+  <header class="profile-header mb-4 px-3">
+    <h1 class="m-0 p-0 text-capitalize fs-2">profile information</h1>
+    <hr class="border-1 m-0">
+  </header>
+  <div class="profile mx-3">
+
+    {{!-- start with profile picture --}}
+
+    <div class="profile-pic d-flex">
+      <div class="position-relative">
+        <img
+          src="{{#unless data.user.profilePic}} /images/profile-picture.svg {{else}} /images/uploaded/{{data.user.profilePic}} {{/unless}}"
+          alt="profile-picture">
+      </div>
+
+      {{!-- change profile picture form --}}
+      <form id="edit-picture-form" class="add-picture mx-3 align-self-end my-2" action="{{data.user._id}}/upload"
+        method="post" enctype="multipart/form-data">
+        <label id="add-picture-label" class="mb-1 btn border-0 text-nowrap" for="upload-picture" role="button">
+          Choose picture
+        </label>
+        <input id="upload-picture" class="d-none" type="file" name="profilePic">
+        <p class="m-0 p-0 text-nowrap">Acceptable formats jpg only</p>
+      </form>
+    </div>
+    {{!-- end with profile picture --}}
+
+    {{!-- start with profile data --}}
+
+    <div class="user-info py-4">
+      <form class="user-data-form" method="post">
+        <div class="mb-3">
+          <label for="exampleInputFirstName" class="form-label">
+            First name
+          </label>
+          <input type="text" class="form-control shadow-none" id="exampleInputFirstName" name="fName"
+            value="{{data.user.fName}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputLastName" class="form-label">
+            Last name
+          </label>
+          <input type="text" class="form-control shadow-none" id="exampleInputLastName" name="lName"
+            value="{{data.user.lName}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputCity" class="form-label">
+            City
+          </label>
+          <input type="text" class="form-control shadow-none" id="exampleInputCity" name="city" {{#if data.user.city}}
+            value="{{data.user.city}}" {{else}} placeholder="No city found." {{/if}}>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputAddress" class="form-label">
+            Address
+          </label>
+          <input type="text" class="form-control shadow-none" id="exampleInputAddress" name="address" {{#if
+            data.user.address}} value="{{data.user.address}}" {{else}} placeholder="No address found." {{/if}}>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPhoneNumber" class="form-label">
+            Phone number
+          </label>
+          <div class="d-flex">
+            <span class="border rounded-start-2 py-1 px-2">+20</span>
+            <input type="text" class="form-control shadow-none rounded-start-0" id="exampleInputPhoneNumber"
+              name="phoneNum" value="{{data.user.phoneNum}}">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">
+            Email address
+          </label>
+          <input type="email" class="form-control shadow-none" id="exampleInputEmail1" name="email"
+            value="{{data.user.email}}">
+        </div>
+        <button id="save-edit-button" type="submit" class="btn text-nowrap px-4 border-0" role="button">
+          Save Changes
+        </button>
+      </form>
+    </div>
+
+    {{!-- end with profile data --}}
+  </div>
+</section>
+
+{{!-- end the profile information updating and reading --}}
