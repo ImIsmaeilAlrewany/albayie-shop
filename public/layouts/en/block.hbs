@@ -1,0 +1,44 @@
+{{!-- start the profile block and warning and reading --}}
+
+<section class="profile-info py-4">
+  <header class="profile-header mb-4 px-3">
+    <h1 class="m-0 p-0 text-capitalize fs-2">block and warning</h1>
+    <hr class="border-1 m-0">
+  </header>
+  <div class="profile mx-3">
+
+    {{!-- start with profile block and warning --}}
+
+    <div class="">
+      <h4 class="p-0 mb-3 fs-6 {{#if data.user.block}} text-danger {{else}} text-success {{/if}} text-capitalize">
+        Current account status
+      </h4>
+      <article class="block-info">
+        {{#if data.user.block}}
+        <p class="p-0 mb-2 block-days">
+          you have this time left {{getDays data.user.block}}/hr
+        </p>
+        <p class="p-3 m-0 block-reason">
+          Why am I blocked?!
+        </p>
+        {{#each data.user.block}}
+        <p class="p-0 mb-2 block-messages">
+          {{this.message}}
+        </p>
+        {{/each}}
+        {{else}}
+        You are not blocked,
+        {{/if}}
+        <div>
+          <a href="" class="p-0 m-0">Terms </a>
+          and
+          <a href="" class="p-0 m-0"> Privacy</a>
+        </div>
+      </article>
+    </div>
+
+    {{!-- end with profile block and warning --}}
+  </div>
+</section>
+
+{{!-- end the profile block and warning and reading --}}

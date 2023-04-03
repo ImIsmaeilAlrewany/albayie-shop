@@ -1,0 +1,28 @@
+{{!-- start the profile delete --}}
+
+<section class="profile-info py-4">
+  <header class="profile-header mb-4 px-3">
+    <h1 class="m-0 p-0 text-capitalize fs-2">delete account</h1>
+    <hr class="border-1 m-0">
+  </header>
+  <div class="profile mx-3">
+
+    {{!-- delete user account form --}}
+    <div class="delete-profile">
+      <form class="user-data-form" action="{{profileData._id}}/delete" method="post">
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input shadow-none border-danger" id="exampleCheckDelete"
+            name="delete" value="true">
+          <label class="form-check-label" for="exampleCheckDelete">
+            Delete this account
+          </label>
+        </div>
+        <button type="submit" class="btn bg-danger text-nowrap px-4 border-0">
+          Delete Account
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{{!-- end the profile delete --}}

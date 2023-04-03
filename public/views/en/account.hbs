@@ -4,7 +4,31 @@
 <div id="small-appearance">{{>en/header.sm}}</div>
 {{!-- end header --}}
 {{!-- start general settings for account page --}}
-{{>en/changeInfo}}
+<div class="row g-0 my-account">
+  <div class="col col-md-8">
+    {{>en/changeInfo}}
+    {{>en/changePassword}}
+    {{>en/block}}
+    {{>en/deleteAccount}}
+  </div>
+  {{#if smallScreen}}
+  <div class="ads-column d-none col-md-4 d-md-flex flex-column py-4 px-3">
+    <div class="border border-1 d-flex align-items-center justify-content-center">
+      Ads
+    </div>
+    <div class="border d-flex align-items-center justify-content-center">
+      Ads
+    </div>
+    <div class="border d-flex align-items-center justify-content-center">
+      Ads
+    </div>
+    <div class="border d-flex align-items-center justify-content-center">
+      Ads
+    </div>
+  </div>
+  {{else}}
+  {{/if}}
+</div>
 {{!-- end general settings for account page --}}
 {{>en/footer}}
 {{>pageFoot}}

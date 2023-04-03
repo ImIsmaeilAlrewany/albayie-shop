@@ -1550,73 +1550,76 @@ a {
   font-size: var(--font-size-lightest);
 }
 
-.profile-info .profile .user-info form button {
+.profile-info .profile form input {
+  transition: 0.3s;
+  color: var(--normal-gray);
+  max-width: 500px;
+}
+
+.profile-info .profile form input#exampleInputPhoneNumber {
+  max-width: 455px;
+}
+
+.profile-info .profile form input:focus {
+  border-color: var(--primary);
+}
+
+.profile-info .profile form input:focus::placeholder {
+  opacity: 0;
+}
+
+.profile-info .profile form button,
+.profile-info .profile form button:hover,
+.profile-info .profile form button:focus {
   background-color: var(--primary);
   color: #fff;
   font-size: var(--font-size-light);
 }
 
-.profile-info .profile .user-info form input {
-  transition: 0.3s;
+.profile-info .profile .block-info {
+  color: var(--light-gray);
+  font-size: var(--font-size-light);
+}
+
+.profile-info .profile .block-info .block-reason {
   color: var(--normal-gray);
 }
 
-.profile-info .profile .user-info form input:focus {
-  border-color: var(--primary);
+.profile-info .profile .block-info a {
+  color: var(--primary);
+  cursor: pointer;
+  font-size: var(--font-size-lightest);
 }
 
-.profile-info .profile .user-info form input:focus::placeholder {
-  opacity: 0;
+.profile-info .profile .delete-profile input[type="checkbox"]:checked {
+  background-color: var(--border-red);
 }
 
-/* @media (min-width: 768px) {
-  .dashboard-user-profile .profile .profile-pic img {
-    width: 150px;
-    height: 150px;
-  }
+.my-account .ads-column>div {
+  height: 435px;
+  width: 100%;
+  background-color: var(--bg-light);
+  color: var(--light-gray);
+  margin-bottom: 16px;
+}
 
-  .dashboard-user-profile .profile .add-picture label,
-  .dashboard-user-profile .profile .user-data-form button {
-    font-size: var(--font-size-light);
-    padding: 6px 12px;
-  }
+.my-account .ads-column>div:nth-child(2) {
+  height: 350px;
+}
 
-  .dashboard-user-profile .profile .add-picture p {
-    font-size: var(--font-size-light);
-  }
+.my-account .ads-column>div:nth-child(3) {
+  height: 250px;
+}
 
-  .dashboard-user-profile .profile .profile-data h2 {
-    font-size: 24px;
-  }
-
-  .dashboard-user-profile .profile .profile-data input,
-  .dashboard-user-profile .profile .profile-data textarea {
-    max-width: 450px;
-  }
-
-  .dashboard-user-profile .profile .profile-data span+input {
-    max-width: 405px;
+@media (min-width: 768px) {
+  .profile-info .profile .profile-pic img {
+    width: 165px;
+    height: 165px;
   }
 }
 
-@media (min-width: 992px) {
-  .dashboard-user-profile .profile .profile-data {
-    position: relative;
-  }
+@media (min-width: 992px) {}
 
-  .dashboard-user-profile .profile .profile-data .row>div {
-    flex: 1;
-  }
-
-  .dashboard-user-profile .profile .profile-data .profile-id {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    margin: 0 !important;
-    font-size: var(--font-size-light);
-  }
-
-} */
 /* end changeInfo layout file style (general settings) */
 
 /* end account file style */
