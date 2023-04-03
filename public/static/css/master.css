@@ -1611,14 +1611,75 @@ a {
   height: 250px;
 }
 
+.my-account article.account-links h3 {
+  background-color: var(--primary);
+}
+
+.my-account article.account-links ul li {
+  position: relative;
+}
+
+.my-account article.account-links ul li::after {
+  content: "";
+  position: absolute;
+  top: calc(50% + 2px);
+  transform: translateY(-50%);
+  left: -16px;
+  border-color: transparent transparent transparent black;
+  border-width: 4px 4px;
+  border-style: solid;
+  cursor: pointer;
+}
+
+.my-account article.account-links ul li a {
+  font-size: var(--font-size-light);
+}
+
+.my-account article.account-links ul li:hover,
+.my-account article.account-links ul li:focus {
+  color: var(--primary);
+}
+
+.my-account article.account-links ul li:hover::after,
+.my-account article.account-links ul li:focus::after {
+  border-left-color: var(--primary);
+}
+
+.my-account .account-quick-access div.ads {
+  height: 350px;
+  background-color: var(--bg-light);
+  color: var(--light-gray);
+}
+
+.my-account .account-quick-access div.ads:not(:last-child) {
+  margin-bottom: 24px;
+}
+
 @media (min-width: 768px) {
   .profile-info .profile .profile-pic img {
     width: 165px;
     height: 165px;
   }
+
+  .my-account .account-quick-access {
+    width: fit-content;
+  }
+
+  .my-account article.account-links,
+  .my-account .account-quick-access div.ads {
+    width: 215px;
+  }
 }
 
 @media (min-width: 992px) {}
+
+@media (min-width: 1200px) {
+
+  .my-account article.account-links,
+  .my-account .account-quick-access div.ads {
+    width: 250px;
+  }
+}
 
 /* end changeInfo layout file style (general settings) */
 

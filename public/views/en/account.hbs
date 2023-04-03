@@ -3,32 +3,122 @@
 <div id="wide-appearance">{{>en/header}}</div>
 <div id="small-appearance">{{>en/header.sm}}</div>
 {{!-- end header --}}
-{{!-- start general settings for account page --}}
-<div class="row g-0 my-account">
-  <div class="col col-md-8">
-    {{>en/changeInfo}}
-    {{>en/changePassword}}
-    {{>en/block}}
-    {{>en/deleteAccount}}
+<div class="container-xxl">
+  {{!-- start general settings for account page --}}
+  <div class="row justify-content-between g-0 my-account">
+    <div class="col col-md-8 col-lg-9">
+      {{>en/changeInfo}}
+      {{>en/changePassword}}
+      {{>en/block}}
+      {{>en/deleteAccount}}
+    </div>
+    {{#if smallScreen}}
+    <div class="ads-column d-none col-md-4 d-md-flex flex-column py-4 px-3">
+      <div class="border border-1 d-flex align-items-center justify-content-center">
+        Ads
+      </div>
+      <div class="border d-flex align-items-center justify-content-center">
+        Ads
+      </div>
+      <div class="border d-flex align-items-center justify-content-center">
+        Ads
+      </div>
+      <div class="border d-flex align-items-center justify-content-center">
+        Ads
+      </div>
+    </div>
+    {{else}}
+    <div class="account-quick-access d-none col-md-3 d-md-flex flex-column py-4 mt-1 ps-3 align-items-end">
+      <article class="account-links mb-4">
+        <h3 class="mt-0 mb-3 p-2 text-uppercase fs-6 fw-normal text-white">
+          General
+        </h3>
+        <ul class="m-0 p-0 list-unstyled">
+          <li class="ms-4 mb-1">
+            <a id="profile-pic" class="text-uppercase" href="">Picture</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a id="profile-info" class="text-uppercase" href="">Information</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a id="profile-pass" class="text-uppercase" href="">Change Password</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a id="profile-block" class="text-uppercase" href="">Block&Warning</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a id="profile-del" class="text-uppercase" href="">Delete Account</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a class="text-uppercase" href="">Logout</a>
+          </li>
+        </ul>
+      </article>
+      <article class="account-links mb-4">
+        <h3 class="mt-0 mb-3 p-2 text-uppercase fs-6 fw-normal text-white">
+          Wishlist
+        </h3>
+        <ul class="m-0 p-0 list-unstyled">
+          <li class="ms-4 mb-1">
+            <a id="profile-pic" class="text-uppercase" href="">Go to my wishlist</a>
+          </li>
+        </ul>
+      </article>
+      <article class="account-links mb-4">
+        <h3 class="mt-0 mb-3 p-2 text-uppercase fs-6 fw-normal text-white">
+          My cart
+        </h3>
+        <ul class="m-0 p-0 list-unstyled">
+          <li class="ms-4 mb-1">
+            <a id="profile-pic" class="text-uppercase" href="">got to my cart</a>
+          </li>
+        </ul>
+      </article>
+      <article class="account-links mb-4">
+        <h3 class="mt-0 mb-3 p-2 text-uppercase fs-6 fw-normal text-white">
+          Orders
+        </h3>
+        <ul class="m-0 p-0 list-unstyled">
+          <li class="ms-4 mb-1">
+            <a id="" class="text-uppercase" href="">Pending orders</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a id="" class="text-uppercase" href="">successful orders</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a id="" class="text-uppercase" href="">canceled orders</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a id="" class="text-uppercase" href="">returned products</a>
+          </li>
+        </ul>
+      </article>
+      <article class="account-links mb-4">
+        <h3 class="mt-0 mb-3 p-2 text-uppercase fs-6 fw-normal text-white">
+          History
+        </h3>
+        <ul class="m-0 p-0 list-unstyled">
+          <li class="ms-4 mb-1">
+            <a id="" class="text-uppercase" href="">My Comments</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a id="" class="text-uppercase" href="">Rated Products</a>
+          </li>
+          <li class="ms-4 mb-1">
+            <a id="" class="text-uppercase" href="">Reports</a>
+          </li>
+        </ul>
+      </article>
+      <div class="ads border border-1 d-flex align-items-center justify-content-center">
+        Ads
+      </div>
+      <div class="ads border d-flex align-items-center justify-content-center">
+        Ads
+      </div>
+    </div>
+    {{/if}}
   </div>
-  {{#if smallScreen}}
-  <div class="ads-column d-none col-md-4 d-md-flex flex-column py-4 px-3">
-    <div class="border border-1 d-flex align-items-center justify-content-center">
-      Ads
-    </div>
-    <div class="border d-flex align-items-center justify-content-center">
-      Ads
-    </div>
-    <div class="border d-flex align-items-center justify-content-center">
-      Ads
-    </div>
-    <div class="border d-flex align-items-center justify-content-center">
-      Ads
-    </div>
-  </div>
-  {{else}}
-  {{/if}}
+  {{!-- end general settings for account page --}}
 </div>
-{{!-- end general settings for account page --}}
 {{>en/footer}}
 {{>pageFoot}}
