@@ -619,3 +619,45 @@ if (editPicInput) editPicInput.addEventListener('change', () => {
 
 
 
+//account side boxes links
+//first I need to select all links and all links' block elements
+const accountPictureBtn = document.querySelector('article ul li #profile-pic');
+const accountInformationBtn = document.querySelector('article ul li #profile-info');
+const accountPasswordBtn = document.querySelector('article ul li #profile-pass');
+const accountBlockBtn = document.querySelector('article ul li #profile-block');
+const accountDeleteBtn = document.querySelector('article ul li #profile-del');
+
+const accountPictureEle = document.getElementById('profile-picture');
+const accountInformationEle = document.getElementById('profile-information');
+const accountPasswordEle = document.getElementById('profile-password');
+const accountBlockEle = document.getElementById('profile-block');
+const accountDeleteEle = document.getElementById('profile-delete');
+
+//second will create a function to make it easy
+const checkUrlAndMoveTo = (url, btn, ele) => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    //if the url is the same url of the link will just move to the element smoothly
+    //if not it will update the url and move to the element smoothly
+    if (window.location === url || window.location.toString().includes(url)) {
+      scroll({
+        behavior: 'smooth',
+        top: ele.offsetTop
+      });
+    } else {
+      window.location = url;
+      scroll({
+        behavior: 'smooth',
+        top: ele.offsetTop
+      });
+    }
+  });
+};
+
+checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountPictureBtn, accountPictureEle);
+checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountInformationBtn, accountInformationEle);
+checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountPasswordBtn, accountPasswordEle);
+checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountBlockBtn, accountBlockEle);
+checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountDeleteBtn, accountDeleteEle);
+
+

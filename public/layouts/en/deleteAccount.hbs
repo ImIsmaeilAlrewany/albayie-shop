@@ -1,14 +1,14 @@
 {{!-- start the profile delete --}}
 
 <section class="profile-info py-4">
-  <header class="profile-header mb-4 px-2">
+  <header class="profile-header px-2">
     <h1 class="m-0 p-0 text-capitalize fs-2">delete account</h1>
     <hr class="border-1 m-0">
   </header>
   <div class="profile px-2">
 
     {{!-- delete user account form --}}
-    <div class="delete-profile">
+    <div id="profile-delete" class="delete-profile pt-4">
       <form class="user-data-form" action="{{profileData._id}}/delete" method="post">
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input shadow-none border-danger" id="exampleCheckDelete"
