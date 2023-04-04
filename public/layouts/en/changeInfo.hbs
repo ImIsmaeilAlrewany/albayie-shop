@@ -18,7 +18,8 @@
         </div>
 
         {{!-- change profile picture form --}}
-        <form id="edit-picture-form" class="add-picture mx-3 align-self-end my-2" action="{{data.user._id}}/upload"
+        <form id="edit-picture-form" class="add-picture mx-3 align-self-end my-2"
+          action="{{#unless smallScreen}}/en/users/profile/{{data.user._id}}/general/upload{{else}}/en/users/profile/{{data.user._id}}/general/upload?screen=small-medium{{/unless}}"
           method="post" enctype="multipart/form-data">
           <label id="add-picture-label" class="mb-1 btn border-0 text-nowrap" for="upload-picture" role="button">
             Choose picture

@@ -9,7 +9,9 @@
 
     {{!-- delete user account form --}}
     <div id="profile-delete" class="delete-profile pt-4">
-      <form class="user-data-form" action="{{profileData._id}}/delete" method="post">
+      <form class="user-data-form"
+        action="{{#unless smallScreen}}/en/users/profile/{{data.user._id}}/general/delete{{else}}/en/users/profile/{{data.user._id}}/general/delete?screen=small-medium{{/unless}}"
+        method="post">
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input shadow-none border-danger" id="exampleCheckDelete"
             name="delete" value="true">

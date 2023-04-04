@@ -654,10 +654,10 @@ const checkUrlAndMoveTo = (url, btn, ele) => {
   });
 };
 
-checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountPictureBtn, accountPictureEle);
-checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountInformationBtn, accountInformationEle);
-checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountPasswordBtn, accountPasswordEle);
-checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountBlockBtn, accountBlockEle);
-checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountDeleteBtn, accountDeleteEle);
+if (accountPictureBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountPictureBtn, accountPictureEle);
+if (accountInformationBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountInformationBtn, accountInformationEle);
+if (accountPasswordBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountPasswordBtn, accountPasswordEle);
+if (accountBlockBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountBlockBtn, accountBlockEle);
+if (accountDeleteBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountDeleteBtn, accountDeleteEle);
 
 
