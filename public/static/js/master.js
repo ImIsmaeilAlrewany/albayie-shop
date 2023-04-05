@@ -654,10 +654,21 @@ const checkUrlAndMoveTo = (url, btn, ele) => {
   });
 };
 
-if (accountPictureBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountPictureBtn, accountPictureEle);
-if (accountInformationBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountInformationBtn, accountInformationEle);
-if (accountPasswordBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountPasswordBtn, accountPasswordEle);
-if (accountBlockBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountBlockBtn, accountBlockEle);
-if (accountDeleteBtn) checkUrlAndMoveTo('http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general', accountDeleteBtn, accountDeleteEle);
+//url of the account page to check for the language
+let AccountPageUrl;
+
+if (window.location.toString().includes('http://127.0.0.1:3000/en')) {
+  AccountPageUrl = 'http://127.0.0.1:3000/en/users/profile/63fd1cc7293d6e8c5e6d1ef1/general';
+} else {
+  AccountPageUrl = 'http://127.0.0.1:3000/ar/users/profile/63fd1cc7293d6e8c5e6d1ef1/general';
+}
+
+if (accountPictureBtn) checkUrlAndMoveTo(AccountPageUrl, accountPictureBtn, accountPictureEle);
+if (accountInformationBtn) checkUrlAndMoveTo(AccountPageUrl, accountInformationBtn, accountInformationEle);
+if (accountPasswordBtn) checkUrlAndMoveTo(AccountPageUrl, accountPasswordBtn, accountPasswordEle);
+if (accountBlockBtn) checkUrlAndMoveTo(AccountPageUrl, accountBlockBtn, accountBlockEle);
+if (accountDeleteBtn) checkUrlAndMoveTo(AccountPageUrl, accountDeleteBtn, accountDeleteEle);
+
+
 
 

@@ -1513,8 +1513,6 @@ a {
 
 /* start account file style */
 
-/* start changeInfo layout file style (general settings) */
-
 .profile-info .profile-header h1 {
   color: var(--gray);
 }
@@ -1680,7 +1678,5 @@ a {
     width: 250px;
   }
 }
-
-/* end changeInfo layout file style (general settings) */
 
 /* end account file style */

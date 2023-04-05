@@ -1,0 +1,93 @@
+{{!-- start the profile information updating and reading --}}
+
+<section class="profile-info py-4">
+  <header class="profile-header px-2">
+    <h1 class="m-0 p-0 text-capitalize fs-2">معلومات الحساب</h1>
+    <hr class="border-1 m-0">
+  </header>
+  <div class="profile px-2">
+
+    {{!-- start with profile picture --}}
+
+    <div id="profile-picture" class="pt-4">
+      <div class="profile-pic d-flex">
+        <div class="position-relative">
+          <img
+            src="{{#unless data.user.profilePic}} /images/profile-picture.svg {{else}} /images/uploaded/{{data.user.profilePic}} {{/unless}}"
+            alt="profile-picture">
+        </div>
+
+        {{!-- change profile picture form --}}
+        <form id="edit-picture-form" class="add-picture mx-3 align-self-end my-2"
+          action="{{#unless smallScreen}}/ar/users/profile/{{data.user._id}}/general/upload{{else}}/ar/users/profile/{{data.user._id}}/general/upload?screen=small-medium{{/unless}}"
+          method="post" enctype="multipart/form-data">
+          <label id="add-picture-label" class="mb-1 btn border-0 text-nowrap" for="upload-picture" role="button">
+            اختر صورة
+          </label>
+          <input id="upload-picture" class="d-none" type="file" name="profilePic">
+          <p class="m-0 p-0 text-nowrap">راعي أن تكون jpg</p>
+        </form>
+      </div>
+    </div>
+    {{!-- end with profile picture --}}
+
+    {{!-- start with profile data --}}
+
+    <div id="profile-information" class="user-info pt-4">
+      <form class="user-data-form" method="post">
+        <div class="mb-3">
+          <label for="exampleInputFirstName" class="form-label">
+            الإسم الشخصي
+          </label>
+          <input type="text" class="form-control shadow-none" id="exampleInputFirstName" name="fName"
+            value="{{data.user.fName}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputLastName" class="form-label">
+            لقب العائلة
+          </label>
+          <input type="text" class="form-control shadow-none" id="exampleInputLastName" name="lName"
+            value="{{data.user.lName}}">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputCity" class="form-label">
+            المدينة الحالية
+          </label>
+          <input type="text" class="form-control shadow-none" id="exampleInputCity" name="city" {{#if data.user.city}}
+            value="{{data.user.city}}" {{else}} placeholder="لا يوجد عنوان مدينة." {{/if}}>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputAddress" class="form-label">
+            العنوان الشخصي
+          </label>
+          <input type="text" class="form-control shadow-none" id="exampleInputAddress" name="address" {{#if
+            data.user.address}} value="{{data.user.address}}" {{else}} placeholder="لا يوجد عنوان حالياً." {{/if}}>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPhoneNumber" class="form-label">
+            رقم الهاتف
+          </label>
+          <div class="d-flex">
+            <span class="border rounded-start-2 py-1 px-2">+20</span>
+            <input type="text" class="form-control shadow-none rounded-start-0" id="exampleInputPhoneNumber"
+              name="phoneNum" value="{{data.user.phoneNum}}">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">
+            الإيميل الإلكتروني
+          </label>
+          <input type="email" class="form-control shadow-none" id="exampleInputEmail1" name="email"
+            value="{{data.user.email}}">
+        </div>
+        <button id="save-edit-button" type="submit" class="btn text-nowrap px-4 border-0" role="button">
+          احفظ التعديلات
+        </button>
+      </form>
+    </div>
+
+    {{!-- end with profile data --}}
+  </div>
+</section>
+
+{{!-- end the profile information updating and reading --}}

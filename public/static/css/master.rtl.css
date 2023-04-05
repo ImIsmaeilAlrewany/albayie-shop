@@ -141,3 +141,24 @@ body {
 
 /* end register content style */
 /* end register file style */
+
+/* start account file style */
+
+.form-check input[type="checkbox"] {
+  float: right;
+  margin-left: 0.5em;
+}
+
+.my-account article.account-links ul li::after {
+  left: auto;
+  right: -16px;
+  border-color: transparent black transparent transparent;
+}
+
+.my-account article.account-links ul li:hover::after,
+.my-account article.account-links ul li:focus::after {
+  border-left-color: transparent;
+  border-right-color: var(--primary);
+}
+
+/* end account file style */

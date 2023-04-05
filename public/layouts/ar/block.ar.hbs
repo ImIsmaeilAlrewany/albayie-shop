@@ -1,0 +1,44 @@
+{{!-- start the profile block and warning and reading --}}
+
+<section class="profile-info py-4">
+  <header class="profile-header px-2">
+    <h1 class="m-0 p-0 text-capitalize fs-2">الحظر والتحذيرات</h1>
+    <hr class="border-1 m-0">
+  </header>
+  <div class="profile px-2">
+
+    {{!-- start with profile block and warning --}}
+
+    <div id="profile-block" class="pt-4">
+      <h4 class="p-0 mb-3 fs-6 {{#if data.user.block}} text-danger {{else}} text-success {{/if}} text-capitalize">
+        حالة الحساب الحالية
+      </h4>
+      <article class="block-info">
+        {{#if data.user.block}}
+        <p class="p-0 mb-2 block-days">
+          لديك هذا الوقت متبقي {{getDays data.user.block}}/س
+        </p>
+        <p class="p-3 m-0 block-reason">
+          لماذا تم حظري؟!
+        </p>
+        {{#each data.user.block}}
+        <p class="p-0 mb-2 block-messages">
+          {{this.message}}
+        </p>
+        {{/each}}
+        {{else}}
+        أنت غير محظور،
+        {{/if}}
+        <div>
+          <a href="" class="p-0 m-0">الشروط </a>
+          و
+          <a href="" class="p-0 m-0"> الأحكام</a>
+        </div>
+      </article>
+    </div>
+
+    {{!-- end with profile block and warning --}}
+  </div>
+</section>
+
+{{!-- end the profile block and warning and reading --}}

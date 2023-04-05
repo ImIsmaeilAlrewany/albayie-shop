@@ -54,32 +54,37 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2 {{#if  (or path 'en/users/profile/:id')}} active {{/if}}" data-bs-toggle="dropdown"
+          <a class="nav-link p-2 {{#if  (or path 'ar/users/profile/general')}} active {{/if}}" data-bs-toggle="dropdown"
             role="button">
             <i class="fa-solid fa-user"></i>
             حسابي الشخصي
           </a>
           <ul class="dropdown-menu border-0 m-0 rounded-0">
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/general">عرض
+              <a class="dropdown-item px-4 py-2"
+                href="/ar/users/profile/{{data.user._id}}/general?screen=small-medium">عرض
                 البيانات</a>
             </li>
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/wishlist">قائمة الرغبات</a>
+              <a class="dropdown-item px-4 py-2"
+                href="/ar/users/profile/{{data.user._id}}/wishlist?screen=small-medium">قائمة الرغبات</a>
             </li>
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/cart">عربة التسوق</a>
+              <a class="dropdown-item px-4 py-2"
+                href="/ar/users/profile/{{data.user._id}}/cart?screen=small-medium">عربة التسوق</a>
             </li>
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/orders">الطلبات</a>
+              <a class="dropdown-item px-4 py-2"
+                href="/ar/users/profile/{{data.user._id}}/orders?screen=small-medium">الطلبات</a>
             </li>
             <li class="">
-              <a class="dropdown-item px-4 py-2" href="en/users/profile/{{data.user._id}}/history">النشاطات</a>
+              <a class="dropdown-item px-4 py-2"
+                href="/ar/users/profile/{{data.user._id}}/history?screen=small-medium">النشاطات</a>
             </li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2 {{#if (compare path 'ar/cart')}} active {{/if}}" href="/ar/cart">
+          <a class="nav-link p-2 {{#if (compare path 'ar/users/profile/cart')}} active {{/if}}" href="">
             <i class="fa-solid fa-cart-shopping"></i>
             عربة التسوق
           </a>
