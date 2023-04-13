@@ -15,13 +15,13 @@ const productSchema = mongoose.Schema({
     required: true,
     minlength: 3
   },
-  sku: {
+  SKU: {
     type: String,
     trim: true,
     required: true,
     unique: true,
     validate(v) {
-      if (!/^[A-Za-z0-9_-]{6,20}$/.test(v)) throw new Error('invalid sku');
+      if (!/^[A-Za-z0-9_-]{6,20}$/.test(v)) throw new Error('invalid SKU');
     }
   },
   category: {
@@ -194,6 +194,89 @@ const productSchema = mongoose.Schema({
       }
     },
     books: {
+      genre: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        enum: [
+          'action and adventure',
+          'art and photography',
+          'biography and autobiography',
+          'business and finance',
+          'children\'s',
+          'comics and graphic novels',
+          'cookbooks, food',
+          'crafts, hobbies, and home',
+          'drama',
+          'education and reference',
+          'erotica',
+          'fantasy',
+          'health and fitness',
+          'historical fiction',
+          'history',
+          'horror',
+          'humor and comedy',
+          'literary fiction',
+          'memoir',
+          'music and entertainment',
+          'mystery and thriller',
+          'paranormal and supernatural',
+          'parenting and families',
+          'philosophy',
+          'poetry',
+          'politics and social sciences',
+          'religion and spirituality',
+          'romance',
+          'science and nature',
+          'science fiction',
+          'self-help and personal development',
+          'sports and outdoors',
+          'travel',
+          'study languages',
+          'programming'
+        ]
+      },
+      language: {
+        type: String,
+        default: 'arabic',
+        trim: true,
+        lowercase: true,
+        enum: ['arabic', 'english', 'french', 'russian', 'chinese']
+      },
+      author: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        minlength: 3
+      },
+      publisher: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        minlength: 3
+      },
+      pagesNumber: {
+        type: Number,
+        default: 1,
+        min: 1
+      },
+      publicationDate: {
+        type: Date,
+        validate(v) {
+          if (v <= Date.now()) throw new Error('mustn\'t be in the future');
+        }
+      },
+      ISBN: {
+        type: String,
+        trim: true,
+        required: true,
+        unique: true,
+        validate(v) {
+          if (!/^[\d-]{10,13}$/.test(v)) throw new Error('invalid ISBN');
+        }
+      }
+    },
+    personalCare: {
 
     }
   }
