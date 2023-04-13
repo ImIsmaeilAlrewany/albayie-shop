@@ -263,7 +263,7 @@ const productSchema = mongoose.Schema({
       publicationDate: {
         type: Date,
         validate(v) {
-          if (v <= Date.now()) throw new Error('mustn\'t be in the future');
+          if (v >= Date.now()) throw new Error('mustn\'t be in the future');
         }
       },
       ISBN: {
@@ -277,7 +277,164 @@ const productSchema = mongoose.Schema({
       }
     },
     personalCare: {
-
+      productType: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        enum: [
+          "shampoo",
+          "conditioner",
+          "body wash",
+          "soap",
+          "facial cleanser",
+          "facial moisturizer",
+          "sunscreen",
+          "deodorant",
+          "toothpaste",
+          "mouthwash",
+          "hand sanitizer",
+          "lotion",
+          "perfume/cologne",
+          "hair styling products",
+          "shaving products",
+          "feminine hygiene products",
+          "contact lens solution",
+          "acne treatment",
+          "lip balm",
+          "nail care",
+          "makeup",
+          "makeup tools",
+          "face masks",
+          "eye care",
+          "hair care",
+          "bath and shower accessories",
+          "foot care",
+          "hand care",
+          "body oil",
+          "massage oil",
+          "hair dye",
+          "hair serum",
+          "dry shampoo",
+          "leave-in conditioner",
+          "hair mask",
+          "toner",
+          "serum",
+          "essence",
+          "body scrub",
+          "body mist",
+          "body butter",
+          "mouth guard",
+          "nasal spray",
+          "ear plugs",
+          "sleep mask",
+          "insect repellent",
+          "antiperspirant",
+          "hair remover",
+          "electric toothbrush",
+          "floss",
+          "tooth whitening",
+          "breath freshener",
+          "mouth ulcer treatment",
+          "denture cleaner",
+          "dental guard",
+          "cold sore treatment",
+          "teething gel",
+          "baby products",
+          "adult diapers",
+          "incontinence pads",
+          "hemorrhoid cream",
+          "fungal cream",
+          "wart/mole remover",
+          "humidifier",
+          "essential oil diffuser",
+          "aromatherapy oils",
+          "candles",
+          "bathrobe",
+          "towel"
+        ]
+      },
+      scent: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        minlength: 3
+      },
+      skinType: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        enum: [
+          "normal",
+          "dry",
+          "oily",
+          "combination",
+          "sensitive",
+          "acne-prone",
+          "aging/mature",
+          "uneven skin tone",
+          "dull/tired",
+          "dehydrated",
+          "sun-damaged",
+          "rosacea-prone",
+          "eczema-prone"
+        ]
+      },
+      targetAudience: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        minlength: 4,
+        enum: ['male', 'female', 'unisex']
+      },
+      dimension: {
+        size: {
+          type: Number,
+          min: 1
+        },
+        weight: {
+          type: Number,
+          min: 1
+        },
+        volume: {
+          type: Number,
+          min: 1
+        },
+        dimensionUnit: {
+          type: String,
+          trim: true,
+          lowercase: true,
+          enum: [
+            "ml",
+            "oz",
+            "g",
+            "lb",
+            "in",
+            "cm",
+            "fl oz",
+            "gal",
+            "L",
+            "kg"
+          ]
+        }
+      },
+      ingredients: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        minlength: 10
+      },
+      features: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        minlength: 6
+      },
+      expirationDate: {
+        type: Date,
+        validate(v) {
+          if (v <= Date.now()) throw new Error('it\'s expired');
+        }
+      }
     }
   }
 }, { timestamps: true });
