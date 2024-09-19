@@ -156,6 +156,7 @@ class userDashboard {
   static adminsTable = async (req, res) => {
     try {
       if (!req.user.editor) throw new Error('not editor');
+      // console.log(await userModel.find());
 
       res.render('en/dashboard-adminsTable', { pageTitle: 'Albayie - Dashboard Admins\' Table', user: req.user, path: '/en/dash-board/users/admin' });
     } catch (err) {

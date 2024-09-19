@@ -106,7 +106,6 @@ const userDashboard = require('./routes/en/dashboard.user.route');
 app.use('/en', dashboard);
 app.use('/en/dash-board', userDashboard);
 
-
 app.all('*', (req, res) => {
   const lang = req.cookies.lang;
   res.render(lang === 'ar' ? 'ar/error404.ar.hbs' : 'en/error404', { pageTitle: 'Albayie - Page Not Found' });

@@ -25,6 +25,7 @@ const changeLang = (lang, screen, id) => {
   }
   return output;
 };
+
 class User {
   static register = (req, res) => {
     res.render('en/register', { pageTitle: 'Albayie - register', path: 'en/register' });
@@ -107,9 +108,7 @@ class User {
     const userData = await userModel.findById(req.params.id);
     const id = req.params.id;
 
-    res.render('en/account', {
-      pageTitle: 'Albayie - My Account', path: `en/users/profile/general`, smallScreen, data: { isLogin: true, user: userData }, arLink: changeLang('ar', smallScreen, id), enLink: changeLang('en', smallScreen, id)
-    });
+    res.render('en/account', {pageTitle: 'Albayie - My Account', path: `en/users/profile/general`, smallScreen, data: { isLogin: true, user: userData }, arLink: changeLang('ar', smallScreen, id), enLink: changeLang('en', smallScreen, id)})
   };
 
   static editData = async (req, res) => {
